@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Value;
 
 /**
- * A locality.
+ * A Street name.
  */
-final class Locality extends AbstractWithGeographicalNames
+final class StreetName extends AbstractWithGeographicalNames
 {
 
 }
