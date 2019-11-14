@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\ObjectId;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,14 +15,42 @@ class ObjectIdTest extends TestCase
 {
 
     /**
-     * Exception is thrown when id is not greater than 0.
+     * Exception is thrown when value is not greater than 0.
+     *
+     * @param int $value
+     *   The object id value to test.
+     * @param bool $expectException
+     *   Should the value trigger an exception.
+     *
+     * @dataProvider objectIdValueProvider
      *
      * @test
      */
-    public function exceptionWhenIdIsZero(): void
+    public function objectIdValueShouldBeGreaterThanZero(int $value, bool $expectException): void
     {
-        $this->expectException(\InvalidArgumentException::class);
-        new ObjectId(0);
+        if ($expectException) {
+            $this->expectException(InvalidArgumentException::class);
+        }
+
+        new ObjectId($value);
+        $this->assertFalse($expectException, 'Value dit not trigger an exception.');
+    }
+
+    /**
+     * Dataprovider to test the value assertion.
+     *
+     * @return array
+     *   Each record in the array contains:
+     *   - int : The value to test.
+     *   - bool : Should the code trigger an exception.
+     */
+    public function objectIdValueProvider(): array
+    {
+        return [
+            [-1, true],
+            [0, true],
+            [1, false],
+        ];
     }
 
     /**
@@ -31,9 +60,9 @@ class ObjectIdTest extends TestCase
      */
     public function notTheSameIfValuesAreDifferent(): void
     {
-        $id = new ObjectId(123);
-        $notTheSameId = new ObjectId(456);
-        $this->assertFalse($id->sameValueAs($notTheSameId));
+        $objectId = new ObjectId(123);
+        $otherObjectId = new ObjectId(456);
+        $this->assertFalse($objectId->sameValueAs($otherObjectId));
     }
 
     /**
@@ -43,9 +72,9 @@ class ObjectIdTest extends TestCase
      */
     public function sameValueIfIdValueIsTheSame(): void
     {
-        $id = new ObjectId(123);
-        $sameId = new ObjectId(123);
-        $this->assertTrue($id->sameValueAs($sameId));
+        $objectId = new ObjectId(123);
+        $sameObjectId = new ObjectId(123);
+        $this->assertTrue($objectId->sameValueAs($sameObjectId));
     }
 
     /**
@@ -53,9 +82,9 @@ class ObjectIdTest extends TestCase
      *
      * @test
      */
-    public function idIsReturnedAsStringValue(): void
+    public function castToStringReturnsId(): void
     {
-        $id = new ObjectId(123);
-        $this->assertSame('123', (string) $id);
+        $objectId = new ObjectId(123);
+        $this->assertSame('123', (string) $objectId);
     }
 }

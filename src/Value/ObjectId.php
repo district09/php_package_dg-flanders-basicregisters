@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
 /**
  * An id object.
  */
-class ObjectId extends ValueAbstract
+final class ObjectId extends ValueAbstract
 {
 
     /**
