@@ -48,12 +48,12 @@ information.
 [github-badge]: https://img.shields.io/badge/github-DigipolisGent_Flanders_BasicRegisters-blue.svg?logo=github
 [github-link]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters
 
-[travis-master-badge]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters.svg?token=ID&branch=master "Travis build master"
+[travis-master-badge]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters.svg?token=anXPs46DEwgxP8RmJPAJ&branch=master "Travis build master"
 [travis-master-link]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters/branches
-[travis-develop-badge]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters.svg?token=ID&branch=develop "Travis build develop"
+[travis-develop-badge]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters.svg?token=anXPs46DEwgxP8RmJPAJ&branch=develop "Travis build develop"
 [travis-develop-link]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters/branches
 
-[codeclimate-maint-badge]: https://api.codeclimate.com/v1/badges/ID/maintainability
-[codeclimate-maint-link]: https://codeclimate.com/repos/ID/maintainability
-[codeclimate-cover-badge]: https://api.codeclimate.com/v1/badges/ID/test_coverage
-[codeclimate-cover-link]: https://codeclimate.com/repos/ID/test_coverage
+[codeclimate-maint-badge]: https://api.codeclimate.com/v1/badges/25b0ccb2739cd23839bb/maintainability
+[codeclimate-maint-link]: https://codeclimate.com/repos/5dcd2b0dceb05b014e00fbc3/maintainability
+[codeclimate-cover-badge]: https://api.codeclimate.com/v1/badges/25b0ccb2739cd23839bb/test_coverage
+[codeclimate-cover-link]: https://codeclimate.com/repos/5dcd2b0dceb05b014e00fbc3/test_coverage
