@@ -12,6 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\ObjectId;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalNames
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Locality
  */
 class LocalityTest extends TestCase
