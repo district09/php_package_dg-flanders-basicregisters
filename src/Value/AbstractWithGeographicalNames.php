@@ -41,7 +41,7 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
     }
 
     /**
-     * Get the default name of the locality.
+     * Get the default name of the object.
      *
      * This will return the GeographicalNames::name() value.
      *
@@ -57,7 +57,7 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalNames $object */
         return $this->sameValueTypeAs($object)
             && $this->geographicalNames()->sameValueAs($object->geographicalNames());
     }
