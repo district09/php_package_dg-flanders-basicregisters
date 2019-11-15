@@ -21,22 +21,22 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     /**
      * The locality
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
      */
-    private $locality;
+    private $localityName;
 
     /**
      * Create a new street name.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId $streetNameId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality $locality
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName $localityName
      */
-    public function __construct(StreetNameId $streetNameId, GeographicalNames $geographicalNames, Locality $locality)
+    public function __construct(StreetNameId $streetNameId, GeographicalNames $geographicalNames, LocalityName $localityName)
     {
         parent::__construct($geographicalNames);
         $this->streetNameId = $streetNameId;
-        $this->locality = $locality;
+        $this->localityName = $localityName;
     }
 
     /**
@@ -50,13 +50,13 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     }
 
     /**
-     * Return the locality.
+     * Return the locality name.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
      */
-    public function locality(): Locality
+    public function localityName(): LocalityName
     {
-        return $this->locality;
+        return $this->localityName;
     }
 
     /**
@@ -67,6 +67,6 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameDetail $object */
         return parent::sameValueAs($object)
             && $this->streetNameId()->sameValueAs($object->streetNameId())
-            && $this->locality()->sameValueAs($object->locality());
+            && $this->localityName()->sameValueAs($object->localityName());
     }
 }

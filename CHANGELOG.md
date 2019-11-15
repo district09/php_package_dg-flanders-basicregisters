@@ -16,6 +16,9 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added the Localities collection.
 * Added the StreetNames collection.
 * Added the GeographicalNameNormalizer.
+* Added the GeographicalNamesNormalizer.
+* Added the LocalityNameNormalizer.
+* Added the StreetNameDetailNormalizer.
 * Added the StreetNameNormalizer.
 * Added the StreetNamesNormalizer.
 

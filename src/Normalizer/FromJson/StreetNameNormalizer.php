@@ -22,16 +22,11 @@ class StreetNameNormalizer
      */
     public function normalize(object $jsonData): StreetName
     {
-        $streetId = new StreetNameId((int) $jsonData->identificator->objectId);
-
         $geoGraphicalNameNormalizer = new GeographicalNameNormalizer();
-        $geoGraphicalNames = new GeographicalNames(
-            $geoGraphicalNameNormalizer->normalize($jsonData->straatnaam->geografischeNaam)
-        );
 
         return new StreetName(
-            $streetId,
-            $geoGraphicalNames
+            new StreetNameId((int) $jsonData->identificator->objectId),
+            $geoGraphicalNameNormalizer->normalize($jsonData->straatnaam->geografischeNaam)
         );
     }
 }

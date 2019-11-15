@@ -27,7 +27,7 @@ class AddressTest extends TestCase
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 121 bus D, 9123 Locality'
+                'Streetname 121 bus D, 9000 Gent'
             )
         );
 
@@ -50,7 +50,7 @@ class AddressTest extends TestCase
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 121 bus D, 9123 Locality'
+                'Streetname 121 bus D, 9000 Gent'
             )
         );
 
@@ -73,7 +73,7 @@ class AddressTest extends TestCase
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 121 bus D, 9123 Locality'
+                'Streetname 121 bus D, 9000 Gent'
             )
         );
 
@@ -94,7 +94,7 @@ class AddressTest extends TestCase
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 121 bus D, 9123 Locality'
+                'Streetname 121 bus D, 9000 Gent'
             )
         );
 
@@ -115,7 +115,7 @@ class AddressTest extends TestCase
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 121 bus D, 9123 Locality'
+                'Streetname 121 bus D, 9000 Gent'
             )
         );
 
@@ -124,7 +124,7 @@ class AddressTest extends TestCase
         $otherFullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 212 bus A, 9123 Locality'
+                'Streetname 212 bus A, 9000 Gent'
             )
         );
         $otherAddress = new Address($objectId, '121', 'D', $otherFullAddress);
@@ -143,7 +143,7 @@ class AddressTest extends TestCase
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 121 bus D, 9123 Locality'
+                'Streetname 121 bus D, 9000 Gent'
             )
         );
 
@@ -164,7 +164,7 @@ class AddressTest extends TestCase
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
-                'Streetname 121 bus D, 9123 Locality'
+                'Streetname 121 bus D, 9000 Gent'
             )
         );
 

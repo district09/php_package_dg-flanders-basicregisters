@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
@@ -47,11 +46,9 @@ class StreetNamesTest extends TestCase
     {
         return new StreetName(
             new StreetNameId($identifier),
-            new GeographicalNames(
-                new GeographicalName(
-                    new LanguageCode('NL'),
-                    $name
-                )
+            new GeographicalName(
+                new LanguageCode('NL'),
+                $name
             )
         );
     }

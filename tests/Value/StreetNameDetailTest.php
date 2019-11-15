@@ -7,9 +7,8 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityId;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
+use DigipolisGent\Flanders\BasicRegisters\Value\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameDetail;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
 use PHPUnit\Framework\TestCase;
@@ -32,13 +31,13 @@ class StreetNameDetailTest extends TestCase
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
         );
-        $locality = $this->createLocality(100);
+        $localityName = $this->createLocalityName(100);
 
-        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
+        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
 
         $this->assertSame($streetNameId, $streetNameDetail->streetNameId());
         $this->assertSame($geographicalNames, $streetNameDetail->geographicalNames());
-        $this->assertSame($locality, $streetNameDetail->locality());
+        $this->assertSame($localityName, $streetNameDetail->localityName());
     }
 
     /**
@@ -52,9 +51,9 @@ class StreetNameDetailTest extends TestCase
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
         );
-        $locality = $this->createLocality(100);
+        $localityName = $this->createLocalityName(100);
 
-        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
+        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
 
         $this->assertSame($geographicalNames->name(), $streetNameDetail->name());
     }
@@ -70,14 +69,14 @@ class StreetNameDetailTest extends TestCase
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
-        $locality = $this->createLocality(100);
+        $localityName = $this->createLocalityName(100);
 
-        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
+        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
 
         $otherStreetNameDetail = new StreetNameDetail(
             new StreetNameId(456),
             $geographicalNames,
-            $locality
+            $localityName
         );
 
         $this->assertFalse($streetNameDetail->sameValueAs($otherStreetNameDetail));
@@ -94,37 +93,37 @@ class StreetNameDetailTest extends TestCase
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
-        $locality = $this->createLocality(100);
+        $localityName = $this->createLocalityName(100);
 
-        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
+        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
 
         $otherGeographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('NL'), 'Foo NL')
         );
-        $otherStreetNameDetail = new StreetNameDetail($streetNameId, $otherGeographicalNames, $locality);
+        $otherStreetNameDetail = new StreetNameDetail($streetNameId, $otherGeographicalNames, $localityName);
 
         $this->assertFalse($streetNameDetail->sameValueAs($otherStreetNameDetail));
     }
 
     /**
-     * Not the same value if the locality is different.
+     * Not the same value if the locality name is different.
      *
      * @test
      */
-    public function notSameIfLocalityIsDifferent(): void
+    public function notSameIfLocalityNameIsDifferent(): void
     {
         $streetNameId = new StreetNameId(123);
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
-        $locality = $this->createLocality(100);
+        $localityName = $this->createLocalityName(100);
 
-        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
+        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
 
         $otherStreetNameDetail = new StreetNameDetail(
             $streetNameId,
             $geographicalNames,
-            $this->createLocality(200)
+            $this->createLocalityName(200)
         );
 
         $this->assertFalse($streetNameDetail->sameValueAs($otherStreetNameDetail));
@@ -141,10 +140,10 @@ class StreetNameDetailTest extends TestCase
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
-        $locality = $this->createLocality(100);
+        $localityName = $this->createLocalityName(100);
 
-        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
-        $sameStreetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
+        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
+        $sameStreetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
 
         $this->assertTrue($streetNameDetail->sameValueAs($sameStreetNameDetail));
     }
@@ -160,31 +159,28 @@ class StreetNameDetailTest extends TestCase
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
-        $locality = $this->createLocality(100);
+        $localityName = $this->createLocalityName(100);
 
-        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $locality);
+        $streetNameDetail = new StreetNameDetail($streetNameId, $geographicalNames, $localityName);
 
         $this->assertSame($geographicalNames->name(), (string) $streetNameDetail);
     }
 
     /**
-     * Create a locality.
+     * Create a locality name.
      *
      * @param int $identifier
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
      */
-    private function createLocality(int $identifier): Locality
+    private function createLocalityName(int $identifier): LocalityName
     {
-        return new Locality(
-            new LocalityId($identifier),
-            new GeographicalNames(
-                new GeographicalName(
-                    new LanguageCode('NL'),
-                    'Locality name'
-                )
-            ),
-            new PostInfoId(9000)
+        return new LocalityName(
+            new LocalityNameId($identifier),
+            new GeographicalName(
+                new LanguageCode('NL'),
+                'Gent'
+            )
         );
     }
 }

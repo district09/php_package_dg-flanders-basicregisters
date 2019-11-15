@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 
 /**
- * Normalizes json data into a GeoGraphicalName object.
+ * Normalizes json data into a GeoGraphicalName value.
  */
 class GeographicalNameNormalizer
 {

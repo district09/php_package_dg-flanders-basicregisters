@@ -6,7 +6,6 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson;
 
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNamesNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
@@ -62,20 +61,16 @@ EOT;
         $expected = new StreetNames(
             new StreetName(
                 new StreetNameId(69497),
-                new GeographicalNames(
-                    new GeographicalName(
-                        new LanguageCode('NL'),
-                        'Alphonse Claeys-Boúúaertdreef'
-                    )
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'Alphonse Claeys-Boúúaertdreef'
                 )
             ),
             new StreetName(
                 new StreetNameId(69498),
-                new GeographicalNames(
-                    new GeographicalName(
-                        new LanguageCode('NL'),
-                        'Aaigemstraat'
-                    )
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'Aaigemstraat'
                 )
             )
         );

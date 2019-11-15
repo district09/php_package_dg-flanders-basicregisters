@@ -4,20 +4,14 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value;
 
+use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
 /**
- * A locality.
+ * A post info id + locality.
  */
-final class Locality extends AbstractWithGeographicalNames
+final class Locality extends ValueAbstract
 {
-    /**
-     * The locality id.
-     *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\LocalityId
-     */
-    private $localityId;
-
     /**
      * The post info id (postal code).
      *
@@ -26,27 +20,22 @@ final class Locality extends AbstractWithGeographicalNames
     private $postInfoId;
 
     /**
-     * Create a new locality.
+     * The locality name.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityId $localityId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
      */
-    public function __construct(LocalityId $localityId, GeographicalNames $geographicalNames, PostInfoId $postInfoId)
-    {
-        parent::__construct($geographicalNames);
-        $this->localityId = $localityId;
-        $this->postInfoId = $postInfoId;
-    }
+    private $localityName;
 
     /**
-     * Get the locality id.
+     * Create a new value.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName $localityName
      */
-    public function localityId(): LocalityId
+    public function __construct(PostInfoId $postInfoId, LocalityName $localityName)
     {
-        return $this->localityId;
+        $this->postInfoId = $postInfoId;
+        $this->localityName = $localityName;
     }
 
     /**
@@ -70,20 +59,40 @@ final class Locality extends AbstractWithGeographicalNames
     }
 
     /**
+     * Get the locality.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     */
+    public function localityName(): LocalityName
+    {
+        return $this->localityName;
+    }
+
+    /**
+     * Get the locality name.
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return $this->localityName()->name();
+    }
+
+    /**
      * @inheritDoc
      */
     public function sameValueAs(ValueInterface $object): bool
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality $object */
-        return parent::sameValueAs($object)
-            && $this->localityId()->sameValueAs($object->localityId())
-            && $this->postInfoId()->sameValueAs($object->postInfoId());
+        return $this->sameValueTypeAs($object)
+            && $this->postInfoId()->sameValueAs($object->postInfoId())
+            && $this->localityName()->sameValueAs($object->localityName());
     }
 
     /**
      * @inheritDoc
      *
-     * This will return "[postal code] name".
+     * This will return "[postal code] [locality name]".
      */
     public function __toString(): string
     {
