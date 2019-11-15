@@ -11,7 +11,7 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * Address object with all its details.
  */
-class AddressDetail extends ValueAbstract
+class AddressDetail extends ValueAbstract implements AddressDetailInterface
 {
     /**
      * The address object.
@@ -62,9 +62,7 @@ class AddressDetail extends ValueAbstract
     }
 
     /**
-     * Get the address id.
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
+     * @inheritDoc
      */
     public function addressId(): AddressId
     {
@@ -72,9 +70,7 @@ class AddressDetail extends ValueAbstract
     }
 
     /**
-     * Get the locality.
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality
+     * @inheritDoc
      */
     public function locality(): Locality
     {
@@ -82,9 +78,7 @@ class AddressDetail extends ValueAbstract
     }
 
     /**
-     * Get the street name.
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
+     * @inheritDoc
      */
     public function streetName(): StreetName
     {
@@ -92,9 +86,7 @@ class AddressDetail extends ValueAbstract
     }
 
     /**
-     * Get the house number.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function houseNumber(): string
     {
@@ -102,9 +94,7 @@ class AddressDetail extends ValueAbstract
     }
 
     /**
-     * Get the bus number.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function busNumber(): string
     {
@@ -112,9 +102,7 @@ class AddressDetail extends ValueAbstract
     }
 
     /**
-     * Get the position.
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface|ValueInterface
+     * @inheritDoc
      */
     public function position(): PointInterface
     {
