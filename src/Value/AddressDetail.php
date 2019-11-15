@@ -28,13 +28,6 @@ class AddressDetail extends ValueAbstract
     private $locality;
 
     /**
-     * The post info object id.
-     *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId
-     */
-    private $postInfoId;
-
-    /**
      * The street name.
      *
      * @var \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
@@ -53,20 +46,17 @@ class AddressDetail extends ValueAbstract
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address $address
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality $locality
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetName $streetName
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface $position
      */
     public function __construct(
         Address $address,
         Locality $locality,
-        PostInfoId $postInfoId,
         StreetName $streetName,
         PointInterface $position
     ) {
         $this->address = $address;
         $this->locality = $locality;
-        $this->postInfoId = $postInfoId;
         $this->streetName = $streetName;
         $this->position = $position;
     }
@@ -89,16 +79,6 @@ class AddressDetail extends ValueAbstract
     public function locality(): Locality
     {
         return $this->locality;
-    }
-
-    /**
-     * Get the postal code.
-     *
-     * @return int
-     */
-    public function postalCode(): int
-    {
-        return $this->postInfoId->value();
     }
 
     /**
@@ -150,7 +130,6 @@ class AddressDetail extends ValueAbstract
         return $this->sameValueTypeAs($object)
             && $this->addressId()->sameValueAs($object->addressId())
             && $this->locality()->sameValueAs($object->locality())
-            && $this->postalCode() === $object->postalCode()
             && $this->streetName()->sameValueAs($object->streetName())
             && $this->position()->sameValueAs($object->position());
     }

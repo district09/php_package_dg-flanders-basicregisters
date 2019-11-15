@@ -32,22 +32,19 @@ class AddressDetailTest extends TestCase
      */
     public function valueIsCreatedFromItsDetails(): void
     {
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
+        $locality = $this->createLocality(200, 'Locality', 9000);
         $streetName = $this->createStreetName(300, 'Street name');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail(
             $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D'),
             $locality,
-            $postInfoId,
             $streetName,
             $position
         );
 
         $this->assertEquals(new AddressId(100), $details->addressId());
         $this->assertSame($locality, $details->locality());
-        $this->assertSame(9123, $details->postalCode());
         $this->assertSame($streetName, $details->streetName());
         $this->assertSame('1', $details->houseNumber());
         $this->assertSame('D', $details->busNumber());
@@ -62,17 +59,15 @@ class AddressDetailTest extends TestCase
     public function notSameIfAddressObjectIdIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D');
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
+        $locality = $this->createLocality(200, 'Locality', 9000);
         $streetName = $this->createStreetName(300, 'Street name');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $postInfoId, $streetName, $position);
+        $details = new AddressDetail($address, $locality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $this->createAddress(101, 'Streetname 1 bus D, 9123 Locality', '1', 'D'),
             $locality,
-            $postInfoId,
             $streetName,
             $position
         );
@@ -88,43 +83,15 @@ class AddressDetailTest extends TestCase
     public function notSameIfLocalityIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D');
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
+        $locality = $this->createLocality(200, 'Locality', 9000);
         $streetName = $this->createStreetName(300, 'Street name');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $postInfoId, $streetName, $position);
+        $details = new AddressDetail($address, $locality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $address,
-            $this->createLocality(201, 'Locality'),
-            $postInfoId,
-            $streetName,
-            $position
-        );
-
-        $this->assertFalse($details->sameValueAs($otherDetails));
-    }
-
-    /**
-     * Not the same value if the post info id is not identical.
-     *
-     * @test
-     */
-    public function notSameIfPostInfoIdIsNotIdentical(): void
-    {
-        $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D');
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
-        $streetName = $this->createStreetName(300, 'Street name');
-        $position = $this->createPosition(10123, 200123);
-
-        $details = new AddressDetail($address, $locality, $postInfoId, $streetName, $position);
-
-        $otherDetails = new AddressDetail(
-            $address,
-            $locality,
-            $this->createPostInfoId(9000),
+            $this->createLocality(201, 'Locality', 9123),
             $streetName,
             $position
         );
@@ -140,17 +107,15 @@ class AddressDetailTest extends TestCase
     public function notSameIfStreetNameIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D');
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
+        $locality = $this->createLocality(200, 'Locality', 9000);
         $streetName = $this->createStreetName(300, 'Street name');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $postInfoId, $streetName, $position);
+        $details = new AddressDetail($address, $locality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $address,
             $locality,
-            $postInfoId,
             $this->createStreetName(301, 'Street name'),
             $position
         );
@@ -166,17 +131,15 @@ class AddressDetailTest extends TestCase
     public function notSameIfPositionIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D');
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
+        $locality = $this->createLocality(200, 'Locality', 9000);
         $streetName = $this->createStreetName(300, 'Street name');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $postInfoId, $streetName, $position);
+        $details = new AddressDetail($address, $locality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $address,
             $locality,
-            $postInfoId,
             $streetName,
             $this->createPosition(10124, 200124)
         );
@@ -192,16 +155,14 @@ class AddressDetailTest extends TestCase
     public function sameIfAllDetailsAreIdentical(): void
     {
         $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D');
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
+        $locality = $this->createLocality(200, 'Locality', 9000);
         $streetName = $this->createStreetName(300, 'Street name');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $postInfoId, $streetName, $position);
+        $details = new AddressDetail($address, $locality, $streetName, $position);
         $otherDetails = new AddressDetail(
             $address,
             $locality,
-            $postInfoId,
             $streetName,
             $position
         );
@@ -217,12 +178,11 @@ class AddressDetailTest extends TestCase
     public function castToStringReturnsAddressCastedToString(): void
     {
         $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Locality', '1', 'D');
-        $locality = $this->createLocality(200, 'Locality');
-        $postInfoId = $this->createPostInfoId(9123);
+        $locality = $this->createLocality(200, 'Locality', 9000);
         $streetName = $this->createStreetName(300, 'Street name');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $postInfoId, $streetName, $position);
+        $details = new AddressDetail($address, $locality, $streetName, $position);
 
         $this->assertSame((string) $address, (string) $details);
     }
@@ -259,10 +219,11 @@ class AddressDetailTest extends TestCase
      *
      * @param int $identifier
      * @param string $name
+     * @param int $postInfoIdentifier
      *
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality
      */
-    private function createLocality(int $identifier, string $name): Locality
+    private function createLocality(int $identifier, string $name, int $postInfoIdentifier): Locality
     {
         return new Locality(
             new LocalityId($identifier),
@@ -271,20 +232,9 @@ class AddressDetailTest extends TestCase
                     new LanguageCode('NL'),
                     $name
                 )
-            )
+            ),
+            new PostInfoId($postInfoIdentifier)
         );
-    }
-
-    /**
-     * Create a post info object id.
-     *
-     * @param int $identifier
-     *
-     * @return PostInfoId
-     */
-    private function createPostInfoId(int $identifier): PostInfoId
-    {
-        return new PostInfoId($identifier);
     }
 
     /**

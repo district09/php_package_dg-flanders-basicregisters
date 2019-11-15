@@ -19,15 +19,24 @@ final class Locality extends AbstractWithGeographicalNames
     private $localityId;
 
     /**
+     * The post info id (postal code).
+     *
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId
+     */
+    private $postInfoId;
+
+    /**
      * Create a new locality.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityId $streetNameId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityId $localityId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
      */
-    public function __construct(LocalityId $streetNameId, GeographicalNames $geographicalNames)
+    public function __construct(LocalityId $streetNameId, GeographicalNames $geographicalNames, PostInfoId $postInfoId)
     {
         parent::__construct($geographicalNames);
         $this->localityId = $streetNameId;
+        $this->postInfoId = $postInfoId;
     }
 
     /**
@@ -41,12 +50,33 @@ final class Locality extends AbstractWithGeographicalNames
     }
 
     /**
+     * Get the post info id.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId
+     */
+    public function postInfoId(): PostInfoId
+    {
+        return $this->postInfoId;
+    }
+
+    /**
+     * Get the postal code.
+     *
+     * @return int
+     */
+    public function postalCode(): int
+    {
+        return $this->postInfoId()->value();
+    }
+
+    /**
      * @inheritDoc
      */
     public function sameValueAs(ValueInterface $object): bool
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality $object */
         return parent::sameValueAs($object)
-            && $this->localityId()->sameValueAs($object->localityId());
+            && $this->localityId()->sameValueAs($object->localityId())
+            && $this->postInfoId()->sameValueAs($object->postInfoId());
     }
 }
