@@ -13,7 +13,6 @@ use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalNames
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Locality
  */
 class LocalityTest extends TestCase
@@ -37,25 +36,6 @@ class LocalityTest extends TestCase
         $this->assertSame($localityId, $locality->localityId());
         $this->assertSame($geographicalNames, $locality->geographicalNames());
         $this->assertSame($postInfoId, $locality->postInfoId());
-    }
-
-    /**
-     * The name is extracted from the geographical names.
-     *
-     * @test
-     */
-    public function nameIsExtractedFromGeographicalNames(): void
-    {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN'),
-            new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
-        );
-        $postInfoId = new PostInfoId(9000);
-
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
-
-        $this->assertSame($geographicalNames->name(), $locality->name());
     }
 
     /**
@@ -93,29 +73,6 @@ class LocalityTest extends TestCase
 
         $otherLocalityId = new LocalityId(456);
         $otherLocality = new Locality($otherLocalityId, $geographicalNames, $postInfoId);
-
-        $this->assertFalse($locality->sameValueAs($otherLocality));
-    }
-
-    /**
-     * Not the same value if the geographical names are different.
-     *
-     * @test
-     */
-    public function notSameIfGeographicalNamesAreDifferent(): void
-    {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
-        $postInfoId = new PostInfoId(9000);
-
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
-
-        $otherGeographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('NL'), 'Foo NL')
-        );
-        $otherLocality = new Locality($localityId, $otherGeographicalNames, $postInfoId);
 
         $this->assertFalse($locality->sameValueAs($otherLocality));
     }
@@ -161,11 +118,11 @@ class LocalityTest extends TestCase
     }
 
     /**
-     * Casting to string returns same value as name() method.
+     * Casting to string returns "[postal code] name".
      *
      * @test
      */
-    public function castToStringReturnsNameMethodValue(): void
+    public function castToStringReturnsPostalCodeAndName(): void
     {
         $localityId = new LocalityId(123);
         $geographicalNames = new GeographicalNames(
@@ -175,6 +132,6 @@ class LocalityTest extends TestCase
 
         $locality = new Locality($localityId, $geographicalNames, $postInfoId);
 
-        $this->assertSame($locality->name(), (string) $locality);
+        $this->assertSame('9000 Foo EN', (string) $locality);
     }
 }
