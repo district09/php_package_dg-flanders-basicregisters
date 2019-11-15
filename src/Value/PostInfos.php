@@ -15,7 +15,7 @@ final class PostInfos extends CollectionAbstract
      * Create a new collection.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfo ...$postInfos
-     *   One or more addresses.
+     *   One or more post info.
      */
     public function __construct(PostInfo ...$postInfos)
     {

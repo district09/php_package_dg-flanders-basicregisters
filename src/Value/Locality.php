@@ -79,4 +79,14 @@ final class Locality extends AbstractWithGeographicalNames
             && $this->localityId()->sameValueAs($object->localityId())
             && $this->postInfoId()->sameValueAs($object->postInfoId());
     }
+
+    /**
+     * @inheritDoc
+     *
+     * This will return "[postal code] name".
+     */
+    public function __toString(): string
+    {
+        return sprintf('%d %s', $this->postalCode(), $this->name());
+    }
 }
