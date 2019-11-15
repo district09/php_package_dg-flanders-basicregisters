@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNamesNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetNames;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNamesNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNameNormalizer
  */
-class StreetNamesNormalizerTest extends TestCase
+class StreetNameNormalizerTest extends TestCase
 {
     /**
      * Json data to test with.
@@ -25,62 +24,36 @@ class StreetNamesNormalizerTest extends TestCase
      */
     private $json = <<<EOT
 {
-    "straatnamen": [
-        {
-            "identificator": {
-                "objectId": "69497"
-            },
-            "straatnaam": {
-                "geografischeNaam": {
-                    "spelling": "Alphonse Claeys-Boúúaertdreef",
-                    "taal": "NL"
-                }
-            }
-        },
-        {
-            "identificator": {
-                "objectId": "69498"
-            },
-            "straatnaam": {
-                "geografischeNaam": {
-                    "spelling": "Aaigemstraat",
-                    "taal": "NL"
-                }
-            }
+    "identificator": {
+        "objectId": "69497"
+    },
+    "straatnaam": {
+        "geografischeNaam": {
+            "spelling": "Alphonse Claeys-Boúúaertdreef",
+            "taal": "NL"
         }
-    ]
+    }
 }
 EOT;
 
     /**
-     * Json data is normalized into a StreetNames collection.
+     * Json data is normalized into a StreetName value.
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoStreetNamesCollection(): void
+    public function jsonDataIsNormalizedIntoStreetNameValue(): void
     {
-        $expected = new StreetNames(
-            new StreetName(
-                new StreetNameId(69497),
-                new GeographicalNames(
-                    new GeographicalName(
-                        new LanguageCode('NL'),
-                        'Alphonse Claeys-Boúúaertdreef'
-                    )
-                )
-            ),
-            new StreetName(
-                new StreetNameId(69498),
-                new GeographicalNames(
-                    new GeographicalName(
-                        new LanguageCode('NL'),
-                        'Aaigemstraat'
-                    )
+        $expected = new StreetName(
+            new StreetNameId(69497),
+            new GeographicalNames(
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'Alphonse Claeys-Boúúaertdreef'
                 )
             )
         );
 
-        $normalizer = new StreetNamesNormalizer();
+        $normalizer = new StreetNameNormalizer();
         $jsonData = json_decode($this->json);
 
         $this->assertEquals(
