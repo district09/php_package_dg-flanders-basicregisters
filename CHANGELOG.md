@@ -12,5 +12,6 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added the addresses collection.
 * Added the address detail.
 * Added the address matches related objects.
+* Added the post info and collection objects.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
