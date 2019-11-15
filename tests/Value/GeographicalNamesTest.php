@@ -11,6 +11,7 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractGeographicalNames
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames
  */
 class GeographicalNamesTest extends TestCase

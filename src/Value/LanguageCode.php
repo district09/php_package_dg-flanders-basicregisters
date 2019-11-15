@@ -44,7 +44,7 @@ final class LanguageCode extends ValueAbstract
     /**
      * @inheritDoc
      */
-    public function sameValueAs(ValueInterface $object)
+    public function sameValueAs(ValueInterface $object): bool
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Language $object */
         return $this->sameValueTypeAs($object)
@@ -54,7 +54,7 @@ final class LanguageCode extends ValueAbstract
     /**
      * @inheritDoc
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->code();
     }

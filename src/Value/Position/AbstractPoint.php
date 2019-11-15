@@ -42,7 +42,7 @@ class AbstractPoint extends ValueAbstract implements PointInterface
     /**
      * @inheritDoc
      */
-    public function xPosition()
+    public function xPosition(): float
     {
         return $this->xPosition;
     }
@@ -50,7 +50,7 @@ class AbstractPoint extends ValueAbstract implements PointInterface
     /**
      * @inheritDoc
      */
-    public function yPosition()
+    public function yPosition(): float
     {
         return $this->yPosition;
     }
@@ -58,7 +58,7 @@ class AbstractPoint extends ValueAbstract implements PointInterface
     /**
      * @inheritDoc
      */
-    public function sameValueAs(ValueInterface $object)
+    public function sameValueAs(ValueInterface $object): bool
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface $object */
         return $this->sameValueTypeAs($object)
@@ -69,7 +69,7 @@ class AbstractPoint extends ValueAbstract implements PointInterface
     /**
      * @inheritDoc
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('%s,%s', (string) $this->xPosition(), (string) $this->yPosition());
     }

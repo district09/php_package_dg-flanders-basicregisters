@@ -14,12 +14,12 @@ interface PointInterface
      *
      * @return float
      */
-    public function xPosition();
+    public function xPosition(): float;
 
     /**
      * Get the y position.
      *
      * @return float
      */
-    public function yPosition();
+    public function yPosition(): float;
 }
