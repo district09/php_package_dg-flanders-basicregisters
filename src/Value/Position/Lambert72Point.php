@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Position;
 
-use DigipolisGent\Value\ValueAbstract;
-
 /**
  * Lambert 72 representation of an address position point.
  */

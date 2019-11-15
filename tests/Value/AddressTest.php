@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Address;
+use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\ObjectId;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,7 +23,7 @@ class AddressTest extends TestCase
      */
     public function addressIsCreatedFromItsDetails(): void
     {
-        $objectId = new ObjectId(1793);
+        $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
@@ -33,7 +33,7 @@ class AddressTest extends TestCase
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
 
-        $this->assertSame($objectId, $address->objectId());
+        $this->assertSame($objectId, $address->addressId());
         $this->assertSame('121', $address->houseNumber());
         $this->assertSame('D', $address->busNumber());
         $this->assertSame($fullAddress, $address->fullAddress());
@@ -46,7 +46,7 @@ class AddressTest extends TestCase
      */
     public function notSameIfObjectIdIsNotIdentical(): void
     {
-        $objectId = new ObjectId(1793);
+        $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
@@ -56,7 +56,7 @@ class AddressTest extends TestCase
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
 
-        $otherObjectId = new ObjectId(123);
+        $otherObjectId = new AddressId(123);
         $otherAddress = new Address($otherObjectId, '121', 'D', $fullAddress);
 
         $this->assertFalse($address->sameValueAs($otherAddress));
@@ -69,7 +69,7 @@ class AddressTest extends TestCase
      */
     public function notSameIfHouseNumberIsNotIdentical(): void
     {
-        $objectId = new ObjectId(1793);
+        $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
@@ -90,7 +90,7 @@ class AddressTest extends TestCase
      */
     public function notSameIfBusNumberIsNotIdentical(): void
     {
-        $objectId = new ObjectId(1793);
+        $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
@@ -111,7 +111,7 @@ class AddressTest extends TestCase
      */
     public function notSameIfFullAddressIsNotIdentical(): void
     {
-        $objectId = new ObjectId(1793);
+        $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
@@ -139,7 +139,7 @@ class AddressTest extends TestCase
      */
     public function sameIfAllDetailsAreIdentical(): void
     {
-        $objectId = new ObjectId(1793);
+        $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
@@ -160,7 +160,7 @@ class AddressTest extends TestCase
      */
     public function castToStringReturnsFullAddressName(): void
     {
-        $objectId = new ObjectId(1793);
+        $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),

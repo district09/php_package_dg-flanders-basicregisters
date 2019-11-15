@@ -8,7 +8,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\ObjectId;
+use DigipolisGent\Flanders\BasicRegisters\Value\LocalityId;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,14 +25,14 @@ class LocalityTest extends TestCase
      */
     public function createdFromObjectIdAndGeographicalNames(): void
     {
-        $objectId = new ObjectId(123);
+        $localityId = new LocalityId(123);
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
         );
 
-        $locality = new Locality($objectId, $geographicalNames);
+        $locality = new Locality($localityId, $geographicalNames);
 
-        $this->assertSame($objectId, $locality->objectId());
+        $this->assertSame($localityId, $locality->localityId());
         $this->assertSame($geographicalNames, $locality->geographicalNames());
     }
 
@@ -43,13 +43,13 @@ class LocalityTest extends TestCase
      */
     public function nameIsExtractedFromGeographicalNames(): void
     {
-        $objectId = new ObjectId(123);
+        $localityId = new LocalityId(123);
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN'),
             new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
         );
 
-        $locality = new Locality($objectId, $geographicalNames);
+        $locality = new Locality($localityId, $geographicalNames);
 
         $this->assertSame($geographicalNames->name(), $locality->name());
     }
@@ -65,11 +65,11 @@ class LocalityTest extends TestCase
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
 
-        $objectId = new ObjectId(123);
-        $locality = new Locality($objectId, $geographicalNames);
+        $localityId = new LocalityId(123);
+        $locality = new Locality($localityId, $geographicalNames);
 
-        $otherObjectId = new ObjectId(456);
-        $otherLocality = new Locality($otherObjectId, $geographicalNames);
+        $otherLocalityId = new LocalityId(456);
+        $otherLocality = new Locality($otherLocalityId, $geographicalNames);
 
         $this->assertFalse($locality->sameValueAs($otherLocality));
     }
@@ -81,17 +81,17 @@ class LocalityTest extends TestCase
      */
     public function notSameIfGeographicalNamesAreDifferent(): void
     {
-        $objectId = new ObjectId(123);
+        $localityId = new LocalityId(123);
 
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
-        $locality = new Locality($objectId, $geographicalNames);
+        $locality = new Locality($localityId, $geographicalNames);
 
         $otherGeographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('NL'), 'Foo NL')
         );
-        $otherLocality = new Locality($objectId, $otherGeographicalNames);
+        $otherLocality = new Locality($localityId, $otherGeographicalNames);
 
         $this->assertFalse($locality->sameValueAs($otherLocality));
     }
@@ -103,13 +103,13 @@ class LocalityTest extends TestCase
      */
     public function sameIfObjectIdAndGeographicalNamesAreIdentical(): void
     {
-        $objectId = new ObjectId(123);
+        $localityId = new LocalityId(123);
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
 
-        $locality = new Locality($objectId, $geographicalNames);
-        $sameLocality = new Locality($objectId, $geographicalNames);
+        $locality = new Locality($localityId, $geographicalNames);
+        $sameLocality = new Locality($localityId, $geographicalNames);
 
         $this->assertTrue($locality->sameValueAs($sameLocality));
     }
@@ -121,11 +121,11 @@ class LocalityTest extends TestCase
      */
     public function castToStringReturnsNameMethodValue(): void
     {
-        $objectId = new ObjectId(123);
+        $localityId = new LocalityId(123);
         $geographicalNames = new GeographicalNames(
             new GeographicalName(new LanguageCode('EN'), 'Foo EN')
         );
-        $locality = new Locality($objectId, $geographicalNames);
+        $locality = new Locality($localityId, $geographicalNames);
 
         $this->assertSame($locality->name(), (string) $locality);
     }

@@ -6,15 +6,18 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\AddressDetail;
+use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\ObjectId;
+use DigipolisGent\Flanders\BasicRegisters\Value\LocalityId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
+use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,7 +45,7 @@ class AddressDetailTest extends TestCase
             $position
         );
 
-        $this->assertEquals(new ObjectId(100), $details->objectId());
+        $this->assertEquals(new AddressId(100), $details->addressId());
         $this->assertSame($locality, $details->locality());
         $this->assertSame(9123, $details->postalCode());
         $this->assertSame($streetName, $details->streetName());
@@ -225,9 +228,9 @@ class AddressDetailTest extends TestCase
     }
 
     /**
-     * Create address object.
+     * Create an address object.
      *
-     * @param int $objectId
+     * @param int $identitifier
      * @param string $fullAddress
      * @param string $houseNumber
      * @param string $busNumber
@@ -240,7 +243,7 @@ class AddressDetailTest extends TestCase
         string $houseNumber,
         string $busNumber
     ): Address {
-        $objectId = new ObjectId($identitifier);
+        $addressId = new AddressId($identitifier);
         $fullAddress = new FullAddress(
             new GeographicalName(
                 new LanguageCode('NL'),
@@ -248,21 +251,21 @@ class AddressDetailTest extends TestCase
             )
         );
 
-        return new Address($objectId, $houseNumber, $busNumber, $fullAddress);
+        return new Address($addressId, $houseNumber, $busNumber, $fullAddress);
     }
 
     /**
      * Create a locality object.
      *
-     * @param int $objectId
+     * @param int $identifier
      * @param string $name
      *
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality
      */
-    private function createLocality(int $objectId, string $name): Locality
+    private function createLocality(int $identifier, string $name): Locality
     {
         return new Locality(
-            new ObjectId($objectId),
+            new LocalityId($identifier),
             new GeographicalNames(
                 new GeographicalName(
                     new LanguageCode('NL'),
@@ -277,25 +280,25 @@ class AddressDetailTest extends TestCase
      *
      * @param int $identifier
      *
-     * @return ObjectId
+     * @return PostInfoId
      */
-    private function createPostInfoId(int $identifier): ObjectId
+    private function createPostInfoId(int $identifier): PostInfoId
     {
-        return new ObjectId($identifier);
+        return new PostInfoId($identifier);
     }
 
     /**
      * Create street name object.
      *
-     * @param int $objectId
+     * @param int $identifier
      * @param string $name
      *
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
      */
-    private function createStreetName(int $objectId, string $name): StreetName
+    private function createStreetName(int $identifier, string $name): StreetName
     {
         return new StreetName(
-            new ObjectId($objectId),
+            new StreetNameId($identifier),
             new GeographicalNames(
                 new GeographicalName(
                     new LanguageCode('NL'),

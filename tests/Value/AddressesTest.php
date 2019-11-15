@@ -6,10 +6,10 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\Addresses;
+use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\ObjectId;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -24,27 +24,40 @@ class AddressesTest extends TestCase
      */
     public function castToStringReturnsAllAddressAsString(): void
     {
-        $address1 = new Address(
-            new ObjectId(123),
-            '123',
-            '',
-            new FullAddress(
-                new GeographicalName(new LanguageCode('NL'), 'Foo 123, 9123 Bar')
-            )
-        );
-        $address2 = new Address(
-            new ObjectId(124),
-            '124',
-            '',
-            new FullAddress(
-                new GeographicalName(new LanguageCode('NL'), 'Foo 124, 9123 Bar')
-            )
-        );
+        $address1 = $this->createAddress(123, 'Foo 123, 9123 Bar', '123', '');
+        $address2 = $this->createAddress(123, 'Foo 124, 9123 Bar', '123', '');
         $addresses = new Addresses($address1, $address2);
 
         $this->assertEquals(
             'Foo 123, 9123 Bar; Foo 124, 9123 Bar',
             (string) $addresses
         );
+    }
+
+    /**
+     * Create an address object.
+     *
+     * @param int $identitifier
+     * @param string $fullAddress
+     * @param string $houseNumber
+     * @param string $busNumber
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address
+     */
+    private function createAddress(
+        int $identitifier,
+        string $fullAddress,
+        string $houseNumber,
+        string $busNumber
+    ): Address {
+        $addressId = new AddressId($identitifier);
+        $fullAddress = new FullAddress(
+            new GeographicalName(
+                new LanguageCode('NL'),
+                $fullAddress
+            )
+        );
+
+        return new Address($addressId, $houseNumber, $busNumber, $fullAddress);
     }
 }
