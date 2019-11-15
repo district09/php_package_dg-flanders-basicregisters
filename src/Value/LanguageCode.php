@@ -23,6 +23,8 @@ final class LanguageCode extends ValueAbstract
 
     /**
      * Create the language object from the language code.
+     *
+     * @param string $code
      */
     public function __construct(string $code)
     {
@@ -46,7 +48,7 @@ final class LanguageCode extends ValueAbstract
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Language $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode $object */
         return $this->sameValueTypeAs($object)
             && $this->code() === $object->code();
     }

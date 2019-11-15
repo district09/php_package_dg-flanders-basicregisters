@@ -18,9 +18,9 @@ class Address extends ValueAbstract
     /**
      * The address object id.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
      */
-    private $objectId;
+    private $addressId;
 
     /**
      * The address house number.
@@ -46,27 +46,27 @@ class Address extends ValueAbstract
     /**
      * Create a new Address value.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId $objectId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\AddressId $addressId
      * @param string $houseNumber
      * @param string $busNumber
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\FullAddress $fullAddress
      */
-    public function __construct(ObjectId $objectId, string $houseNumber, string $busNumber, FullAddress $fullAddress)
+    public function __construct(AddressId $addressId, string $houseNumber, string $busNumber, FullAddress $fullAddress)
     {
-        $this->objectId = $objectId;
+        $this->addressId = $addressId;
         $this->houseNumber = $houseNumber;
         $this->busNumber = $busNumber;
         $this->fullAddress = $fullAddress;
     }
 
     /**
-     * Get the object id.
+     * Get the address id.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
      */
-    public function objectId(): ObjectId
+    public function addressId(): AddressId
     {
-        return $this->objectId;
+        return $this->addressId;
     }
 
     /**
@@ -106,7 +106,7 @@ class Address extends ValueAbstract
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address $object */
         return $this->sameValueTypeAs($object)
-            && $this->objectId()->sameValueAs($object->objectId())
+            && $this->addressId()->sameValueAs($object->addressId())
             && $this->houseNumber() === $object->houseNumber()
             && $this->busNumber() === $object->busNumber()
             && $this->fullAddress()->sameValueAs($object->fullAddress());

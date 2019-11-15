@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Position;
 
+use DigipolisGent\Value\ValueInterface;
+
 /**
  * Interface for address position point.
  */
-interface PointInterface
+interface PointInterface extends ValueInterface
 {
     /**
      * Get the x position.

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\ObjectId;
+use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractId
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
  */
-class ObjectIdTest extends TestCase
+class AddressIdTest extends TestCase
 {
 
     /**
@@ -32,7 +33,7 @@ class ObjectIdTest extends TestCase
             $this->expectException(InvalidArgumentException::class);
         }
 
-        new ObjectId($value);
+        new AddressId($value);
         $this->assertFalse($expectException, 'Value dit not trigger an exception.');
     }
 
@@ -60,9 +61,9 @@ class ObjectIdTest extends TestCase
      */
     public function notTheSameIfValuesAreDifferent(): void
     {
-        $objectId = new ObjectId(123);
-        $otherObjectId = new ObjectId(456);
-        $this->assertFalse($objectId->sameValueAs($otherObjectId));
+        $addressId = new AddressId(123);
+        $otherObjectId = new AddressId(456);
+        $this->assertFalse($addressId->sameValueAs($otherObjectId));
     }
 
     /**
@@ -72,9 +73,9 @@ class ObjectIdTest extends TestCase
      */
     public function sameValueIfIdValueIsTheSame(): void
     {
-        $objectId = new ObjectId(123);
-        $sameObjectId = new ObjectId(123);
-        $this->assertTrue($objectId->sameValueAs($sameObjectId));
+        $addressId = new AddressId(123);
+        $sameObjectId = new AddressId(123);
+        $this->assertTrue($addressId->sameValueAs($sameObjectId));
     }
 
     /**
@@ -84,7 +85,7 @@ class ObjectIdTest extends TestCase
      */
     public function castToStringReturnsId(): void
     {
-        $objectId = new ObjectId(123);
-        $this->assertSame('123', (string) $objectId);
+        $addressId = new AddressId(123);
+        $this->assertSame('123', (string) $addressId);
     }
 }

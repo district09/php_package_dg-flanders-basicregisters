@@ -14,13 +14,6 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
 {
 
     /**
-     * The object id.
-     *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId
-     */
-    private $objectId;
-
-    /**
      * The geographical names.
      *
      * @var \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames
@@ -28,25 +21,13 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
     private $geographicalNames;
 
     /**
-     * Construct a new object from its object id and geographical names.
+     * Construct a new object from its geographical names.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId $objectId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
      */
-    public function __construct(ObjectId $objectId, GeographicalNames $geographicalNames)
+    public function __construct(GeographicalNames $geographicalNames)
     {
-        $this->objectId = $objectId;
         $this->geographicalNames = $geographicalNames;
-    }
-
-    /**
-     * Get the object id.
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId
-     */
-    public function objectId(): ObjectId
-    {
-        return $this->objectId;
     }
 
     /**
@@ -78,7 +59,6 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality $object */
         return $this->sameValueTypeAs($object)
-            && $this->objectId()->sameValueAs($object->objectId())
             && $this->geographicalNames()->sameValueAs($object->geographicalNames());
     }
 
