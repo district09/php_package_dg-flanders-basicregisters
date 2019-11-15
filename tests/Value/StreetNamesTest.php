@@ -7,15 +7,15 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfo;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfos;
+use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
+use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\StreetNames;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\PostInfos
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\StreetNames
  */
-class PostInfosTest extends TestCase
+class StreetNamesTest extends TestCase
 {
     /**
      * Casting to string returns all address as string.
@@ -24,29 +24,29 @@ class PostInfosTest extends TestCase
      */
     public function castToStringReturnsAllPostInfosAsString(): void
     {
-        $postInfo1 = $this->createPostInfo(9010, 'Name 1');
-        $postInfo2 = $this->createPostInfo(9020, 'Name 2');
-
-        $postInfos = new PostInfos($postInfo1, $postInfo2);
+        $streetNames = new StreetNames(
+            $this->createStreetName(100, 'StreetName 1'),
+            $this->createStreetName(200, 'StreetName 2')
+        );
 
         $this->assertEquals(
-            '9010 Name 1, 9020 Name 2',
-            (string) $postInfos
+            'StreetName 1, StreetName 2',
+            (string) $streetNames
         );
     }
 
     /**
-     * Create a PostInfo object.
+     * Create a StreetName object.
      *
      * @param int $identifier
      * @param string $name
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\PostInfo
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
      */
-    public function createPostInfo(int $identifier, string $name): PostInfo
+    public function createStreetName(int $identifier, string $name): StreetName
     {
-        return new PostInfo(
-            new PostInfoId($identifier),
+        return new StreetName(
+            new StreetNameId($identifier),
             new GeographicalNames(
                 new GeographicalName(
                     new LanguageCode('NL'),
