@@ -32,10 +32,10 @@ final class Locality extends AbstractWithGeographicalNames
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
      */
-    public function __construct(LocalityId $streetNameId, GeographicalNames $geographicalNames, PostInfoId $postInfoId)
+    public function __construct(LocalityId $localityId, GeographicalNames $geographicalNames, PostInfoId $postInfoId)
     {
         parent::__construct($geographicalNames);
-        $this->localityId = $streetNameId;
+        $this->localityId = $localityId;
         $this->postInfoId = $postInfoId;
     }
 

@@ -60,7 +60,7 @@ class AbstractPoint extends ValueAbstract implements PointInterface
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface|\DigipolisGent\Value\ValueInterface $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface $object */
         return $this->sameValueTypeAs($object)
             && $this->xPosition() === $object->xPosition()
             && $this->yPosition() === $object->yPosition();
