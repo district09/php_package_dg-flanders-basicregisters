@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 /**
  * Normalizes array of geographical name data into GeoGraphicalNames collection.
  */
-class GeographicalNamesNormalizer
+final class GeographicalNamesNormalizer
 {
     /**
      * Normalize the json data.

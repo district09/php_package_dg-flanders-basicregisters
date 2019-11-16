@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\LocalityName;
 /**
  * Normalizes JSON data into a LocalityName value.
  */
-class LocalityNameNormalizer
+final class LocalityNameNormalizer
 {
     /**
      * Normalize the given json object into a LocalityName value.

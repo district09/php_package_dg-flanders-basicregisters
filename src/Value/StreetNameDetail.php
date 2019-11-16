@@ -32,8 +32,11 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName $localityName
      */
-    public function __construct(StreetNameId $streetNameId, GeographicalNames $geographicalNames, LocalityName $localityName)
-    {
+    public function __construct(
+        StreetNameId $streetNameId,
+        GeographicalNames $geographicalNames,
+        LocalityName $localityName
+    ) {
         parent::__construct($geographicalNames);
         $this->streetNameId = $streetNameId;
         $this->localityName = $localityName;

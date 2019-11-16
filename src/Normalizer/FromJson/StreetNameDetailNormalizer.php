@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
 /**
  * Normalizes JSON data into a StreetNameDetail value.
  */
-class StreetNameDetailNormalizer
+final class StreetNameDetailNormalizer
 {
     /**
      * Normalize the given json object into a StreetNameDetail object.

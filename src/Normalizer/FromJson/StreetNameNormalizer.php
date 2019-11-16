@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
 
 /**
  * Normalizes JSON data into a StreetName object.
  */
-class StreetNameNormalizer
+final class StreetNameNormalizer
 {
     /**
      * Normalize the given json object into a StreetName object.

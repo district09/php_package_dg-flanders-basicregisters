@@ -13,7 +13,7 @@ use DigipolisGent\Value\ValueInterface;
  * This contains only a summary of the address, the full address needs to be
  * retrieved as AddressDetail.
  */
-class Address extends ValueAbstract
+final class Address extends ValueAbstract
 {
     /**
      * The address object id.

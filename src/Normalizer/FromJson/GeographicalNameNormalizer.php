@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 /**
  * Normalizes json data into a GeoGraphicalName value.
  */
-class GeographicalNameNormalizer
+final class GeographicalNameNormalizer
 {
     /**
      * Normalize the json data.

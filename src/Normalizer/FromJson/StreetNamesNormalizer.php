@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\StreetNames;
 /**
  * Normalizes JSON data into a StreetNames collection object.
  */
-class StreetNamesNormalizer
+final class StreetNamesNormalizer
 {
     /**
      * Normalize the given json object into a StreetNames collection.

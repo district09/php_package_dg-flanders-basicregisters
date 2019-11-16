@@ -9,7 +9,7 @@ use DigipolisGent\Value\CollectionAbstract;
 /**
  * Collection of address matches.
  */
-class AddressMatches extends CollectionAbstract
+final class AddressMatches extends CollectionAbstract
 {
     /**
      * Create a new collection.
