@@ -27,8 +27,8 @@ final class AddressNormalizer
 
         return new Address(
             new AddressId($idExtractor->extractObjectId($jsonData)),
-            $jsonData->huisnummer,
-            $jsonData->busnummer,
+            $jsonData->huisnummer ?? '',
+            $jsonData->busnummer ?? '',
             $fullAddressNormalizer->normalize($jsonData->volledigAdres)
         );
     }
