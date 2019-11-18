@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
@@ -18,7 +18,7 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
     /**
      * The address object.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Address
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address
      */
     private $address;
 
@@ -46,7 +46,7 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
     /**
      * Create object from its details.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address $address
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality $locality
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName $streetName
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface $position
@@ -116,7 +116,7 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\AddressDetail $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetail $object */
         return $this->sameValueTypeAs($object)
             && $this->addressId()->sameValueAs($object->addressId())
             && $this->locality()->sameValueAs($object->locality())

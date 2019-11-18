@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
@@ -18,7 +18,7 @@ final class Address extends ValueAbstract
     /**
      * The address object id.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId
      */
     private $addressId;
 
@@ -39,17 +39,17 @@ final class Address extends ValueAbstract
     /**
      * The address full address.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\FullAddress
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress
      */
     private $fullAddress;
 
     /**
      * Create a new Address value.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\AddressId $addressId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId $addressId
      * @param string $houseNumber
      * @param string $busNumber
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\FullAddress $fullAddress
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress $fullAddress
      */
     public function __construct(AddressId $addressId, string $houseNumber, string $busNumber, FullAddress $fullAddress)
     {
@@ -62,7 +62,7 @@ final class Address extends ValueAbstract
     /**
      * Get the address id.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId
      */
     public function addressId(): AddressId
     {
@@ -92,7 +92,7 @@ final class Address extends ValueAbstract
     /**
      * Get the full address.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\FullAddress
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress
      */
     public function fullAddress(): FullAddress
     {
@@ -104,7 +104,7 @@ final class Address extends ValueAbstract
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $object */
         return $this->sameValueTypeAs($object)
             && $this->addressId()->sameValueAs($object->addressId())
             && $this->houseNumber() === $object->houseNumber()

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\Address;
-use DigipolisGent\Flanders\BasicRegisters\Value\Addresses;
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
-use DigipolisGent\Flanders\BasicRegisters\Value\FullAddress;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Addresses
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses
  */
 class AddressesTest extends TestCase
 {
@@ -42,7 +42,7 @@ class AddressesTest extends TestCase
      * @param string $houseNumber
      * @param string $busNumber
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address
      */
     private function createAddress(
         int $identitifier,

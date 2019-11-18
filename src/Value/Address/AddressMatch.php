@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
@@ -18,7 +18,7 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     /**
      * The address detail.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\AddressDetailInterface
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface
      */
     private $addressDetail;
 
@@ -32,7 +32,7 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     /**
      * Create a new address match object.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\AddressDetailInterface $addressDetail
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface $addressDetail
      * @param float $score
      */
     public function __construct(AddressDetailInterface $addressDetail, float $score)
@@ -70,7 +70,7 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
      */
     public function sameValueAs(ValueInterface $object)
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\AddressMatch $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $object */
         return $this->sameValueTypeAs($object)
             && $this->addressDetail()->sameValueAs($object->addressDetail());
     }

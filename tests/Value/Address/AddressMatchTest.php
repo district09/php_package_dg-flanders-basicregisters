@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Address\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressDetailInterface;
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressMatch;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AddressMatch
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch
  */
 class AddressMatchTest extends TestCase
 {
@@ -98,7 +98,7 @@ class AddressMatchTest extends TestCase
      *
      * @param int $identifier
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\AddressDetailInterface
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface
      */
     private function createAddressDetailMock(int $identifier): AddressDetailInterface
     {

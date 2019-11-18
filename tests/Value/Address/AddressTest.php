@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\Address;
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
-use DigipolisGent\Flanders\BasicRegisters\Value\FullAddress;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Address
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address
  */
 class AddressTest extends TestCase
 {

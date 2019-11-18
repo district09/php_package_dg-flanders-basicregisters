@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressMatches;
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressMatchInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatchInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AddressMatches
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches
  */
 class AddressMatchesTest extends TestCase
 {
@@ -36,7 +36,7 @@ class AddressMatchesTest extends TestCase
      * @param string $toString
      *   The to string value.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\AddressMatchInterface
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatchInterface
      */
     private function createAddressMatchMock(string $toString): AddressMatchInterface
     {

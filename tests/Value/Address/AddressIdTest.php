@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractId
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId
  */
 class AddressIdTest extends TestCase
 {

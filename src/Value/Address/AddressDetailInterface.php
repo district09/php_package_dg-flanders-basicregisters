@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
@@ -17,7 +17,7 @@ interface AddressDetailInterface extends ValueInterface
     /**
      * Get the address id.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\AddressId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId
      */
     public function addressId(): AddressId;
 

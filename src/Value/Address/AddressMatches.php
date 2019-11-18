@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
 use DigipolisGent\Value\CollectionAbstract;
 
@@ -14,7 +14,7 @@ final class AddressMatches extends CollectionAbstract
     /**
      * Create a new collection.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\AddressMatchInterface ...$addressMatches
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatchInterface ...$addressMatches
      *   One or more addresses.
      */
     public function __construct(AddressMatchInterface ...$addressMatches)
@@ -29,7 +29,7 @@ final class AddressMatches extends CollectionAbstract
     {
         $addressMatches = [];
 
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\AddressMatchInterface $addressMatch */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatchInterface $addressMatch */
         foreach ($this->values as $addressMatch) {
             $addressMatches[] = (string) $addressMatch;
         }
