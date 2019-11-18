@@ -32,5 +32,6 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added the Lambert72PointNormalizer.
 * Added the AddressDetailNormalizer.
 * Added the AddressMatchNormalizer.
+* Added the AddressMatchesNormalizer.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
