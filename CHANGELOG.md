@@ -17,9 +17,11 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added the StreetNames collection.
 * Added the GeographicalNameNormalizer.
 * Added the GeographicalNamesNormalizer.
-* Added the LocalityNameNormalizer.
 * Added the StreetNameDetailNormalizer.
 * Added the StreetNameNormalizer.
 * Added the StreetNamesNormalizer.
+* Added the LocalityNameNormalizer.
+* Added the LocalityNamesNormalizer.
+* Added the LocalityNameDetailNormalizer.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
