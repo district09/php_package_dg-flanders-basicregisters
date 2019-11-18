@@ -7,7 +7,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 
 /**
- * Normalizes array of geographical name data into GeoGraphicalNames collection.
+ * Normalizes json data into a GeoGraphicalNames collection.
  */
 final class GeographicalNamesNormalizer
 {

@@ -14,7 +14,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 class LocalityNormalizer
 {
     /**
-     * Normalize json data into a Locality value.
+     * Normalize json data.
      *
      * @param object $jsonData
      *

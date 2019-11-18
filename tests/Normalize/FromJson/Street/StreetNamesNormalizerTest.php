@@ -27,11 +27,11 @@ class StreetNamesNormalizerTest extends TestCase
     "straatnamen": [
         {
             "identificator": {
-                "objectId": "69497"
+                "objectId": "69683"
             },
             "straatnaam": {
                 "geografischeNaam": {
-                    "spelling": "Alphonse Claeys-Boúúaertdreef",
+                    "spelling": "Bellevue",
                     "taal": "NL"
                 }
             }
@@ -56,14 +56,14 @@ EOT;
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoStreetNamesCollection(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new StreetNames(
             new StreetName(
-                new StreetNameId(69497),
+                new StreetNameId(69683),
                 new GeographicalName(
                     new LanguageCode('NL'),
-                    'Alphonse Claeys-Boúúaertdreef'
+                    'Bellevue'
                 )
             ),
             new StreetName(

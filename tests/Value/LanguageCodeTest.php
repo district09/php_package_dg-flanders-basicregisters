@@ -37,7 +37,7 @@ class LanguageCodeTest extends TestCase
     }
 
     /**
-     * Dataprovider to test the character length assertion.
+     * Data provider to test the character length assertion.
      *
      * @return array
      *   Each record in the array contains:

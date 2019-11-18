@@ -29,11 +29,11 @@ class Lambert72PointNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a StreetNameDetail value.
+     * Json data is normalized into a Lambert72Point value.
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoStreetNameDetailValue(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new Lambert72Point(105595.28, 192122.78);
 

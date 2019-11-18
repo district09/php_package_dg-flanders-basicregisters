@@ -16,7 +16,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 final class PostInfoNormalizer
 {
     /**
-     * Normalize the given json object into a PostInfo value.
+     * Normalize json data.
      *
      * @param object $jsonData
      *
@@ -37,12 +37,12 @@ final class PostInfoNormalizer
      *
      * @param object $jsonData
      *
-     * @return array
+     * @return GeographicalNames
      */
-    private function extractPostGeographicalNames(object $json): GeographicalNames
+    private function extractPostGeographicalNames(object $jsonData): GeographicalNames
     {
         $postNames = [];
-        foreach ($json->postnamen as $wrapper) {
+        foreach ($jsonData->postnamen as $wrapper) {
             $postNames[] = $wrapper->geografischeNaam;
         }
 

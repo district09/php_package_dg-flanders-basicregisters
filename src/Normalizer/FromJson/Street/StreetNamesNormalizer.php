@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
 final class StreetNamesNormalizer
 {
     /**
-     * Normalize the given json object into a StreetNames collection.
+     * Normalize json data.
      *
      * @param object $jsonData
      *

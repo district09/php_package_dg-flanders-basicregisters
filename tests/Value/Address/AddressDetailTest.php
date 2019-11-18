@@ -33,11 +33,11 @@ class AddressDetailTest extends TestCase
     public function valueIsCreatedFromItsDetails(): void
     {
         $locality = $this->createLocality(200, 'Gent', 9000);
-        $streetName = $this->createStreetName(300, 'Street name');
+        $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail(
-            $this->createAddress(100, 'Streetname 1 bus D, 9123 Gent', '1', 'D'),
+            $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D'),
             $locality,
             $streetName,
             $position
@@ -58,15 +58,15 @@ class AddressDetailTest extends TestCase
      */
     public function notSameIfAddressObjectIdIsNotIdentical(): void
     {
-        $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Gent', '1', 'D');
+        $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
         $locality = $this->createLocality(200, 'Gent', 9000);
-        $streetName = $this->createStreetName(300, 'Street name');
+        $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail($address, $locality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
-            $this->createAddress(101, 'Streetname 1 bus D, 9123 Gent', '1', 'D'),
+            $this->createAddress(101, 'Bellevue 1 bus D, 9123 Gent', '1', 'D'),
             $locality,
             $streetName,
             $position
@@ -82,9 +82,9 @@ class AddressDetailTest extends TestCase
      */
     public function notSameIfLocalityIsNotIdentical(): void
     {
-        $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Gent', '1', 'D');
+        $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
         $locality = $this->createLocality(200, 'Gent', 9000);
-        $streetName = $this->createStreetName(300, 'Street name');
+        $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail($address, $locality, $streetName, $position);
@@ -106,9 +106,9 @@ class AddressDetailTest extends TestCase
      */
     public function notSameIfStreetNameIsNotIdentical(): void
     {
-        $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Gent', '1', 'D');
+        $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
         $locality = $this->createLocality(200, 'Gent', 9000);
-        $streetName = $this->createStreetName(300, 'Street name');
+        $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail($address, $locality, $streetName, $position);
@@ -116,7 +116,7 @@ class AddressDetailTest extends TestCase
         $otherDetails = new AddressDetail(
             $address,
             $locality,
-            $this->createStreetName(301, 'Street name'),
+            $this->createStreetName(301, 'Bellevue'),
             $position
         );
 
@@ -130,9 +130,9 @@ class AddressDetailTest extends TestCase
      */
     public function notSameIfPositionIsNotIdentical(): void
     {
-        $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Gent', '1', 'D');
+        $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
         $locality = $this->createLocality(200, 'Gent', 9000);
-        $streetName = $this->createStreetName(300, 'Street name');
+        $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail($address, $locality, $streetName, $position);
@@ -154,9 +154,9 @@ class AddressDetailTest extends TestCase
      */
     public function sameIfAllDetailsAreIdentical(): void
     {
-        $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Gent', '1', 'D');
+        $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
         $locality = $this->createLocality(200, 'Gent', 9000);
-        $streetName = $this->createStreetName(300, 'Street name');
+        $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail($address, $locality, $streetName, $position);
@@ -177,9 +177,9 @@ class AddressDetailTest extends TestCase
      */
     public function castToStringReturnsAddressCastedToString(): void
     {
-        $address = $this->createAddress(100, 'Streetname 1 bus D, 9123 Gent', '1', 'D');
+        $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
         $locality = $this->createLocality(200, 'Gent', 9000);
-        $streetName = $this->createStreetName(300, 'Street name');
+        $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail($address, $locality, $streetName, $position);

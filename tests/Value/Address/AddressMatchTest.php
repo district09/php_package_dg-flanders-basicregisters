@@ -102,10 +102,10 @@ class AddressMatchTest extends TestCase
      */
     private function createAddressDetailMock(int $identifier): AddressDetailInterface
     {
-        $adressDetail = $this->prophesize(AddressDetailInterface::class);
-        $adressDetail->addressId()->willReturn(new AddressId($identifier));
-        $adressDetail->__toString()->willReturn('Street name 123 bus A, 9000 Gent');
+        $addressDetail = $this->prophesize(AddressDetailInterface::class);
+        $addressDetail->addressId()->willReturn(new AddressId($identifier));
+        $addressDetail->__toString()->willReturn('Street name 123 bus A, 9000 Gent');
 
-        return $adressDetail->reveal();
+        return $addressDetail->reveal();
     }
 }

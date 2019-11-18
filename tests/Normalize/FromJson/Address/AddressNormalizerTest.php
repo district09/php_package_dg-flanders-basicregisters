@@ -67,7 +67,7 @@ EOT;
 EOT;
 
     /**
-     * Json data is normalized into a Address value.
+     * Json data is normalized into an Address value.
      *
      * @test
      */
@@ -93,7 +93,7 @@ EOT;
     }
 
     /**
-     * Incomplete json data is normalized into a Address value.
+     * Incomplete json data is normalized into an Address value.
      *
      * @test
      */

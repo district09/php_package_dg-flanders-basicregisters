@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
 final class PostInfosNormalizer
 {
     /**
-     * Normalize the given json object into a PostInfo collection.
+     * Normalize json data.
      *
      * @param object $jsonData
      *

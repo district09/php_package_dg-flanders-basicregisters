@@ -25,7 +25,7 @@ class AddressTest extends TestCase
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 121 bus D, 9000 Gent'
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -46,7 +46,7 @@ class AddressTest extends TestCase
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 121 bus D, 9000 Gent'
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -67,7 +67,7 @@ class AddressTest extends TestCase
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 121 bus D, 9000 Gent'
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -86,7 +86,7 @@ class AddressTest extends TestCase
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 121 bus D, 9000 Gent'
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -105,14 +105,14 @@ class AddressTest extends TestCase
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 121 bus D, 9000 Gent'
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
 
         $otherFullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 212 bus A, 9000 Gent'
+            'Bellevue 212 bus A, 9000 Gent'
         );
         $otherAddress = new Address($objectId, '121', 'D', $otherFullAddress);
 
@@ -129,7 +129,7 @@ class AddressTest extends TestCase
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 121 bus D, 9000 Gent'
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -148,7 +148,7 @@ class AddressTest extends TestCase
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
             new LanguageCode('NL'),
-            'Streetname 121 bus D, 9000 Gent'
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);

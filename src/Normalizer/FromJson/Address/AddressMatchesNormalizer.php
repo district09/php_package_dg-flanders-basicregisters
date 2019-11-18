@@ -7,12 +7,12 @@ namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
 
 /**
- * Normalizes json data into AddressMatches collection.
+ * Normalizes json data into an AddressMatches collection.
  */
 class AddressMatchesNormalizer
 {
     /**
-     * Normalize the json data into an AddressMatches collection.
+     * Normalize the json data.
      *
      * @param object $jsonData
      *

@@ -7,20 +7,19 @@ namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Position\Lambert72PointNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street\StreetNameNormalizer;
-use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetail;
 
 /**
- * Normalizes JSON data into an Address value.
+ * Normalizes JSON data into an AddressDetail value.
  */
 final class AddressDetailNormalizer
 {
     /**
-     * Normalize the given json object into an Address value.
+     * Normalize json data.
      *
      * @param object $jsonData
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetail
      */
     public function normalize(object $jsonData): AddressDetail
     {

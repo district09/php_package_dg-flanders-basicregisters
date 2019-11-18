@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 final class AddressesNormalizer
 {
     /**
-     * Normalize the given json object into an Address value.
+     * Normalize the json data.
      *
      * @param object $jsonData
      *

@@ -107,7 +107,7 @@ class AddressMatchNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into an AddressDetail value.
+     * Json data is normalized into an AddressMatch value.
      *
      * @test
      */

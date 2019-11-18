@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
 class Lambert72PointNormalizer
 {
     /**
-     * Normalize the json data into a Lambert72Point value.
+     * Normalize json data.
      *
      * @param object $jsonData
      *

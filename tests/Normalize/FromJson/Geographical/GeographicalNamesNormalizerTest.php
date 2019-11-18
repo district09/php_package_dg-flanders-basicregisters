@@ -38,11 +38,11 @@ class GeographicalNamesNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a GeographicalName value.
+     * Json data is normalized into a GeographicalNames collection.
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoGeographicalNameValue(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new GeographicalNames(
             new GeographicalName(
