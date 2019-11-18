@@ -16,7 +16,7 @@ final class LocalityName extends AbstractWithGeographicalName
     /**
      * The locality name id.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality\LocalityNameId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId
      */
     private $localityNameId;
 
