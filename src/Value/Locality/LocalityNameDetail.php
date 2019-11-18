@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Locality;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Value\ValueInterface;
 
 /**
