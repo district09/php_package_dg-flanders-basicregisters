@@ -21,7 +21,7 @@ class GeographicalNameNormalizerTest extends TestCase
      */
     private $json = <<<EOT
 {
-    "spelling": "Aaigemstraat",
+    "spelling": "Bellevue",
     "taal": "NL"
 }
 EOT;
@@ -31,11 +31,11 @@ EOT;
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoGeographicalNameValue(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new GeographicalName(
             new LanguageCode('NL'),
-            'Aaigemstraat'
+            'Bellevue'
         );
 
         $normalizer = new GeographicalNameNormalizer();

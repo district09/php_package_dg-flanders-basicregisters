@@ -15,7 +15,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
 final class LocalityNameDetailNormalizer
 {
     /**
-     * Normalize the given json object into a LocalityName value.
+     * Normalize the given json data.
      *
      * @param object $jsonData
      *

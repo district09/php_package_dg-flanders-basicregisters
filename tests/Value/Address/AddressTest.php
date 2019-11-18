@@ -7,7 +7,6 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
-use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
@@ -25,10 +24,8 @@ class AddressTest extends TestCase
     {
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 121 bus D, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -48,10 +45,8 @@ class AddressTest extends TestCase
     {
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 121 bus D, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -71,10 +66,8 @@ class AddressTest extends TestCase
     {
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 121 bus D, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -92,10 +85,8 @@ class AddressTest extends TestCase
     {
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 121 bus D, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -113,19 +104,15 @@ class AddressTest extends TestCase
     {
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 121 bus D, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
 
         $otherFullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 212 bus A, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 212 bus A, 9000 Gent'
         );
         $otherAddress = new Address($objectId, '121', 'D', $otherFullAddress);
 
@@ -141,10 +128,8 @@ class AddressTest extends TestCase
     {
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 121 bus D, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
@@ -162,14 +147,12 @@ class AddressTest extends TestCase
     {
         $objectId = new AddressId(1793);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                'Streetname 121 bus D, 9000 Gent'
-            )
+            new LanguageCode('NL'),
+            'Bellevue 121 bus D, 9000 Gent'
         );
 
         $address = new Address($objectId, '121', 'D', $fullAddress);
 
-        $this->assertSame($fullAddress->name(), (string) $address);
+        $this->assertSame($fullAddress->spelling(), (string) $address);
     }
 }

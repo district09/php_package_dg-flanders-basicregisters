@@ -62,11 +62,11 @@ class LocalityNamesNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a StreetNameDetail value.
+     * Json data is normalized into a LocalityNames collection.
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoStreetNameDetailValue(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new LocalityNames(
             new LocalityName(

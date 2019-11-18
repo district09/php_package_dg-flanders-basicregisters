@@ -117,6 +117,6 @@ final class Address extends ValueAbstract
      */
     public function __toString(): string
     {
-        return $this->fullAddress()->name();
+        return $this->fullAddress()->spelling();
     }
 }

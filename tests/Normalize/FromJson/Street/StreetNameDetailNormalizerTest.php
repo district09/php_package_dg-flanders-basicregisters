@@ -27,9 +27,9 @@ class StreetNameDetailNormalizerTest extends TestCase
     private $json = <<<EOT
 {
     "identificator": {
-        "id": "https://data.vlaanderen.be/id/straatnaam/69497",
+        "id": "https://data.vlaanderen.be/id/straatnaam/69683",
         "naamruimte": "https://data.vlaanderen.be/id/straatnaam",
-        "objectId": "69497",
+        "objectId": "69683",
         "versieId": 7
     },
     "gemeente": {
@@ -44,7 +44,7 @@ class StreetNameDetailNormalizerTest extends TestCase
     },
     "straatnamen": [
         {
-            "spelling": "Alphonse Claeys-Boúúaertdreef",
+            "spelling": "Bellevue",
             "taal": "NL"
         }
     ],
@@ -58,14 +58,14 @@ EOT;
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoStreetNameDetailValue(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new StreetNameDetail(
-            new StreetNameId(69497),
+            new StreetNameId(69683),
             new GeographicalNames(
                 new GeographicalName(
                     new LanguageCode('NL'),
-                    'Alphonse Claeys-Boúúaertdreef'
+                    'Bellevue'
                 )
             ),
             new LocalityName(

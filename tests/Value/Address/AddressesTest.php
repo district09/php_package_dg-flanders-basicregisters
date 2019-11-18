@@ -8,7 +8,6 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
-use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
@@ -52,10 +51,8 @@ class AddressesTest extends TestCase
     ): Address {
         $addressId = new AddressId($identitifier);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                $fullAddress
-            )
+            new LanguageCode('NL'),
+            $fullAddress
         );
 
         return new Address($addressId, $houseNumber, $busNumber, $fullAddress);

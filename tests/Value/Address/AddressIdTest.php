@@ -38,7 +38,7 @@ class AddressIdTest extends TestCase
     }
 
     /**
-     * Dataprovider to test the value assertion.
+     * Data provider to test the value assertion.
      *
      * @return array
      *   Each record in the array contains:

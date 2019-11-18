@@ -43,11 +43,11 @@ class PostInfoNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a StreetNameDetail value.
+     * Json data is normalized into a PostInfo value.
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoStreetNameDetailValue(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new PostInfo(
             new PostInfoId(9000),
