@@ -28,5 +28,6 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added the FullAddressNormalizer.
 * Added the AddressNormalizer.
 * Added the AddressesNormalizer.
+* Added the localityNormalizer.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
