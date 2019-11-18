@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Geographical;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\AddressNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\AddressNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\AddressNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\AddressNormalizer
  */
 class AddressNormalizerTest extends TestCase
 {
@@ -42,11 +42,11 @@ class AddressNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a GeographicalName value.
+     * Json data is normalized into a Address value.
      *
      * @test
      */
-    public function jsonDataIsNormalizedIntoGeographicalNameValue(): void
+    public function jsonDataIsNormalized(): void
     {
         $expected = new Address(
             new AddressId(2550151),

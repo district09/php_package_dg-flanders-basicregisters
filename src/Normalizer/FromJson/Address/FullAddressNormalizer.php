@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical;
+namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;

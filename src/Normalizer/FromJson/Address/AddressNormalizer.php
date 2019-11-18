@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality;
+namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\FullAddressNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\IdExtractor;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
