@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Locality;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\LocalityNameNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\LocalityNameNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameNormalizer
  */
 class LocalityNameNormalizerTest extends TestCase
 {
