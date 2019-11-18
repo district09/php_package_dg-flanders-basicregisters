@@ -10,9 +10,9 @@ use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
@@ -221,7 +221,7 @@ class AddressDetailTest extends TestCase
      * @param string $name
      * @param int $postInfoIdentifier
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality
      */
     private function createLocality(int $identifier, string $name, int $postInfoIdentifier): Locality
     {

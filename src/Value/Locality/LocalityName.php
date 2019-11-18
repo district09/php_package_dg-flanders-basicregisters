@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Locality;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Value\ValueInterface;
 
 /**
@@ -14,14 +16,14 @@ final class LocalityName extends AbstractWithGeographicalName
     /**
      * The locality name id.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality\LocalityNameId
      */
     private $localityNameId;
 
     /**
      * Create a new locality.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId $localityNameId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId $localityNameId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName $geographicalName
      */
     public function __construct(LocalityNameId $localityNameId, GeographicalName $geographicalName)
@@ -33,7 +35,7 @@ final class LocalityName extends AbstractWithGeographicalName
     /**
      * Get the locality name id.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId
      */
     public function localityNameId(): LocalityNameId
     {
@@ -45,7 +47,7 @@ final class LocalityName extends AbstractWithGeographicalName
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $object */
         return parent::sameValueAs($object)
             && $this->localityNameId()->sameValueAs($object->localityNameId());
     }

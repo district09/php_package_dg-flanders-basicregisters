@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
 
 /**
  * Normalizes JSON data into a LocalityName value.
@@ -17,7 +17,7 @@ final class LocalityNameNormalizer
      *
      * @param object $jsonData
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
      */
     public function normalize(object $jsonData): LocalityName
     {

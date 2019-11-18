@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Locality;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
  */
 class LocalityNameTest extends TestCase
 {

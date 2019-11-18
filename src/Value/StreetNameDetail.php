@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
 use DigipolisGent\Value\ValueInterface;
 
 /**
@@ -21,24 +22,24 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     /**
      * The locality
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
      */
     private $localityName;
 
     /**
      * Create a new street name.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId $streetNameId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId $localityNameId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName $localityName
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
      */
     public function __construct(
-        StreetNameId $streetNameId,
+        StreetNameId $localityNameId,
         GeographicalNames $geographicalNames,
         LocalityName $localityName
     ) {
         parent::__construct($geographicalNames);
-        $this->streetNameId = $streetNameId;
+        $this->streetNameId = $localityNameId;
         $this->localityName = $localityName;
     }
 
@@ -55,7 +56,7 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     /**
      * Return the locality name.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
      */
     public function localityName(): LocalityName
     {

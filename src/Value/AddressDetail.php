@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
@@ -23,7 +24,7 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
     /**
      * The locality.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality
      */
     private $locality;
 
@@ -45,7 +46,7 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
      * Create object from its details.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address $address
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality $locality
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality $locality
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetName $streetName
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface $position
      */

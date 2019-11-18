@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Locality;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityNames;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\LocalityNames
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNames
  */
 class LocalityNamesTest extends TestCase
 {
@@ -40,7 +40,7 @@ class LocalityNamesTest extends TestCase
      * @param int $identifier
      * @param string $name
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
      */
     public function createLocalityName(int $identifier, string $name): LocalityName
     {

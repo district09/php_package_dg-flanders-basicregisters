@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Locality;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
@@ -22,7 +23,7 @@ final class Locality extends ValueAbstract
     /**
      * The locality name.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
      */
     private $localityName;
 
@@ -30,7 +31,7 @@ final class Locality extends ValueAbstract
      * Create a new value.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName $localityName
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
      */
     public function __construct(PostInfoId $postInfoId, LocalityName $localityName)
     {
@@ -61,7 +62,7 @@ final class Locality extends ValueAbstract
     /**
      * Get the locality.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
      */
     public function localityName(): LocalityName
     {
@@ -83,7 +84,7 @@ final class Locality extends ValueAbstract
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality $object */
         return $this->sameValueTypeAs($object)
             && $this->postInfoId()->sameValueAs($object->postInfoId())
             && $this->localityName()->sameValueAs($object->localityName());
