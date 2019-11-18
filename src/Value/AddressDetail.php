@@ -11,7 +11,7 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * Address object with all its details.
  */
-class AddressDetail extends ValueAbstract implements AddressDetailInterface
+final class AddressDetail extends ValueAbstract implements AddressDetailInterface
 {
     /**
      * The address object.

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Value;
 
 /**
- * Locality object ID.
+ * Locality name ID value.
  */
-final class LocalityId extends AbstractId
+final class LocalityNameId extends AbstractId
 {
 
 }

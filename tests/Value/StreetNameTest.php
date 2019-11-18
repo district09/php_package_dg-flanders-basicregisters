@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalNames
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalName
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
  */
 class StreetNameTest extends TestCase
@@ -26,31 +25,27 @@ class StreetNameTest extends TestCase
     public function valueIsCreatedFromItsDetails(): void
     {
         $streetNameId = new StreetNameId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
-        );
+        $geographicalName = new GeographicalName(new LanguageCode('NL'), 'Foo');
 
-        $streetName = new StreetName($streetNameId, $geographicalNames);
+        $streetName = new StreetName($streetNameId, $geographicalName);
 
         $this->assertSame($streetNameId, $streetName->streetNameId());
-        $this->assertSame($geographicalNames, $streetName->geographicalNames());
+        $this->assertSame($geographicalName, $streetName->geographicalName());
     }
 
     /**
-     * The name is extracted from the geographical names.
+     * The name is extracted from the geographical name.
      *
      * @test
      */
-    public function nameIsExtractedFromGeographicalNames(): void
+    public function nameIsExtractedFromGeographicalName(): void
     {
         $streetNameId = new StreetNameId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
-        );
+        $geographicalName = new GeographicalName(new LanguageCode('NL'), 'Foo');
 
-        $streetName = new StreetName($streetNameId, $geographicalNames);
+        $streetName = new StreetName($streetNameId, $geographicalName);
 
-        $this->assertSame($geographicalNames->name(), $streetName->name());
+        $this->assertSame($geographicalName->spelling(), $streetName->name());
     }
 
     /**
@@ -60,73 +55,65 @@ class StreetNameTest extends TestCase
      */
     public function notSameIfStreetNameIdIsDifferent(): void
     {
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
-
         $streetNameId = new StreetNameId(123);
-        $streetName = new StreetName($streetNameId, $geographicalNames);
+        $geographicalName = new GeographicalName(new LanguageCode('NL'), 'Foo');
 
-        $otherStreetNameId = new StreetNameId(456);
-        $otherStreetName = new StreetName($otherStreetNameId, $geographicalNames);
+        $streetName = new StreetName($streetNameId, $geographicalName);
+        $otherStreetName = new StreetName(
+            new StreetNameId(456),
+            $geographicalName
+        );
 
         $this->assertFalse($streetName->sameValueAs($otherStreetName));
     }
 
     /**
-     * Not the same value if the geographical names are different.
+     * Not the same value if the geographical name is different.
      *
      * @test
      */
-    public function notSameIfGeographicalNamesAreDifferent(): void
+    public function notSameIfGeographicalNameIsDifferent(): void
     {
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
-
         $streetNameId = new StreetNameId(123);
-        $streetName = new StreetName($streetNameId, $geographicalNames);
+        $geographicalName = new GeographicalName(new LanguageCode('EN'), 'Foo ');
 
-        $otherGeographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('NL'), 'Foo NL')
+        $streetName = new StreetName($streetNameId, $geographicalName);
+        $otherStreetName = new StreetName(
+            $streetNameId,
+            new GeographicalName(new LanguageCode('EN'), 'Biz ')
         );
-        $otherStreetName = new StreetName($streetNameId, $otherGeographicalNames);
 
         $this->assertFalse($streetName->sameValueAs($otherStreetName));
     }
 
     /**
-     * Same values if object id and geographical names are identical.
+     * Same values if details are identical.
      *
      * @test
      */
-    public function sameIfObjectIdAndGeographicalNamesAreIdentical(): void
+    public function sameIfDetailsAreIdentical(): void
     {
         $streetNameId = new StreetNameId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
+        $geographicalName = new GeographicalName(new LanguageCode('EN'), 'Foo');
 
-        $streetName = new StreetName($streetNameId, $geographicalNames);
-        $sameStreetName = new StreetName($streetNameId, $geographicalNames);
+        $streetName = new StreetName($streetNameId, $geographicalName);
+        $sameStreetName = new StreetName($streetNameId, $geographicalName);
 
         $this->assertTrue($streetName->sameValueAs($sameStreetName));
     }
 
     /**
-     * Casting to string returns name from GeographicalNames collection.
+     * Casting to string returns spelling value from GeographicalName.
      *
      * @test
      */
     public function castToStringReturnsPostalCodeAndName(): void
     {
         $streetNameId = new StreetNameId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
+        $geographicalName = new GeographicalName(new LanguageCode('EN'), 'Foo EN');
 
-        $streetName = new StreetName($streetNameId, $geographicalNames);
+        $streetName = new StreetName($streetNameId, $geographicalName);
 
-        $this->assertSame($geographicalNames->name(), (string) $streetName);
+        $this->assertSame($geographicalName->spelling(), (string) $streetName);
     }
 }

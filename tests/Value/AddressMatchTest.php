@@ -104,7 +104,7 @@ class AddressMatchTest extends TestCase
     {
         $adressDetail = $this->prophesize(AddressDetailInterface::class);
         $adressDetail->addressId()->willReturn(new AddressId($identifier));
-        $adressDetail->__toString()->willReturn('Street name 123 bus A, 9000 Locality');
+        $adressDetail->__toString()->willReturn('Street name 123 bus A, 9000 Gent');
 
         return $adressDetail->reveal();
     }

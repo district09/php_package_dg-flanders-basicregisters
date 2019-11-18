@@ -9,7 +9,7 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * A Street name.
  */
-final class StreetName extends AbstractWithGeographicalNames
+final class StreetName extends AbstractWithGeographicalName
 {
     /**
      * The street name id.
@@ -21,13 +21,13 @@ final class StreetName extends AbstractWithGeographicalNames
     /**
      * Create a new street name.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId $streetNameId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId $streetNameNameId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName $geographicalName
      */
-    public function __construct(StreetNameId $streetNameId, GeographicalNames $geographicalNames)
+    public function __construct(StreetNameId $streetNameNameId, GeographicalName $geographicalName)
     {
-        parent::__construct($geographicalNames);
-        $this->streetNameId = $streetNameId;
+        parent::__construct($geographicalName);
+        $this->streetNameId = $streetNameNameId;
     }
 
     /**

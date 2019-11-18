@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
+use DigipolisGent\Flanders\BasicRegisters\Value\LocalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\LocalityId;
+use DigipolisGent\Flanders\BasicRegisters\Value\LocalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
 use PHPUnit\Framework\TestCase;
 
@@ -19,23 +19,19 @@ class LocalityTest extends TestCase
 {
 
     /**
-     * Locality is created from its object id and geographical names.
+     * Locality is created from its details.
      *
      * @test
      */
     public function valueIsCreatedFromItsDetails(): void
     {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
-        );
         $postInfoId = new PostInfoId(9000);
+        $localityName = $this->createLocalityName(100, 'Gent');
 
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
+        $locality = new Locality($postInfoId, $localityName);
 
-        $this->assertSame($localityId, $locality->localityId());
-        $this->assertSame($geographicalNames, $locality->geographicalNames());
         $this->assertSame($postInfoId, $locality->postInfoId());
+        $this->assertSame($localityName, $locality->localityName());
     }
 
     /**
@@ -45,36 +41,12 @@ class LocalityTest extends TestCase
      */
     public function postalCodeIsExtractedFromPostInfoId(): void
     {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('NL'), 'Foo Nl')
-        );
         $postInfoId = new PostInfoId(9000);
+        $localityName = $this->createLocalityName(100, 'Gent');
 
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
+        $locality = new Locality($postInfoId, $localityName);
 
         $this->assertSame($postInfoId->value(), $locality->postalCode());
-    }
-
-    /**
-     * Not the same value if the object id is different.
-     *
-     * @test
-     */
-    public function notSameIfLocalityIdIsDifferent(): void
-    {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
-        $postInfoId = new PostInfoId(9000);
-
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
-
-        $otherLocalityId = new LocalityId(456);
-        $otherLocality = new Locality($otherLocalityId, $geographicalNames, $postInfoId);
-
-        $this->assertFalse($locality->sameValueAs($otherLocality));
     }
 
     /**
@@ -84,16 +56,34 @@ class LocalityTest extends TestCase
      */
     public function notSameIfPostInfoIdsAreDifferent(): void
     {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
         $postInfoId = new PostInfoId(9000);
+        $localityName = $this->createLocalityName(100, 'Gent');
 
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
+        $locality = new Locality($postInfoId, $localityName);
 
-        $otherPostInfoId = new PostInfoId(9123);
-        $otherLocality = new Locality($localityId, $geographicalNames, $otherPostInfoId);
+        $otherLocality = new Locality(
+            new PostInfoId(9123),
+            $localityName
+        );
+
+        $this->assertFalse($locality->sameValueAs($otherLocality));
+    }
+
+    /**
+     * Not the same value if the locality name is different.
+     *
+     * @test
+     */
+    public function notSameIfLocalityNameIsDifferent(): void
+    {
+        $postInfoId = new PostInfoId(9000);
+        $localityName = $this->createLocalityName(100, 'Gent');
+
+        $locality = new Locality($postInfoId, $localityName);
+        $otherLocality = new Locality(
+            $postInfoId,
+            $this->createLocalityName(200, 'Foo')
+        );
 
         $this->assertFalse($locality->sameValueAs($otherLocality));
     }
@@ -105,33 +95,46 @@ class LocalityTest extends TestCase
      */
     public function sameIfAllDetailsAreIdentical(): void
     {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
-        );
         $postInfoId = new PostInfoId(9000);
+        $localityName = $this->createLocalityName(100, 'Gent');
 
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
-        $sameLocality = new Locality($localityId, $geographicalNames, $postInfoId);
+        $locality = new Locality($postInfoId, $localityName);
+        $sameLocality = new Locality($postInfoId, $localityName);
 
         $this->assertTrue($locality->sameValueAs($sameLocality));
     }
 
     /**
-     * Casting to string returns "[postal code] name".
+     * Casting to string returns "[postal code] [locality name]".
      *
      * @test
      */
     public function castToStringReturnsPostalCodeAndName(): void
     {
-        $localityId = new LocalityId(123);
-        $geographicalNames = new GeographicalNames(
-            new GeographicalName(new LanguageCode('EN'), 'Foo EN')
+        $locality = new Locality(
+            new PostInfoId(9000),
+            $this->createLocalityName(100, 'Gent')
         );
-        $postInfoId = new PostInfoId(9000);
 
-        $locality = new Locality($localityId, $geographicalNames, $postInfoId);
+        $this->assertSame('9000 Gent', (string) $locality);
+    }
 
-        $this->assertSame('9000 Foo EN', (string) $locality);
+    /**
+     * Create a locality name value.
+     *
+     * @param int $identifier
+     * @param string $name
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\LocalityName
+     */
+    private function createLocalityName(int $identifier, string $name): LocalityName
+    {
+        return new LocalityName(
+            new LocalityNameId($identifier),
+            new GeographicalName(
+                new LanguageCode('NL'),
+                $name
+            )
+        );
     }
 }
