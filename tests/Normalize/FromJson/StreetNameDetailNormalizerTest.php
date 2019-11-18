@@ -10,8 +10,8 @@ use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameDetail;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**

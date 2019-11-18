@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
 
 /**
  * Normalizes JSON data into a StreetNames collection object.
@@ -16,7 +16,7 @@ final class StreetNamesNormalizer
      *
      * @param object $jsonData
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\StreetNames
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames
      */
     public function normalize(object $jsonData): StreetNames
     {

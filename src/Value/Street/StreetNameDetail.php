@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Street;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
 use DigipolisGent\Value\ValueInterface;
 
@@ -15,7 +17,7 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     /**
      * The street name id.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId
      */
     private $streetNameId;
 
@@ -29,7 +31,7 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     /**
      * Create a new street name.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId $localityNameId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId $localityNameId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
      */
@@ -46,7 +48,7 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     /**
      * Get the street name id.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId
      */
     public function streetNameId(): StreetNameId
     {
@@ -68,7 +70,7 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\StreetNameDetail $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail $object */
         return parent::sameValueAs($object)
             && $this->streetNameId()->sameValueAs($object->streetNameId())
             && $this->localityName()->sameValueAs($object->localityName());

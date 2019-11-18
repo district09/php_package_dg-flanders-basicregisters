@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Street;
 
 use DigipolisGent\Value\CollectionAbstract;
 
@@ -14,7 +14,7 @@ final class StreetNames extends CollectionAbstract
     /**
      * Create a new collection.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\StreetName ...$streetNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName ...$streetNames
      *   One or more street names.
      */
     public function __construct(StreetName ...$streetNames)
@@ -29,7 +29,7 @@ final class StreetNames extends CollectionAbstract
     {
         $streetNames = [];
 
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\StreetName $streetName */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName $streetName */
         foreach ($this->values as $streetName) {
             $streetNames[] = (string) $streetName;
         }

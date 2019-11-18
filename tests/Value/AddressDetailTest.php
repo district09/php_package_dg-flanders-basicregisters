@@ -16,8 +16,8 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -243,7 +243,7 @@ class AddressDetailTest extends TestCase
      * @param int $identifier
      * @param string $name
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName
      */
     private function createStreetName(int $identifier, string $name): StreetName
     {

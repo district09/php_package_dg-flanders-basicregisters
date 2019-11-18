@@ -7,8 +7,8 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**

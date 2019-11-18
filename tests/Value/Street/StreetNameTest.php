@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Street;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetName;
-use DigipolisGent\Flanders\BasicRegisters\Value\StreetNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalName
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName
  */
 class StreetNameTest extends TestCase
 {

@@ -6,6 +6,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Value\ValueInterface;
 
 /**
@@ -30,7 +31,7 @@ interface AddressDetailInterface extends ValueInterface
     /**
      * Get the street name.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\StreetName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName
      */
     public function streetName(): StreetName;
 
