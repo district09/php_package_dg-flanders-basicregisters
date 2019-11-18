@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\GeographicalNamesNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\GeographicalNamesNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\IdExtractor;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameDetail;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;

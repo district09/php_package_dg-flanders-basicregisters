@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Geographical;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\GeographicalNamesNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\GeographicalNamesNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\GeographicalNamesNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\GeographicalNamesNormalizer
  */
 class GeographicalNamesNormalizerTest extends TestCase
 {
