@@ -9,6 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractGeographicalName
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName
  */
 class GeographicalNameTest extends TestCase

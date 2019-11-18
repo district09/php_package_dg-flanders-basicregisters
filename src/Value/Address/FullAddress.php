@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractGeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractGeographicalName;
 
 /**
- * Collection of full address geographical names.
+ * A full address geographical name.
  */
-final class FullAddress extends AbstractGeographicalNames
+final class FullAddress extends AbstractGeographicalName
 {
 
 }

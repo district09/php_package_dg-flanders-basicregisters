@@ -205,10 +205,8 @@ class AddressDetailTest extends TestCase
     ): Address {
         $addressId = new AddressId($identitifier);
         $fullAddress = new FullAddress(
-            new GeographicalName(
-                new LanguageCode('NL'),
-                $fullAddress
-            )
+            new LanguageCode('NL'),
+            $fullAddress
         );
 
         return new Address($addressId, $houseNumber, $busNumber, $fullAddress);
