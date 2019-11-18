@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Street;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNameDetailNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street\StreetNameDetailNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
@@ -15,7 +15,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\StreetNameDetailNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street\StreetNameDetailNormalizer
  */
 class StreetNameDetailNormalizerTest extends TestCase
 {

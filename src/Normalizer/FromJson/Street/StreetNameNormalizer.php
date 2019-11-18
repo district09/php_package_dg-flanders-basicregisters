@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson;
+namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street;
 
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\GeographicalNameNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\IdExtractor;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 
@@ -22,10 +23,11 @@ final class StreetNameNormalizer
      */
     public function normalize(object $jsonData): StreetName
     {
+        $idExtractor = new IdExtractor();
         $geoGraphicalNameNormalizer = new GeographicalNameNormalizer();
 
         return new StreetName(
-            new StreetNameId((int) $jsonData->identificator->objectId),
+            new StreetNameId($idExtractor->extractObjectId($jsonData)),
             $geoGraphicalNameNormalizer->normalize($jsonData->straatnaam->geografischeNaam)
         );
     }
