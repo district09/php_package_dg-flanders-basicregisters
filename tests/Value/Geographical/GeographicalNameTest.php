@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Geographical;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName
  */
 class GeographicalNameTest extends TestCase
 {

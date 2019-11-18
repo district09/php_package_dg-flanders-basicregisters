@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Street;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalName
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalName
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName
  */
 class StreetNameTest extends TestCase

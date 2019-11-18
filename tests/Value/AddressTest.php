@@ -7,7 +7,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address;
 use DigipolisGent\Flanders\BasicRegisters\Value\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\FullAddress;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use PHPUnit\Framework\TestCase;
 

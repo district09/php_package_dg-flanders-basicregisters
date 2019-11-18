@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Geographical;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
@@ -64,7 +65,7 @@ final class GeographicalName extends ValueAbstract
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $object */
         return $this->sameValueTypeAs($object)
             && $this->languageCode()->sameValueAs($object->languageCode())
             && $this->spelling() === $object->spelling();

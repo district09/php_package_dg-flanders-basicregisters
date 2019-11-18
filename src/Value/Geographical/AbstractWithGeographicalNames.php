@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Geographical;
 
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
@@ -16,14 +16,14 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
     /**
      * The geographical names.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames
      */
     private $geographicalNames;
 
     /**
      * Construct a new object from its geographical names.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames $geographicalNames
      */
     public function __construct(GeographicalNames $geographicalNames)
     {
@@ -33,7 +33,7 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
     /**
      * Get all the geographical names.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames
      */
     public function geographicalNames(): GeographicalNames
     {
@@ -57,7 +57,7 @@ abstract class AbstractWithGeographicalNames extends ValueAbstract
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalNames $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalNames $object */
         return $this->sameValueTypeAs($object)
             && $this->geographicalNames()->sameValueAs($object->geographicalNames());
     }

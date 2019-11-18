@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Post;
 
 use DigipolisGent\Value\CollectionAbstract;
 
@@ -14,7 +14,7 @@ final class PostInfos extends CollectionAbstract
     /**
      * Create a new collection.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfo ...$postInfos
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo ...$postInfos
      *   One or more post info.
      */
     public function __construct(PostInfo ...$postInfos)
@@ -29,7 +29,7 @@ final class PostInfos extends CollectionAbstract
     {
         $postInfos = [];
 
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\PostInfo $postInfo */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo $postInfo */
         foreach ($this->values as $postInfo) {
             $postInfos[] = (string) $postInfo;
         }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Locality;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use PHPUnit\Framework\TestCase;
 
 /**

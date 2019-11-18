@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Locality;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
@@ -16,7 +16,7 @@ final class Locality extends ValueAbstract
     /**
      * The post info id (postal code).
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId
      */
     private $postInfoId;
 
@@ -30,7 +30,7 @@ final class Locality extends ValueAbstract
     /**
      * Create a new value.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId $postInfoId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
      */
     public function __construct(PostInfoId $postInfoId, LocalityName $localityName)
@@ -42,7 +42,7 @@ final class Locality extends ValueAbstract
     /**
      * Get the post info id.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId
      */
     public function postInfoId(): PostInfoId
     {

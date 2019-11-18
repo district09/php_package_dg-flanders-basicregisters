@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Street;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalNames;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
 use DigipolisGent\Value\ValueInterface;
 
@@ -32,7 +32,7 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
      * Create a new street name.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId $localityNameId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geographicalNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames $geographicalNames
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
      */
     public function __construct(

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Post;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfo;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId;
-use DigipolisGent\Flanders\BasicRegisters\Value\PostInfos;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Value\PostInfos
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos
  */
 class PostInfosTest extends TestCase
 {
@@ -41,7 +41,7 @@ class PostInfosTest extends TestCase
      * @param int $identifier
      * @param string $name
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\PostInfo
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo
      */
     public function createPostInfo(int $identifier, string $name): PostInfo
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 
 /**
  * Normalizes array of geographical name data into GeoGraphicalNames collection.
@@ -16,7 +16,7 @@ final class GeographicalNamesNormalizer
      *
      * @param array $jsonData
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames
      */
     public function normalize(array $jsonData): GeographicalNames
     {

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Geographical;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Value\CollectionAbstract;
 use Webmozart\Assert\Assert;
 
@@ -16,7 +17,7 @@ abstract class AbstractGeographicalNames extends CollectionAbstract
     /**
      * Create the collection from one or more geographical names.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName ...$geoGraphicalNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName ...$geoGraphicalNames
      */
     public function __construct(...$geoGraphicalNames)
     {
@@ -32,7 +33,7 @@ abstract class AbstractGeographicalNames extends CollectionAbstract
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode $languageCode
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName|null
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName|null
      *   The geographical name (if any).
      */
     public function translation(LanguageCode $languageCode): ?GeographicalName

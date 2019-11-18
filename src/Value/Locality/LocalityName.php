@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Locality;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\AbstractWithGeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Value\ValueInterface;
 
 /**
@@ -24,7 +24,7 @@ final class LocalityName extends AbstractWithGeographicalName
      * Create a new locality.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId $localityNameId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalName $geographicalName
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName
      */
     public function __construct(LocalityNameId $localityNameId, GeographicalName $geographicalName)
     {

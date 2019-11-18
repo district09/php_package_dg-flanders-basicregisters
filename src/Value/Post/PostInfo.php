@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Post;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalNames;
+use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Value\ValueInterface;
 
 /**
@@ -14,15 +16,15 @@ final class PostInfo extends AbstractWithGeographicalNames
     /**
      * The post info id.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId
      */
     private $postInfoId;
 
     /**
      * Create a new post info value.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId $postInfoId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\GeographicalNames $geoGraphicalNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId $postInfoId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames $geoGraphicalNames
      */
     public function __construct(PostInfoId $postInfoId, GeographicalNames $geoGraphicalNames)
     {
@@ -34,7 +36,7 @@ final class PostInfo extends AbstractWithGeographicalNames
     /**
      * Get the post info id.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\PostInfoId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId
      */
     public function postInfoId(): PostInfoId
     {
@@ -56,7 +58,7 @@ final class PostInfo extends AbstractWithGeographicalNames
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\PostInfo $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo $object */
         return parent::sameValueAs($object)
             && $this->postInfoId()->sameValueAs($object->postInfoId());
     }
