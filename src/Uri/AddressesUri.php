@@ -9,7 +9,6 @@ namespace DigipolisGent\Flanders\BasicRegisters\Uri;
  */
 class AddressesUri extends AbstractUriWithFiltersAndPager
 {
-
     /**
      * @inheritDoc
      */

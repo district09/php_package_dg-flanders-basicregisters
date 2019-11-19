@@ -6,22 +6,22 @@ namespace DigipolisGent\Flanders\BasicRegisters\Handler;
 
 use DigipolisGent\API\Client\Handler\HandlerInterface;
 use DigipolisGent\API\Client\Response\ResponseInterface;
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\AddressesNormalizer;
-use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
-use DigipolisGent\Flanders\BasicRegisters\Response\AddressListResponse;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\AddressDetailNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
+use DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse;
 use Psr\Http\Message as Psr;
 
 /**
- * Handles the AddressList request.
+ * Handles the AddressDetail request.
  */
-final class AddressListHandler implements HandlerInterface
+final class AddressDetailHandler implements HandlerInterface
 {
     /**
      * @inheritDoc
      */
     public function handles(): array
     {
-        return [AddressListRequest::class];
+        return [AddressDetailRequest::class];
     }
 
     /**
@@ -30,9 +30,9 @@ final class AddressListHandler implements HandlerInterface
     public function toResponse(Psr\ResponseInterface $response): ResponseInterface
     {
         $data = json_decode($response->getBody()->getContents());
-        $normalizer = new AddressesNormalizer();
+        $normalizer = new AddressDetailNormalizer();
 
-        return new AddressListResponse(
+        return new AddressDetailResponse(
             $normalizer->normalize($data)
         );
     }

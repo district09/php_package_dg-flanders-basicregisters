@@ -21,7 +21,11 @@ composer install
 
 ## Examples
 
-* `101-AddressList.php` : Overview of addresses in the register.
+* `101-AddressList.php` : Overview of the first 20 addresses in the
+  register.
+* `102-AddressListFilterd.php` : Overview of addresses based on given
+  filter.
+* `111-AddressDetails.php` : All details of a single address.
 
 ## Usage
 

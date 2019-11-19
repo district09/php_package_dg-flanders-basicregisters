@@ -3,6 +3,7 @@
 namespace DigipolisGent\Flanders\BasicRegisters;
 
 use DigipolisGent\API\Client\ClientInterface;
+use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 
 /**
@@ -18,6 +19,7 @@ final class BasicRegistersFactory
     public static function create(ClientInterface $client): BasicRegistersInterface
     {
         $client->addHandler(new AddressListHandler());
+        $client->addHandler(new AddressDetailHandler());
 
         return new BasicRegisters($client);
     }
