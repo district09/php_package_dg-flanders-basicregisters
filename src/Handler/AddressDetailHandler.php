@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse;
 use Psr\Http\Message as Psr;
 
 /**
- * Handles the list request.
+ * Handles the AddressDetail request.
  */
 final class AddressDetailHandler implements HandlerInterface
 {
