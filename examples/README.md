@@ -21,7 +21,7 @@ composer install
 
 ## Examples
 
-* `01-AddressList.php` : Overview of addresses in the register.
+* `101-AddressList.php` : Overview of addresses in the register.
 
 ## Usage
 
@@ -30,7 +30,7 @@ The scripts can only be called from command line.
 Example:
 
 ```bash
-php 01-AddressList.php
+php 101-AddressList.php
 ```
 
 [flanders-basicregister.api]: https://overheid.vlaanderen.be/producten-diensten/gebouwen-adressenregister

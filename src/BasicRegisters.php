@@ -3,6 +3,8 @@
 namespace DigipolisGent\Flanders\BasicRegisters;
 
 use DigipolisGent\API\Client\ClientInterface;
+use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
+use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 
@@ -30,9 +32,9 @@ final class BasicRegisters implements BasicRegistersInterface
     /**
      * @inheritDoc
      */
-    public function addressList(): Addresses
+    public function addressList(?Filters $filters = null, ?Pager $pager = null): Addresses
     {
-        $request = new AddressListRequest();
+        $request = new AddressListRequest($filters, $pager);
         return $this->client->send($request)->addresses();
     }
 }

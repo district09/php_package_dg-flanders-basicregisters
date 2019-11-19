@@ -13,7 +13,7 @@ require_once __DIR__ . '/bootstrap.php';
 // Start output.
 echo PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get a list of addresses from the service.' . PHP_EOL;
+echo 'Get a list of the first 20 addresses from the service.' . PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
 echo PHP_EOL;
 

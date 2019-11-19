@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Request;
 
 use DigipolisGent\API\Client\Request\AbstractRequest;
+use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
+use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 use DigipolisGent\Flanders\BasicRegisters\Uri\AddressesUri;
 
 /**
@@ -12,12 +14,17 @@ use DigipolisGent\Flanders\BasicRegisters\Uri\AddressesUri;
  */
 final class AddressListRequest extends AbstractRequest
 {
-
     /**
-     * @inheritDoc
+     * Create a new address list request.
+     *
+     * @param \DigipolisGent\Flanders\BasicRegisters\Filter\Filters|null $filters
+     *   Optional filters to limit the list by.
+     * @param \DigipolisGent\Flanders\BasicRegisters\Pager\Pager|null $pager
+     *   Optional pager to limit the list by.
      */
-    public function __construct()
+    public function __construct(?Filters $filters = null, ?Pager $pager = null)
     {
-        parent::__construct(new AddressesUri());
+        $uri = new AddressesUri($filters, $pager);
+        parent::__construct($uri);
     }
 }

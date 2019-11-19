@@ -34,5 +34,6 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added the AddressMatchNormalizer.
 * Added the AddressMatchesNormalizer.
 * Added the configuration.
+* Added service method to get a list of Addresses.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
