@@ -7,6 +7,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters;
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\Flanders\BasicRegisters\BasicRegisters;
 use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
+use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use PHPUnit\Framework\TestCase;
 
@@ -25,6 +26,9 @@ class BasicRegistersFactoryTest extends TestCase
         $clientMock = $this->prophesize(ClientInterface::class);
         $clientMock
             ->addHandler(new AddressListHandler())
+            ->shouldBeCalled();
+        $clientMock
+            ->addHandler(new AddressDetailHandler())
             ->shouldBeCalled();
         $client = $clientMock->reveal();
 

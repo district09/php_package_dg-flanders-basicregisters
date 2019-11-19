@@ -5,8 +5,12 @@ namespace DigipolisGent\Flanders\BasicRegisters;
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
 use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
+use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetail;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 
 /**
  * Service to access the Flanders Basic register service.
@@ -36,5 +40,14 @@ final class BasicRegisters implements BasicRegistersInterface
     {
         $request = new AddressListRequest($filters, $pager);
         return $this->client->send($request)->addresses();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addressDetail(AddressId $addressId): AddressDetailInterface
+    {
+        $request = new AddressDetailRequest($addressId);
+        return $this->client->send($request)->addressDetail();
     }
 }
