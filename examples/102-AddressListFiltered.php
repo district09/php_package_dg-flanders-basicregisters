@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Example how to get a (filtered) list of lodgings.
+ * Example how to get a filtered list of addresses.
  */
 
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
