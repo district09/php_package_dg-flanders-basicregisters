@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters\Value\Locality;
+namespace DigipolisGent\Flanders\BasicRegisters\Value\Municipality;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
 /**
- * A post info id + locality.
+ * A post info id + municipality.
  */
-final class Locality extends ValueAbstract
+final class Municipality extends ValueAbstract
 {
     /**
      * The post info id (postal code).
@@ -21,22 +21,22 @@ final class Locality extends ValueAbstract
     private $postInfoId;
 
     /**
-     * The locality name.
+     * The municipality name.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
      */
-    private $localityName;
+    private $municipalityName;
 
     /**
      * Create a new value.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId $postInfoId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName
      */
-    public function __construct(PostInfoId $postInfoId, LocalityName $localityName)
+    public function __construct(PostInfoId $postInfoId, MunicipalityName $municipalityName)
     {
         $this->postInfoId = $postInfoId;
-        $this->localityName = $localityName;
+        $this->municipalityName = $municipalityName;
     }
 
     /**
@@ -60,23 +60,23 @@ final class Locality extends ValueAbstract
     }
 
     /**
-     * Get the locality.
+     * Get the municipality.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
      */
-    public function localityName(): LocalityName
+    public function municipalityName(): MunicipalityName
     {
-        return $this->localityName;
+        return $this->municipalityName;
     }
 
     /**
-     * Get the locality name.
+     * Get the municipality name.
      *
      * @return string
      */
     public function name(): string
     {
-        return $this->localityName()->name();
+        return $this->municipalityName()->name();
     }
 
     /**
@@ -84,16 +84,16 @@ final class Locality extends ValueAbstract
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality $object */
         return $this->sameValueTypeAs($object)
             && $this->postInfoId()->sameValueAs($object->postInfoId())
-            && $this->localityName()->sameValueAs($object->localityName());
+            && $this->municipalityName()->sameValueAs($object->municipalityName());
     }
 
     /**
      * @inheritDoc
      *
-     * This will return "[postal code] [locality name]".
+     * This will return "[postal code] [municipality name]".
      */
     public function __toString(): string
     {

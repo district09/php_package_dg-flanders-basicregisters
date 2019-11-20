@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Locality;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Municipality;
 
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Post\PostInfosNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;

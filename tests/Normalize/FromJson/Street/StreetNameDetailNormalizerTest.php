@@ -8,8 +8,8 @@ use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street\StreetNameD
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
@@ -68,8 +68,8 @@ EOT;
                     'Bellevue'
                 )
             ),
-            new LocalityName(
-                new LocalityNameId(44021),
+            new MunicipalityName(
+                new MunicipalityNameId(44021),
                 new GeographicalName(
                     new LanguageCode('NL'),
                     'Gent'

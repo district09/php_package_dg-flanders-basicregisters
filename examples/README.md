@@ -25,7 +25,7 @@ composer install
   register.
 * `102-AddressListFilterd.php` : Overview of addresses based on given
   filter.
-* `111-AddressMatch.php` : Look up an address by locality name, street
+* `111-AddressMatch.php` : Look up an address by municipality name, street
   name, and optional house number and bus number. 
 * `121-AddressDetails.php` : All details of a single address.
 

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Filter;
 
-use DigipolisGent\Flanders\BasicRegisters\Filter\LocalityNisCodeFilter;
+use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNisCodeFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Filter\LocalityNisCodeFilter
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNisCodeFilter
  */
-class LocalityNisCodeFilterTest extends TestCase
+class MunicipalityNisCodeFilterTest extends TestCase
 {
     /**
      * Filter has proper argument name.
@@ -19,7 +19,7 @@ class LocalityNisCodeFilterTest extends TestCase
      */
     public function hasProperArgumentName(): void
     {
-        $filter = new LocalityNisCodeFilter('FooBar');
+        $filter = new MunicipalityNisCodeFilter('FooBar');
 
         $this->assertEquals('niscode', $filter->name());
     }

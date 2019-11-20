@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Value\ValueInterface;
 
@@ -17,11 +17,11 @@ use DigipolisGent\Value\ValueInterface;
 interface AddressMatchInterface extends ValueInterface
 {
     /**
-     * Get the related LocalityName value.
+     * Get the related MunicipalityName value.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
      */
-    public function localityName(): LocalityName;
+    public function municipalityName(): MunicipalityName;
 
     /**
      * Get the related StreetName value.

@@ -11,9 +11,9 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
@@ -102,10 +102,10 @@ EOT;
                     'Bellevue 1, 9050 Gent'
                 )
             ),
-            new Locality(
+            new Municipality(
                 new PostInfoId(9050),
-                new LocalityName(
-                    new LocalityNameId(44021),
+                new MunicipalityName(
+                    new MunicipalityNameId(44021),
                     new GeographicalName(
                         new LanguageCode('NL'),
                         'Gent'

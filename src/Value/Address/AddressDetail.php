@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Value\ValueAbstract;
@@ -23,11 +23,11 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
     private $address;
 
     /**
-     * The locality.
+     * The municipality.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality
      */
-    private $locality;
+    private $municipality;
 
     /**
      * The street name.
@@ -47,18 +47,18 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
      * Create object from its details.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality $locality
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality $municipality
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName $streetName
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface $position
      */
     public function __construct(
         Address $address,
-        Locality $locality,
+        Municipality $municipality,
         StreetName $streetName,
         PointInterface $position
     ) {
         $this->address = $address;
-        $this->locality = $locality;
+        $this->municipality = $municipality;
         $this->streetName = $streetName;
         $this->position = $position;
     }
@@ -74,9 +74,9 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
     /**
      * @inheritDoc
      */
-    public function locality(): Locality
+    public function municipality(): Municipality
     {
-        return $this->locality;
+        return $this->municipality;
     }
 
     /**
@@ -119,7 +119,7 @@ final class AddressDetail extends ValueAbstract implements AddressDetailInterfac
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetail $object */
         return $this->sameValueTypeAs($object)
             && $this->addressId()->sameValueAs($object->addressId())
-            && $this->locality()->sameValueAs($object->locality())
+            && $this->municipality()->sameValueAs($object->municipality())
             && $this->streetName()->sameValueAs($object->streetName())
             && $this->position()->sameValueAs($object->position());
     }

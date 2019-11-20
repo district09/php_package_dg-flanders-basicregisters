@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Filter;
 
 /**
- * Filter by locality National Statistics Institute code.
+ * Filter by municipality name.
  */
-final class LocalityNisCodeFilter extends AbstractFilter
+final class MunicipalityNameFilter extends AbstractFilter
 {
     /**
      * @inheritDoc
      */
     public function name(): string
     {
-        return 'niscode';
+        return 'gemeentenaam';
     }
 }

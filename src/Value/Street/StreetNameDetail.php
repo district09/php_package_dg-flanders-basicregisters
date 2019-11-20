@@ -6,7 +6,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Value\Street;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
 use DigipolisGent\Value\ValueInterface;
 
 /**
@@ -22,27 +22,27 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     private $streetNameId;
 
     /**
-     * The locality
+     * The municipality
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
      */
-    private $localityName;
+    private $municipalityName;
 
     /**
      * Create a new street name.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId $localityNameId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId $municipalityNameId
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames $geographicalNames
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName
      */
     public function __construct(
-        StreetNameId $localityNameId,
+        StreetNameId $municipalityNameId,
         GeographicalNames $geographicalNames,
-        LocalityName $localityName
+        MunicipalityName $municipalityName
     ) {
         parent::__construct($geographicalNames);
-        $this->streetNameId = $localityNameId;
-        $this->localityName = $localityName;
+        $this->streetNameId = $municipalityNameId;
+        $this->municipalityName = $municipalityName;
     }
 
     /**
@@ -56,13 +56,13 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
     }
 
     /**
-     * Return the locality name.
+     * Return the municipality name.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
      */
-    public function localityName(): LocalityName
+    public function municipalityName(): MunicipalityName
     {
-        return $this->localityName;
+        return $this->municipalityName;
     }
 
     /**
@@ -73,6 +73,6 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail $object */
         return parent::sameValueAs($object)
             && $this->streetNameId()->sameValueAs($object->streetNameId())
-            && $this->localityName()->sameValueAs($object->localityName());
+            && $this->municipalityName()->sameValueAs($object->municipalityName());
     }
 }
