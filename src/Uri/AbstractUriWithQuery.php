@@ -47,7 +47,7 @@ abstract class AbstractUriWithQuery implements UriInterface
     public static function fromPager(?PagerInterface $pager = null): UriInterface
     {
         $uri = new static();
-        $uri->query = $pager->query();
+        $uri->query = $pager ? $pager->query() : [];
 
         return $uri;
     }
