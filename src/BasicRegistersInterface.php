@@ -9,6 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
 
 /**
  * Service to access the Flanders Basic register service.
@@ -38,4 +39,15 @@ interface BasicRegistersInterface
      *   The address detail value.
      */
     public function addressDetail(AddressId $addressId): AddressDetailInterface;
+
+    /**
+     * Look up addresses that match (partial) filter values.
+     *
+     * @param \DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface $filters
+     *   Optional filters to limit the returned addresses by.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches
+     *   The matching addresses.
+     */
+    public function addressMatch(FiltersInterface $filters = null): AddressMatches;
 }

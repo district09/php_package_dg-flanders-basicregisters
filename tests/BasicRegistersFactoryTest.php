@@ -9,6 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\BasicRegisters;
 use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
+use DigipolisGent\Flanders\BasicRegisters\Handler\AddressMatchHandler;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,6 +32,9 @@ class BasicRegistersFactoryTest extends TestCase
             ->addHandler(new AddressDetailHandler())
             ->shouldBeCalled();
         $client = $clientMock->reveal();
+        $clientMock
+            ->addHandler(new AddressMatchHandler())
+            ->shouldBeCalled();
 
         $factory = new BasicRegistersFactory();
 
