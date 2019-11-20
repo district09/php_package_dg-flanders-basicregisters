@@ -10,9 +10,9 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
@@ -32,19 +32,19 @@ class AddressDetailTest extends TestCase
      */
     public function valueIsCreatedFromItsDetails(): void
     {
-        $locality = $this->createLocality(200, 'Gent', 9000);
+        $municipality = $this->createMunicipality(200, 'Gent', 9000);
         $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
         $details = new AddressDetail(
             $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D'),
-            $locality,
+            $municipality,
             $streetName,
             $position
         );
 
         $this->assertEquals(new AddressId(100), $details->addressId());
-        $this->assertSame($locality, $details->locality());
+        $this->assertSame($municipality, $details->municipality());
         $this->assertSame($streetName, $details->streetName());
         $this->assertSame('1', $details->houseNumber());
         $this->assertSame('D', $details->busNumber());
@@ -59,15 +59,15 @@ class AddressDetailTest extends TestCase
     public function notSameIfAddressObjectIdIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
-        $locality = $this->createLocality(200, 'Gent', 9000);
+        $municipality = $this->createMunicipality(200, 'Gent', 9000);
         $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $streetName, $position);
+        $details = new AddressDetail($address, $municipality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $this->createAddress(101, 'Bellevue 1 bus D, 9123 Gent', '1', 'D'),
-            $locality,
+            $municipality,
             $streetName,
             $position
         );
@@ -76,22 +76,22 @@ class AddressDetailTest extends TestCase
     }
 
     /**
-     * Not the same value if the locality object is not identical.
+     * Not the same value if the municipality object is not identical.
      *
      * @test
      */
-    public function notSameIfLocalityIsNotIdentical(): void
+    public function notSameIfMunicipalityIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
-        $locality = $this->createLocality(200, 'Gent', 9000);
+        $municipality = $this->createMunicipality(200, 'Gent', 9000);
         $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $streetName, $position);
+        $details = new AddressDetail($address, $municipality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $address,
-            $this->createLocality(201, 'Gent', 9123),
+            $this->createMunicipality(201, 'Gent', 9123),
             $streetName,
             $position
         );
@@ -107,15 +107,15 @@ class AddressDetailTest extends TestCase
     public function notSameIfStreetNameIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
-        $locality = $this->createLocality(200, 'Gent', 9000);
+        $municipality = $this->createMunicipality(200, 'Gent', 9000);
         $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $streetName, $position);
+        $details = new AddressDetail($address, $municipality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $address,
-            $locality,
+            $municipality,
             $this->createStreetName(301, 'Bellevue'),
             $position
         );
@@ -131,15 +131,15 @@ class AddressDetailTest extends TestCase
     public function notSameIfPositionIsNotIdentical(): void
     {
         $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
-        $locality = $this->createLocality(200, 'Gent', 9000);
+        $municipality = $this->createMunicipality(200, 'Gent', 9000);
         $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $streetName, $position);
+        $details = new AddressDetail($address, $municipality, $streetName, $position);
 
         $otherDetails = new AddressDetail(
             $address,
-            $locality,
+            $municipality,
             $streetName,
             $this->createPosition(10124, 200124)
         );
@@ -155,14 +155,14 @@ class AddressDetailTest extends TestCase
     public function sameIfAllDetailsAreIdentical(): void
     {
         $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
-        $locality = $this->createLocality(200, 'Gent', 9000);
+        $municipality = $this->createMunicipality(200, 'Gent', 9000);
         $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $streetName, $position);
+        $details = new AddressDetail($address, $municipality, $streetName, $position);
         $otherDetails = new AddressDetail(
             $address,
-            $locality,
+            $municipality,
             $streetName,
             $position
         );
@@ -178,11 +178,11 @@ class AddressDetailTest extends TestCase
     public function castToStringReturnsAddressCastedToString(): void
     {
         $address = $this->createAddress(100, 'Bellevue 1 bus D, 9123 Gent', '1', 'D');
-        $locality = $this->createLocality(200, 'Gent', 9000);
+        $municipality = $this->createMunicipality(200, 'Gent', 9000);
         $streetName = $this->createStreetName(300, 'Bellevue');
         $position = $this->createPosition(10123, 200123);
 
-        $details = new AddressDetail($address, $locality, $streetName, $position);
+        $details = new AddressDetail($address, $municipality, $streetName, $position);
 
         $this->assertSame((string) $address, (string) $details);
     }
@@ -213,20 +213,20 @@ class AddressDetailTest extends TestCase
     }
 
     /**
-     * Create a locality object.
+     * Create a municipality object.
      *
      * @param int $identifier
      * @param string $name
      * @param int $postInfoIdentifier
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality
      */
-    private function createLocality(int $identifier, string $name, int $postInfoIdentifier): Locality
+    private function createMunicipality(int $identifier, string $name, int $postInfoIdentifier): Municipality
     {
-        return new Locality(
+        return new Municipality(
             new PostInfoId($postInfoIdentifier),
-            new LocalityName(
-                new LocalityNameId($identifier),
+            new MunicipalityName(
+                new MunicipalityNameId($identifier),
                 new GeographicalName(
                     new LanguageCode('NL'),
                     $name

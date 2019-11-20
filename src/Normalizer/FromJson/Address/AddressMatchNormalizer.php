@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street\StreetNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch;
 
@@ -22,7 +22,7 @@ class AddressMatchNormalizer
      */
     public function normalize(object $jsonData): AddressMatch
     {
-        $localityNameNormalizer = new LocalityNameNormalizer();
+        $municipalityNameNormalizer = new MunicipalityNameNormalizer();
         $streetNameNormalizer = new StreetNameNormalizer();
 
         $addressDetail = null;
@@ -32,7 +32,7 @@ class AddressMatchNormalizer
         }
 
         return new AddressMatch(
-            $localityNameNormalizer->normalize($jsonData->gemeente),
+            $municipalityNameNormalizer->normalize($jsonData->gemeente),
             $streetNameNormalizer->normalize($jsonData->straatnaam),
             $addressDetail,
             (float) $jsonData->score

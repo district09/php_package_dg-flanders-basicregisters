@@ -6,7 +6,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street;
 
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\GeographicalNamesNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\IdExtractor;
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 
@@ -26,12 +26,12 @@ final class StreetNameDetailNormalizer
     {
         $idExtractor = new IdExtractor();
         $geoGraphicalNamesNormalizer = new GeographicalNamesNormalizer();
-        $localityNameNormalizer = new LocalityNameNormalizer();
+        $municipalityNameNormalizer = new MunicipalityNameNormalizer();
 
         return new StreetNameDetail(
             new StreetNameId($idExtractor->extractObjectId($jsonData)),
             $geoGraphicalNamesNormalizer->normalize($jsonData->straatnamen),
-            $localityNameNormalizer->normalize($jsonData->gemeente)
+            $municipalityNameNormalizer->normalize($jsonData->gemeente)
         );
     }
 }

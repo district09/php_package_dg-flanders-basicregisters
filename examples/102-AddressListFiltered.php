@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
 use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
 use DigipolisGent\Flanders\BasicRegisters\Filter\HouseNumberFilter;
-use DigipolisGent\Flanders\BasicRegisters\Filter\LocalityNameFilter;
+use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\PostalCodeFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\StreetNameFilter;
 use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
@@ -37,7 +37,7 @@ $service = BasicRegistersFactory::create($client);
 
 echo ' → Create the filters.' . PHP_EOL;
 $filters = new Filters(
-    new LocalityNameFilter('Gent'),
+    new MunicipalityNameFilter('Gent'),
     new PostalCodeFilter(9050),
     new StreetNameFilter('Bellevue'),
     new HouseNumberFilter(5)

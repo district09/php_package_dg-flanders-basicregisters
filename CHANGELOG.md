@@ -6,34 +6,34 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
 ### Added
 
-* Added the Locality value object.
-* Added the StreetName value object.
-* Added the address point values.
-* Added the addresses collection.
-* Added the address detail.
-* Added the address matches related objects.
-* Added the post info and collection objects.
-* Added the Localities collection.
+* Added the Municipality value.
+* Added the StreetName value.
+* Added the AddressPoint values.
+* Added the Addresses collection.
+* Added the AddressDetail value.
+* Added the AddressMatches collection and related objects.
+* Added the PostInfo value and collection.
+* Added the MunicipalityNames collection.
 * Added the StreetNames collection.
 * Added the GeographicalNameNormalizer.
 * Added the GeographicalNamesNormalizer.
 * Added the StreetNameDetailNormalizer.
 * Added the StreetNameNormalizer.
 * Added the StreetNamesNormalizer.
-* Added the LocalityNameNormalizer.
-* Added the LocalityNamesNormalizer.
-* Added the LocalityNameDetailNormalizer.
+* Added the MunicipalityNameNormalizer.
+* Added the MunicipalityNamesNormalizer.
+* Added the MunicipalityNameDetailNormalizer.
 * Added the PostInfoNormalizer.
 * Added the PostInfosNormalizer.
 * Added the FullAddressNormalizer.
 * Added the AddressNormalizer.
 * Added the AddressesNormalizer.
-* Added the localityNormalizer.
+* Added the MunicipalityNormalizer.
 * Added the Lambert72PointNormalizer.
 * Added the AddressDetailNormalizer.
 * Added the AddressMatchNormalizer.
 * Added the AddressMatchesNormalizer.
-* Added the configuration.
+* Added the Configuration.
 * Added service method to get a list of Addresses.
 * Added service method to get the details of a single address.
 * Added service method to get (partial) addresses that match filter(s).

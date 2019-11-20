@@ -9,8 +9,8 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use PHPUnit\Framework\TestCase;
@@ -28,12 +28,12 @@ class AddressMatchTest extends TestCase
      */
     public function valueIsCreatedFromAllItsDetails(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = $this->createAddressDetailMock(100);
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 98.123456);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 98.123456);
 
-        $this->assertSame($localityName, $addressMatch->localityName());
+        $this->assertSame($municipalityName, $addressMatch->municipalityName());
         $this->assertSame($streetName, $addressMatch->streetName());
         $this->assertTrue($addressMatch->hasAddressDetail());
         $this->assertSame($addressDetail, $addressMatch->addressDetail());
@@ -47,12 +47,12 @@ class AddressMatchTest extends TestCase
      */
     public function valueCanBeCreatedWithoutAddressDetail(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = null;
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 98.123456);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 98.123456);
 
-        $this->assertSame($localityName, $addressMatch->localityName());
+        $this->assertSame($municipalityName, $addressMatch->municipalityName());
         $this->assertSame($streetName, $addressMatch->streetName());
         $this->assertFalse($addressMatch->hasAddressDetail());
         $this->assertNull($addressMatch->addressDetail());
@@ -60,19 +60,19 @@ class AddressMatchTest extends TestCase
     }
 
     /**
-     * Not same if the locality name is different.
+     * Not same if the municipality name is different.
      *
      * @test
      */
-    public function notSameIfLocalityNameIsDifferent(): void
+    public function notSameIfMunicipalityNameIsDifferent(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = null;
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
 
         $otherAddressMatch = new AddressMatch(
-            $this->createLocalityName(321, 'Foo'),
+            $this->createMunicipalityName(321, 'Foo'),
             $streetName,
             $addressDetail,
             100
@@ -88,13 +88,13 @@ class AddressMatchTest extends TestCase
      */
     public function notSameIfStreetNameIsDifferent(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = null;
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
 
         $otherAddressMatch = new AddressMatch(
-            $localityName,
+            $municipalityName,
             $this->createStreetName(654, 'Foo'),
             $addressDetail,
             100
@@ -110,13 +110,13 @@ class AddressMatchTest extends TestCase
      */
     public function notSameIfOnlyMatchHasAddressDetails(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = $this->createAddressDetailMock(789);
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
 
         $otherAddressMatch = new AddressMatch(
-            $localityName,
+            $municipalityName,
             $streetName,
             null,
             100
@@ -132,13 +132,13 @@ class AddressMatchTest extends TestCase
      */
     public function notSameIfOnlyOtherMatchHasAddressDetails(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = null;
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
 
         $otherAddressMatch = new AddressMatch(
-            $localityName,
+            $municipalityName,
             $streetName,
             $this->createAddressDetailMock(987),
             100
@@ -154,14 +154,14 @@ class AddressMatchTest extends TestCase
      */
     public function notSameIfAddressDetailsIsDifferent(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = $this->prophesize(AddressDetailInterface::class);
         $addressDetail->sameValueAs(Argument::any())->willReturn(false);
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail->reveal(), 100);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail->reveal(), 100);
 
         $otherAddressMatch = new AddressMatch(
-            $localityName,
+            $municipalityName,
             $streetName,
             $this->createAddressDetailMock(987),
             100
@@ -177,11 +177,11 @@ class AddressMatchTest extends TestCase
      */
     public function sameIfBothHaveIdenticalDetailsAndNoAddressDetails(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetail = null;
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
-        $sameAddressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
+        $sameAddressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
 
         $this->assertTrue($addressMatch->sameValueAs($sameAddressMatch));
     }
@@ -193,15 +193,15 @@ class AddressMatchTest extends TestCase
      */
     public function sameIfBothHaveIdenticalDetailsAndAddressDetails(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
 
         $addressDetailMock = $this->prophesize(AddressDetailInterface::class);
         $addressDetailMock->sameValueAs(Argument::any())->willReturn(true);
         $addressDetail = $addressDetailMock->reveal();
 
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
-        $sameAddressMatch = new AddressMatch($localityName, $streetName, $addressDetail, 100);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
+        $sameAddressMatch = new AddressMatch($municipalityName, $streetName, $addressDetail, 100);
 
         $this->assertTrue($addressMatch->sameValueAs($sameAddressMatch));
     }
@@ -213,41 +213,41 @@ class AddressMatchTest extends TestCase
      */
     public function castToStringReturnsStringCastOfContractDetail(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetails = $this->createAddressDetailMock(100);
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetails, 99);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetails, 99);
 
         $this->assertEquals((string) $addressDetails, (string) $addressMatch);
     }
 
     /**
-     * Cast to string will return [street], [locality] if no address details.
+     * Cast to string will return [street], [municipality] if no address details.
      *
      * @test
      */
-    public function castToStringReturnsStreetNameLocalityNameIfNoAddressDetail(): void
+    public function castToStringReturnsStreetNameMunicipalityNameIfNoAddressDetail(): void
     {
-        $localityName = $this->createLocalityName(123, 'Gent');
+        $municipalityName = $this->createMunicipalityName(123, 'Gent');
         $streetName = $this->createStreetName(456, 'Bellevue');
         $addressDetails = null;
-        $addressMatch = new AddressMatch($localityName, $streetName, $addressDetails, 99);
+        $addressMatch = new AddressMatch($municipalityName, $streetName, $addressDetails, 99);
 
         $this->assertEquals('Bellevue, Gent', (string) $addressMatch);
     }
 
     /**
-     * Create locality name value.
+     * Create municipality name value.
      *
      * @param int $identifier
      * @param string $name
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
      */
-    private function createLocalityName(int $identifier, string $name): LocalityName
+    private function createMunicipalityName(int $identifier, string $name): MunicipalityName
     {
-        return new LocalityName(
-            new LocalityNameId($identifier),
+        return new MunicipalityName(
+            new MunicipalityNameId($identifier),
             new GeographicalName(
                 new LanguageCode('NL'),
                 $name

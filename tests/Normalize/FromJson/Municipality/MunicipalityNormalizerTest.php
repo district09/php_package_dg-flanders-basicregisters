@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Locality;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Municipality;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\Locality;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNormalizer
  */
-class LocalityNormalizerTest extends TestCase
+class MunicipalityNormalizerTest extends TestCase
 {
     /**
      * Json data to test with.
@@ -43,16 +43,16 @@ class LocalityNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a Locality value.
+     * Json data is normalized into a Municipality value.
      *
      * @test
      */
     public function jsonDataIsNormalized(): void
     {
-        $expected = new Locality(
+        $expected = new Municipality(
             new PostInfoId(9050),
-            new LocalityName(
-                new LocalityNameId(44021),
+            new MunicipalityName(
+                new MunicipalityNameId(44021),
                 new GeographicalName(
                     new LanguageCode('NL'),
                     'Gent'
@@ -60,7 +60,7 @@ EOT;
             )
         );
 
-        $normalizer = new LocalityNormalizer();
+        $normalizer = new MunicipalityNormalizer();
         $jsonData = json_decode($this->json);
 
         $this->assertEquals(

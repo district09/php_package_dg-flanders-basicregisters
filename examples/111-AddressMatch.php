@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
 use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
 use DigipolisGent\Flanders\BasicRegisters\Filter\HouseNumberFilter;
-use DigipolisGent\Flanders\BasicRegisters\Filter\LocalityNameFilter;
+use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\PostalCodeFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\StreetNameFilter;
 
@@ -36,7 +36,7 @@ $service = BasicRegistersFactory::create($client);
 
 echo ' → Create the filters.' . PHP_EOL;
 $filters = new Filters(
-    new LocalityNameFilter('gent'),
+    new MunicipalityNameFilter('gent'),
     new PostalCodeFilter(9000),
     new StreetNameFilter('bellevue'),
     new HouseNumberFilter(5)
@@ -48,12 +48,12 @@ $addressMatches = $service->addressMatch($filters);
 foreach ($addressMatches as $addressMatch) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $addressMatch */
     echo sprintf('   • %s', (string) $addressMatch), PHP_EOL;
-    echo sprintf('     Locality name ID : %s', $addressMatch->localityName()->localityNameId()), PHP_EOL;
-    echo sprintf('     Locality name    : %s', $addressMatch->localityName()), PHP_EOL;
-    echo sprintf('     Street name ID   : %s', $addressMatch->streetName()->streetNameId()), PHP_EOL;
-    echo sprintf('     Street name      : %s', $addressMatch->streetName()), PHP_EOL;
-    echo sprintf('     Address ID       : %s', $addressMatch->addressDetail() ?? 'NA'), PHP_EOL;
-    echo sprintf('     Match Score      : %s', $addressMatch->score()), PHP_EOL;
+    echo sprintf('     Municipality name ID : %s', $addressMatch->municipalityName()->municipalityNameId()), PHP_EOL;
+    echo sprintf('     Municipality name    : %s', $addressMatch->municipalityName()), PHP_EOL;
+    echo sprintf('     Street name ID       : %s', $addressMatch->streetName()->streetNameId()), PHP_EOL;
+    echo sprintf('     Street name          : %s', $addressMatch->streetName()), PHP_EOL;
+    echo sprintf('     Address ID           : %s', $addressMatch->addressDetail() ?? 'NA'), PHP_EOL;
+    echo sprintf('     Match Score          : %s', $addressMatch->score()), PHP_EOL;
 }
 
 // End.

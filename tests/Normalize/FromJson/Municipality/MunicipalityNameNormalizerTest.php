@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Locality;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Municipality;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNameNormalizer
  */
-class LocalityNameNormalizerTest extends TestCase
+class MunicipalityNameNormalizerTest extends TestCase
 {
     /**
      * Json data to test with.
@@ -35,21 +35,21 @@ class LocalityNameNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a LocalityName value.
+     * Json data is normalized into a MunicipalityName value.
      *
      * @test
      */
     public function jsonDataIsNormalized(): void
     {
-        $expected = new LocalityName(
-            new LocalityNameId(44021),
+        $expected = new MunicipalityName(
+            new MunicipalityNameId(44021),
             new GeographicalName(
                 new LanguageCode('NL'),
                 'Gent'
             )
         );
 
-        $normalizer = new LocalityNameNormalizer();
+        $normalizer = new MunicipalityNameNormalizer();
         $jsonData = json_decode($this->json);
 
         $this->assertEquals(

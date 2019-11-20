@@ -8,7 +8,7 @@ use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
 /**
- * A locality.
+ * A municipality.
  */
 abstract class AbstractWithGeographicalName extends ValueAbstract
 {

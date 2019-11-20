@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Filter;
 
-use DigipolisGent\Flanders\BasicRegisters\Filter\LocalityNameFilter;
+use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Filter\AbstractFilter
- * @covers \DigipolisGent\Flanders\BasicRegisters\Filter\LocalityNameFilter
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter
  */
-class LocalityNameFilterTest extends TestCase
+class MunicipalityNameFilterTest extends TestCase
 {
     /**
      * The value is passed trough the constructor.
@@ -20,7 +20,7 @@ class LocalityNameFilterTest extends TestCase
      */
     public function valueIsPassedTroughTheConstructor(): void
     {
-        $filter = new LocalityNameFilter('FooBar');
+        $filter = new MunicipalityNameFilter('FooBar');
 
         $this->assertEquals('FooBar', $filter->value());
     }
@@ -32,7 +32,7 @@ class LocalityNameFilterTest extends TestCase
      */
     public function hasProperArgumentName(): void
     {
-        $filter = new LocalityNameFilter('FooBar');
+        $filter = new MunicipalityNameFilter('FooBar');
 
         $this->assertEquals('gemeentenaam', $filter->name());
     }

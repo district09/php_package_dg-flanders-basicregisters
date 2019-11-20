@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Locality;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Municipality;
 
-use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameDetailNormalizer;
+use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNameDetailNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameDetail;
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetail;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Locality\LocalityNameDetailNormalizer
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNameDetailNormalizer
  */
-class LocalityNameDetailNormalizerTest extends TestCase
+class MunicipalityNameDetailNormalizerTest extends TestCase
 {
     /**
      * Json data to test with.
@@ -49,14 +49,14 @@ class LocalityNameDetailNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into a LocalityNameDetail value.
+     * Json data is normalized into a MunicipalityNameDetail value.
      *
      * @test
      */
     public function jsonDataIsNormalized(): void
     {
-        $expected = new LocalityNameDetail(
-            new LocalityNameId(44021),
+        $expected = new MunicipalityNameDetail(
+            new MunicipalityNameId(44021),
             new GeographicalNames(
                 new GeographicalName(
                     new LanguageCode('DE'),
@@ -73,7 +73,7 @@ EOT;
             )
         );
 
-        $normalizer = new LocalityNameDetailNormalizer();
+        $normalizer = new MunicipalityNameDetailNormalizer();
         $jsonData = json_decode($this->json);
 
         $this->assertEquals(

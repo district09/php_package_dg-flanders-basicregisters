@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
@@ -16,18 +16,18 @@ use DigipolisGent\Value\ValueInterface;
  * gets a score how close it matches the request.
  *
  * The address detail will only be in the returned data if the matching is done
- * with a house number. Without it it will only have the LocalityName and
+ * with a house number. Without it it will only have the MunicipalityName and
  * StreetName values.
  */
 final class AddressMatch extends ValueAbstract implements AddressMatchInterface
 {
 
     /**
-     * The locality name value.
+     * The municipality name value.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
      */
-    private $localityName;
+    private $municipalityName;
 
     /**
      * The street name value.
@@ -53,8 +53,8 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     /**
      * Create a new address match object.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName $localityName
-     *   The locality name value.
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName
+     *   The municipality name value.
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName $streetName
      *   The street name value.
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface|null $addressDetail
@@ -62,12 +62,12 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
      * @param float $score
      */
     public function __construct(
-        LocalityName $localityName,
+        MunicipalityName $municipalityName,
         StreetName $streetName,
         ?AddressDetailInterface $addressDetail,
         float $score
     ) {
-        $this->localityName = $localityName;
+        $this->municipalityName = $municipalityName;
         $this->streetName = $streetName;
         $this->addressDetail = $addressDetail;
         $this->score = $score;
@@ -76,9 +76,9 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     /**
      * @inheritDoc
      */
-    public function localityName(): LocalityName
+    public function municipalityName(): MunicipalityName
     {
-        return $this->localityName;
+        return $this->municipalityName;
     }
 
     /**
@@ -121,7 +121,7 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $object */
         return $this->sameValueTypeAs($object)
-            && $this->localityName()->sameValueAs($object->localityName())
+            && $this->municipalityName()->sameValueAs($object->municipalityName())
             && $this->streetName()->sameValueAs($object->streetName())
             && $this->sameAddressDetailAs($object);
     }
@@ -150,6 +150,6 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     {
         return $this->hasAddressDetail()
             ? (string) $this->addressDetail()
-            : sprintf('%s, %s', $this->streetName(), $this->localityName());
+            : sprintf('%s, %s', $this->streetName(), $this->municipalityName());
     }
 }
