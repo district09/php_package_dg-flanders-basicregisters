@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Filter;
 
 /**
- * Filter by the postal code.
+ * Filter by the patrimony service street code.
  */
-final class PostalCodeFilter extends AbstractFilter
+class StreetPatrimonyCodeFilter extends AbstractFilter
 {
 
     /**
@@ -15,6 +15,6 @@ final class PostalCodeFilter extends AbstractFilter
      */
     public function name(): string
     {
-        return 'postcode';
+        return 'kadStraatcode';
     }
 }

@@ -43,6 +43,11 @@ interface BasicRegistersInterface
     /**
      * Look up addresses that match (partial) filter values.
      *
+     * NOTE: The matcher requires that minimal following filters are provided:
+     *   (LocalityName AND/OR LocalityNisCode AND/OR PostalCode)
+     *   AND
+     *   (StreetName AND/OR StreetPatrimonyCode AND/OR StreetNationalRegisterCode)
+     *
      * @param \DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface $filters
      *   Optional filters to limit the returned addresses by.
      *
