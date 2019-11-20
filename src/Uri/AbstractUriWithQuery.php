@@ -62,8 +62,10 @@ abstract class AbstractUriWithQuery implements UriInterface
      *
      * @return \DigipolisGent\API\Client\Uri\UriInterface
      */
-    public static function fromFiltersAndPager(?FiltersInterface $filters = null, ?PagerInterface $pager = null): UriInterface
-    {
+    public static function fromFiltersAndPager(
+        ?FiltersInterface $filters = null,
+        ?PagerInterface $pager = null
+    ): UriInterface {
         $query = array_merge(
             $filters ? $filters->filters() : [],
             $pager ? $pager->query() : []
