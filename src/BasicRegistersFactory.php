@@ -6,6 +6,7 @@ use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressMatchHandler;
+use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNamesHandler;
 
 /**
  * Factory to get the BasicRegisters.
@@ -22,6 +23,8 @@ final class BasicRegistersFactory
         $client->addHandler(new AddressListHandler());
         $client->addHandler(new AddressDetailHandler());
         $client->addHandler(new AddressMatchHandler());
+
+        $client->addHandler(new MunicipalityNamesHandler());
 
         return new BasicRegisters($client);
     }

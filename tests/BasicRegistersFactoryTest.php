@@ -10,6 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressMatchHandler;
+use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNamesHandler;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,6 +26,7 @@ class BasicRegistersFactoryTest extends TestCase
     public function factoredClientContainsAllHandlers(): void
     {
         $clientMock = $this->prophesize(ClientInterface::class);
+
         $clientMock
             ->addHandler(new AddressListHandler())
             ->shouldBeCalled();
@@ -34,6 +36,10 @@ class BasicRegistersFactoryTest extends TestCase
         $client = $clientMock->reveal();
         $clientMock
             ->addHandler(new AddressMatchHandler())
+            ->shouldBeCalled();
+
+        $clientMock
+            ->addHandler(new MunicipalityNamesHandler())
             ->shouldBeCalled();
 
         $factory = new BasicRegistersFactory();

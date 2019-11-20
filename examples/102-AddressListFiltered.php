@@ -55,8 +55,6 @@ foreach ($addresses as $address) {
     echo PHP_EOL;
 }
 
-echo PHP_EOL;
-
 // End.
 echo PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;

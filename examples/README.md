@@ -21,13 +21,19 @@ composer install
 
 ## Examples
 
+### Addresses
+
 * `101-AddressList.php` : Overview of the first 20 addresses in the
   register.
 * `102-AddressListFilterd.php` : Overview of addresses based on given
   filter.
-* `111-AddressMatch.php` : Look up an address by municipality name, street
-  name, and optional house number and bus number. 
+* `111-AddressMatch.php` : Look up an address by municipality name,
+  street name, and optional house number and bus number. 
 * `121-AddressDetails.php` : All details of a single address.
+
+### Municipalities
+
+* `201-MunicipalityNames.php` : List of the first 25 municipality names.
 
 ## Usage
 
