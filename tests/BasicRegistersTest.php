@@ -5,19 +5,25 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters;
 
 use DigipolisGent\API\Client\ClientInterface;
+use DigipolisGent\API\Client\Response\ResponseInterface;
 use DigipolisGent\Flanders\BasicRegisters\BasicRegisters;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
+use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressMatchRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressMatchResponse;
+use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNamesResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestInterface;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\BasicRegisters
@@ -31,16 +37,18 @@ class BasicRegistersTest extends TestCase
      */
     public function getAddressList(): void
     {
+        $filters = $this->createFiltersMock();
+        $pager = $this->createPagerMock();
+
         $addresses = new Addresses();
-        $request = new AddressListRequest();
+        $request = new AddressListRequest($filters, $pager);
         $response = new AddressListResponse($addresses);
 
-        $client = $this->prophesize(ClientInterface::class);
-        $client->send($request)->willReturn($response);
+        $basicRegisters = new BasicRegisters(
+            $this->createClientMock($request, $response)
+        );
 
-        $basicRegisters = new BasicRegisters($client->reveal());
-
-        $this->assertEquals($addresses, $basicRegisters->addressList());
+        $this->assertEquals($addresses, $basicRegisters->addressList($filters, $pager));
     }
 
     /**
@@ -55,10 +63,9 @@ class BasicRegistersTest extends TestCase
         $request = new AddressDetailRequest($addressId);
         $response = new AddressDetailResponse($addressDetail);
 
-        $client = $this->prophesize(ClientInterface::class);
-        $client->send($request)->willReturn($response);
-
-        $basicRegisters = new BasicRegisters($client->reveal());
+        $basicRegisters = new BasicRegisters(
+            $this->createClientMock($request, $response)
+        );
 
         $this->assertEquals($addressDetail, $basicRegisters->addressDetail($addressId));
     }
@@ -70,19 +77,78 @@ class BasicRegistersTest extends TestCase
      */
     public function getAddressMatch(): void
     {
-        $filtersMock = $this->prophesize(FiltersInterface::class);
-        $filtersMock->filters()->willReturn([]);
-        $filters = $filtersMock->reveal();
+        $filters = $this->createFiltersMock();
 
         $addressMatches = new AddressMatches();
         $request = new AddressMatchRequest($filters);
         $response = new AddressMatchResponse($addressMatches);
 
+        $basicRegisters = new BasicRegisters(
+            $this->createClientMock($request, $response)
+        );
+
+        $this->assertEquals($addressMatches, $basicRegisters->addressMatch($filters));
+    }
+
+    /**
+     * Get the list of municipality names.
+     *
+     * @test
+     */
+    public function getMunicipalityNames(): void
+    {
+        $pager = $this->createPagerMock();
+
+        $municipalityNames = new MunicipalityNames();
+        $request = new MunicipalityNamesRequest($pager);
+        $response = new MunicipalityNamesResponse($municipalityNames);
+
+        $basicRegisters = new BasicRegisters(
+            $this->createClientMock($request, $response)
+        );
+
+        $this->assertEquals($municipalityNames, $basicRegisters->municipalityNames($pager));
+    }
+
+    /**
+     * Create a client mock.
+     *
+     * @param \Psr\Http\Message\RequestInterface $request
+     * @param \DigipolisGent\API\Client\Response\ResponseInterface $response
+     *
+     * @return \DigipolisGent\API\Client\ClientInterface
+     */
+    private function createClientMock(RequestInterface $request, ResponseInterface $response): ClientInterface
+    {
         $client = $this->prophesize(ClientInterface::class);
         $client->send($request)->willReturn($response);
 
-        $basicRegisters = new BasicRegisters($client->reveal());
+        return $client->reveal();
+    }
 
-        $this->assertEquals($addressMatches, $basicRegisters->addressMatch($filters));
+    /**
+     * Create empty filters mock.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface
+     */
+    private function createFiltersMock(): FiltersInterface
+    {
+        $filtersMock = $this->prophesize(FiltersInterface::class);
+        $filtersMock->filters()->willReturn([]);
+
+        return $filtersMock->reveal();
+    }
+
+    /**
+     * Create empty pager mock.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface
+     */
+    private function createPagerMock(): PagerInterface
+    {
+        $pagerMock = $this->prophesize(PagerInterface::class);
+        $pagerMock->query()->willReturn([]);
+
+        return $pagerMock->reveal();
     }
 }
