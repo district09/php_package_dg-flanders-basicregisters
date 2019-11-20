@@ -25,7 +25,7 @@ composer install
   register.
 * `102-AddressListFilterd.php` : Overview of addresses based on given
   filter.
-* `111-AddressDetails.php` : All details of a single address.
+* `121-AddressDetails.php` : All details of a single address.
 
 ## Usage
 
