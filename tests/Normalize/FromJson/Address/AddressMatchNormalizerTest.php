@@ -27,11 +27,49 @@ use PHPUnit\Framework\TestCase;
 class AddressMatchNormalizerTest extends TestCase
 {
     /**
-     * Json data to test with.
+     * Json data without address details to test with.
      *
      * @var string
      */
-    private $json = <<<EOT
+    private $jsonDataWithoutAddressDetails = <<<EOT
+{
+    "gemeente": {
+        "objectId": "44021",
+        "detail": "https://basisregisters.vlaanderen.be/api/v1/gemeenten/44021",
+        "gemeentenaam": {
+            "geografischeNaam": {
+                "spelling": "Gent",
+                "taal": "NL"
+            }
+        }
+    },
+    "straatnaam": {
+        "objectId": "69683",
+        "detail": "https://basisregisters.vlaanderen.be/api/v1/straatnamen/69683",
+        "straatnaam": {
+            "geografischeNaam": {
+                "spelling": "Bellevue",
+                "taal": "NL"
+            }
+        }
+    },
+    "homoniemToevoeging": {
+        "geografischeNaam": {
+            "spelling": "",
+            "taal": "NL"
+        }
+    },
+    "score": 77.58316245158349
+}
+EOT;
+
+
+    /**
+     * Json data containing the address details to test with.
+     *
+     * @var string
+     */
+    private $jsonWithAddressDetails = <<<EOT
 {
     "identificator": {
         "id": "https://data.vlaanderen.be/id/adres/2550151",
@@ -107,13 +145,62 @@ class AddressMatchNormalizerTest extends TestCase
 EOT;
 
     /**
-     * Json data is normalized into an AddressMatch value.
+     * Json without address detail is normalized into an AddressMatch value.
      *
      * @test
      */
-    public function jsonDataIsNormalized(): void
+    public function jsonWithoutAddressDetailIsNormalized(): void
     {
         $expected = new AddressMatch(
+            new LocalityName(
+                new LocalityNameId(44021),
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'Gent'
+                )
+            ),
+            new StreetName(
+                new StreetNameId(69683),
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'Bellevue'
+                )
+            ),
+            null,
+            77.58316245158349
+        );
+
+        $normalizer = new AddressMatchNormalizer();
+        $jsonData = json_decode($this->jsonDataWithoutAddressDetails);
+
+        $this->assertEquals(
+            $expected,
+            $normalizer->normalize($jsonData)
+        );
+    }
+
+    /**
+     * Json with address detail is normalized into an AddressMatch value.
+     *
+     * @test
+     */
+    public function jsonDataWithAddressDetailIsNormalized(): void
+    {
+        $expected = new AddressMatch(
+            new LocalityName(
+                new LocalityNameId(44021),
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'Gent'
+                )
+            ),
+            new StreetName(
+                new StreetNameId(69683),
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'Bellevue'
+                )
+            ),
             new AddressDetail(
                 new Address(
                     new AddressId(2550151),
@@ -147,7 +234,7 @@ EOT;
         );
 
         $normalizer = new AddressMatchNormalizer();
-        $jsonData = json_decode($this->json);
+        $jsonData = json_decode($this->jsonWithAddressDetails);
 
         $this->assertEquals(
             $expected,

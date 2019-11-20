@@ -10,6 +10,13 @@ namespace DigipolisGent\Flanders\BasicRegisters\Pager;
 interface PagerInterface
 {
     /**
+     * The current page of the pager.
+     *
+     * @return int
+     */
+    public function page(): int;
+
+    /**
      * Get the pager offset.
      *
      * @return int
@@ -22,4 +29,11 @@ interface PagerInterface
      * @return int
      */
     public function limit(): int;
+
+    /**
+     * Return the pager info as query array.
+     *
+     * @return array
+     */
+    public function query(): array;
 }

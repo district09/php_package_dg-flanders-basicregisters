@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Filter;
 
 /**
- * Filter the query by locality name.
+ * Filter by locality name.
  */
 final class LocalityNameFilter extends AbstractFilter
 {

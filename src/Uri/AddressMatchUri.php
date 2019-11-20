@@ -7,13 +7,13 @@ namespace DigipolisGent\Flanders\BasicRegisters\Uri;
 /**
  * Uri where the addresses (adressen) methods are located.
  */
-class AddressesUri extends AbstractUriWithQuery
+class AddressMatchUri extends AbstractUriWithQuery
 {
     /**
      * @inheritDoc
      */
     protected function getPath(): string
     {
-        return 'adressen';
+        return 'adresmatch';
     }
 }

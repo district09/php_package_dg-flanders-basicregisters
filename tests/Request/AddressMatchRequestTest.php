@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Request;
 
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
-use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
-use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\AddressMatchRequest;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Request\AddressMatchRequest
  */
-class AddressListRequestTest extends TestCase
+class AddressMatchRequestTest extends TestCase
 {
     /**
      * The URI is set.
@@ -21,8 +20,8 @@ class AddressListRequestTest extends TestCase
      */
     public function defaultUriWithoutFilters(): void
     {
-        $request = new AddressListRequest();
-        $this->assertEquals('adressen', $request->getRequestTarget());
+        $request = new AddressMatchRequest();
+        $this->assertEquals('adresmatch', $request->getRequestTarget());
     }
 
     /**
@@ -32,13 +31,12 @@ class AddressListRequestTest extends TestCase
      */
     public function uriWithFiltersAndPager(): void
     {
-        $request = new AddressListRequest(
-            $this->createFiltersMock(),
-            $this->createPagerMock()
+        $request = new AddressMatchRequest(
+            $this->createFiltersMock()
         );
 
         $this->assertEquals(
-            'adressen?biz=fuzz&baz=123&offset=250&limit=50',
+            'adresmatch?biz=fuzz&baz=123',
             $request->getRequestTarget()
         );
     }
@@ -61,25 +59,5 @@ class AddressListRequestTest extends TestCase
             );
 
         return $filters->reveal();
-    }
-
-    /**
-     * Create a pager mock.
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface
-     */
-    private function createPagerMock(): PagerInterface
-    {
-        $pager = $this->prophesize(PagerInterface::class);
-        $pager
-            ->query()
-            ->willReturn(
-                [
-                    'offset' => 250,
-                    'limit' => 50,
-                ]
-            );
-
-        return $pager->reveal();
     }
 }

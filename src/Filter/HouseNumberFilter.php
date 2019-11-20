@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Filter;
 
 /**
- * Filter the request by house number.
+ * Filter by house number.
  */
 final class HouseNumberFilter extends AbstractFilter
 {
