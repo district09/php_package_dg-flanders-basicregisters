@@ -39,7 +39,7 @@ $filters = new Filters(
     new LocalityNameFilter('gent'),
     new PostalCodeFilter(9000),
     new StreetNameFilter('bellevue'),
-    new HouseNumberFilter(1)
+    new HouseNumberFilter(5)
 );
 
 echo ' → List of address that match the search.' . PHP_EOL;
@@ -47,8 +47,13 @@ $addressMatches = $service->addressMatch($filters);
 
 foreach ($addressMatches as $addressMatch) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $addressMatch */
-    echo sprintf('   • %d : %s', $addressMatch->addressId()->value(), (string) $addressMatch), PHP_EOL;
-    echo sprintf('     %d', $addressMatch->score()), PHP_EOL;
+    echo sprintf('   • %s', (string) $addressMatch), PHP_EOL;
+    echo sprintf('     Locality name ID : %s', $addressMatch->localityName()->localityNameId()), PHP_EOL;
+    echo sprintf('     Locality name    : %s', $addressMatch->localityName()), PHP_EOL;
+    echo sprintf('     Street name ID   : %s', $addressMatch->streetName()->streetNameId()), PHP_EOL;
+    echo sprintf('     Street name      : %s', $addressMatch->streetName()), PHP_EOL;
+    echo sprintf('     Address ID       : %s', $addressMatch->addressDetail() ?? 'NA'), PHP_EOL;
+    echo sprintf('     Match Score      : %s', $addressMatch->score()), PHP_EOL;
 }
 
 // End.

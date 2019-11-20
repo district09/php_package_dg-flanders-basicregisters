@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Address;
 
+use DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Value\ValueInterface;
 
 /**
@@ -15,18 +17,32 @@ use DigipolisGent\Value\ValueInterface;
 interface AddressMatchInterface extends ValueInterface
 {
     /**
-     * Get the address id.
+     * Get the related LocalityName value.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Locality\LocalityName
      */
-    public function addressId(): AddressId;
+    public function localityName(): LocalityName;
 
     /**
-     * Get the address detail.
+     * Get the related StreetName value.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName
      */
-    public function addressDetail(): AddressDetailInterface;
+    public function streetName(): StreetName;
+
+    /**
+     * Has the match a complete address.
+     *
+     * @return bool
+     */
+    public function hasAddressDetail(): bool;
+
+    /**
+     * Get the address detail (if any).
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface|null
+     */
+    public function addressDetail(): ?AddressDetailInterface;
 
     /**
      * Get the matching score.

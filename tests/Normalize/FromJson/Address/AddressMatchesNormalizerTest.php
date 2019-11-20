@@ -108,13 +108,6 @@ class AddressMatchesNormalizerTest extends TestCase
             "score": 100.0
         },
         {
-            "identificator": {
-                "id": "https://data.vlaanderen.be/id/adres/5309111",
-                "naamruimte": "https://data.vlaanderen.be/id/adres",
-                "objectId": "5309111",
-                "versieId": 27
-            },
-            "detail": "https://basisregisters.vlaanderen.be/api/v1/adressen/5309111",
             "gemeente": {
                 "objectId": "44021",
                 "detail": "https://basisregisters.vlaanderen.be/api/v1/gemeenten/44021",
@@ -124,10 +117,6 @@ class AddressMatchesNormalizerTest extends TestCase
                         "taal": "NL"
                     }
                 }
-            },
-            "postinfo": {
-                "objectId": "9050",
-                "detail": "https://basisregisters.vlaanderen.be/api/v1/postinfo/9050"
             },
             "straatnaam": {
                 "objectId": "69683",
@@ -145,44 +134,6 @@ class AddressMatchesNormalizerTest extends TestCase
                     "taal": "NL"
                 }
             },
-            "huisnummer": "5",
-            "busnummer": "0005",
-            "volledigAdres": {
-                "geografischeNaam": {
-                    "spelling": "Bellevue 5 bus 0005, 9050 Gent",
-                    "taal": "NL"
-                }
-            },
-            "adresPositie": {
-                "point": {
-                    "coordinates": [
-                        105652.79,
-                        192086.26
-                    ],
-                    "type": "Point"
-                }
-            },
-            "positieSpecificatie": "Gebouweenheid",
-            "positieGeometrieMethode": "AangeduidDoorBeheerder",
-            "adresStatus": "InGebruik",
-            "officieelToegekend": true,
-            "adresseerbareObjecten": [
-                {
-                    "objectType": "Gebouweenheid",
-                    "objectId": "6436188",
-                    "detail": "https://basisregisters.vlaanderen.be/api/v1/gebouweenheden/6436188"
-                },
-                {
-                    "objectType": "Gebouweenheid",
-                    "objectId": "20124594",
-                    "detail": "https://basisregisters.vlaanderen.be/api/v1/gebouweenheden/20124594"
-                },
-                {
-                    "objectType": "Perceel",
-                    "objectId": "44032A0472-00N003",
-                    "detail": "https://basisregisters.vlaanderen.be/api/v1/percelen/44032A0472-00N003"
-                }
-            ],
             "score": 82.341337907375632
         }
     ],
@@ -199,6 +150,20 @@ EOT;
     {
         $expected = new AddressMatches(
             new AddressMatch(
+                new LocalityName(
+                    new LocalityNameId(44021),
+                    new GeographicalName(
+                        new LanguageCode('NL'),
+                        'Gent'
+                    )
+                ),
+                new StreetName(
+                    new StreetNameId(69683),
+                    new GeographicalName(
+                        new LanguageCode('NL'),
+                        'Bellevue'
+                    )
+                ),
                 new AddressDetail(
                     new Address(
                         new AddressId(3281807),
@@ -231,35 +196,21 @@ EOT;
                 100.0
             ),
             new AddressMatch(
-                new AddressDetail(
-                    new Address(
-                        new AddressId(5309111),
-                        '5',
-                        '0005',
-                        $expected = new FullAddress(
-                            new LanguageCode('NL'),
-                            'Bellevue 5 bus 0005, 9050 Gent'
-                        )
-                    ),
-                    new Locality(
-                        new PostInfoId(9050),
-                        new LocalityName(
-                            new LocalityNameId(44021),
-                            new GeographicalName(
-                                new LanguageCode('NL'),
-                                'Gent'
-                            )
-                        )
-                    ),
-                    new StreetName(
-                        new StreetNameId(69683),
-                        new GeographicalName(
-                            new LanguageCode('NL'),
-                            'Bellevue'
-                        )
-                    ),
-                    new Lambert72Point(105652.79, 192086.26)
+                new LocalityName(
+                    new LocalityNameId(44021),
+                    new GeographicalName(
+                        new LanguageCode('NL'),
+                        'Gent'
+                    )
                 ),
+                new StreetName(
+                    new StreetNameId(69683),
+                    new GeographicalName(
+                        new LanguageCode('NL'),
+                        'Bellevue'
+                    )
+                ),
+                null,
                 82.341337907375632
             )
         );
