@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Request;
 
-use DigipolisGent\Flanders\BasicRegisters\Filter\FilterInterface;
-use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
-use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
+use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
+use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
 use PHPUnit\Framework\TestCase;
 
@@ -34,33 +33,53 @@ class AddressListRequestTest extends TestCase
     public function uriWithFiltersAndPager(): void
     {
         $request = new AddressListRequest(
-            new Filters(
-                $this->createFilterMock('biz', 'fizz'),
-                $this->createFilterMock('baz', 345)
-            ),
-            new Pager(50, 100)
+            $this->createFiltersMock(),
+            $this->createPagerMock()
         );
 
         $this->assertEquals(
-            'adressen?biz=fizz&baz=345&offset=50&limit=100',
+            'adressen?biz=fuzz&baz=123&offset=250&limit=50',
             $request->getRequestTarget()
         );
     }
 
     /**
-     * Create filter mock.
+     * Create filters mock.
      *
-     * @param string $name
-     * @param mixed $value
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Filter\FilterInterface
+     * @return \DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface
      */
-    private function createFilterMock(string $name, $value): FilterInterface
+    private function createFiltersMock(): FiltersInterface
     {
-        $filter = $this->prophesize(FilterInterface::class);
-        $filter->name()->willReturn($name);
-        $filter->value()->willReturn($value);
+        $filters = $this->prophesize(FiltersInterface::class);
+        $filters
+            ->filters()
+            ->willReturn(
+                [
+                    'biz' => 'fuzz',
+                    'baz' => 123,
+                ]
+            );
 
-        return $filter->reveal();
+        return $filters->reveal();
+    }
+
+    /**
+     * Create a pager mock.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface
+     */
+    private function createPagerMock(): PagerInterface
+    {
+        $pager = $this->prophesize(PagerInterface::class);
+        $pager
+            ->query()
+            ->willReturn(
+                [
+                    'offset' => 250,
+                    'limit' => 50,
+                ]
+            );
+
+        return $pager->reveal();
     }
 }

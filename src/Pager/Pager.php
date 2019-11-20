@@ -10,6 +10,13 @@ namespace DigipolisGent\Flanders\BasicRegisters\Pager;
 class Pager implements PagerInterface
 {
     /**
+     * The page the pager is currently on.
+     *
+     * @var int
+     */
+    private $page;
+
+    /**
      * The first record to return.
      *
      * @var int
@@ -26,13 +33,22 @@ class Pager implements PagerInterface
     /**
      * Create a new pager.
      *
-     * @param int $offset
+     * @param int $page
      * @param int $limit
      */
-    public function __construct(int $offset = 0, int $limit = 20)
+    public function __construct(int $page = 0, int $limit = 20)
     {
-        $this->offset = $offset;
+        $this->page = $page;
+        $this->offset = $page * $limit;
         $this->limit = $limit;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function page(): int
+    {
+        return $this->page;
     }
 
     /**
@@ -49,5 +65,16 @@ class Pager implements PagerInterface
     public function limit(): int
     {
         return $this->limit;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function query(): array
+    {
+        return [
+            'offset' => $this->offset(),
+            'limit' => $this->limit(),
+        ];
     }
 }

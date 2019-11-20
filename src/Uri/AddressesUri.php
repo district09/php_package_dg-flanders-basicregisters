@@ -7,7 +7,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Uri;
 /**
  * Uri where the addresses (adressen) methods are located.
  */
-class AddressesUri extends AbstractUriWithFiltersAndPager
+class AddressesUri extends AbstractUriWithQuery
 {
     /**
      * @inheritDoc

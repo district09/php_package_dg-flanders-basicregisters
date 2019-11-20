@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Uri;
 
-use DigipolisGent\Flanders\BasicRegisters\Filter\FilterInterface;
-use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
-use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
+use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
+use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Uri\AddressesUri;
 use PHPStan\Testing\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\AbstractUriWithFiltersAndPager
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\AbstractUriWithQuery
  * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\AddressesUri
  */
 class AddressesUriTest extends TestCase
 {
     /**
-     * URI without filters
+     * URI without filters.
      *
      * @test
      */
@@ -28,39 +27,94 @@ class AddressesUriTest extends TestCase
     }
 
     /**
-     * URI with filters.
+     * URI with only filters.
      *
      * @test
      */
     public function uriWithFilters(): void
     {
-        $filters = new Filters(
-            $this->createFilterMock('biz', 'fuzz'),
-            $this->createFilterMock('baz', 123)
+        $uri = AddressesUri::fromFilters(
+            $this->createFiltersMock()
         );
-        $pager = new Pager(5, 50);
 
-        $uri = new AddressesUri($filters, $pager);
         $this->assertSame(
-            'adressen?biz=fuzz&baz=123&offset=5&limit=50',
+            'adressen?biz=fuzz&baz=123',
             $uri->getUri()
         );
     }
 
     /**
-     * Create filter mock.
+     * URI with only pager.
      *
-     * @param string $name
-     * @param mixed $value
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Filter\FilterInterface
+     * @test
      */
-    private function createFilterMock(string $name, $value): FilterInterface
+    public function uriWithPager(): void
     {
-        $filter = $this->prophesize(FilterInterface::class);
-        $filter->name()->willReturn($name);
-        $filter->value()->willReturn($value);
+        $uri = AddressesUri::fromPager(
+            $this->createPagerMock()
+        );
 
-        return $filter->reveal();
+        $this->assertSame(
+            'adressen?offset=250&limit=50',
+            $uri->getUri()
+        );
+    }
+
+    /**
+     * URI with filters and pager.
+     *
+     * @test
+     */
+    public function uriWithFiltersAndPager(): void
+    {
+        $uri = AddressesUri::fromFiltersAndPager(
+            $this->createFiltersMock(),
+            $this->createPagerMock()
+        );
+
+        $this->assertSame(
+            'adressen?biz=fuzz&baz=123&offset=250&limit=50',
+            $uri->getUri()
+        );
+    }
+
+    /**
+     * Create filters mock.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface
+     */
+    private function createFiltersMock(): FiltersInterface
+    {
+        $filters = $this->prophesize(FiltersInterface::class);
+        $filters
+            ->filters()
+            ->willReturn(
+                [
+                    'biz' => 'fuzz',
+                    'baz' => 123,
+                ]
+            );
+
+        return $filters->reveal();
+    }
+
+    /**
+     * Create a pager mock.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface
+     */
+    private function createPagerMock(): PagerInterface
+    {
+        $pager = $this->prophesize(PagerInterface::class);
+        $pager
+            ->query()
+            ->willReturn(
+                [
+                    'offset' => 250,
+                    'limit' => 50,
+                ]
+            );
+
+        return $pager->reveal();
     }
 }
