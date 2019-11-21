@@ -7,6 +7,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\GeographicalNamesNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\IdExtractor;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetail;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 
 /**
@@ -19,9 +20,9 @@ final class MunicipalityNameDetailNormalizer
      *
      * @param object $jsonData
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetail
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface
      */
-    public function normalize(object $jsonData): MunicipalityNameDetail
+    public function normalize(object $jsonData): MunicipalityNameDetailInterface
     {
         $idExtractor = new IdExtractor();
         $geoGraphicalNamesNormalizer = new GeographicalNamesNormalizer();

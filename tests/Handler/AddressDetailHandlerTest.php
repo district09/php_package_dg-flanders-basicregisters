@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Handler;
 
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
-use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Address;
@@ -91,11 +90,11 @@ class AddressDetailHandlerTest extends TestCase
 EOT;
 
     /**
-     * Handler handles AddressListRequest.
+     * Handler handles AddressDetailRequest.
      *
      * @test
      */
-    public function handlerHandlesAddressListRequest(): void
+    public function handlerHandlesAddressDetailRequest(): void
     {
         $handler = new AddressDetailHandler();
 

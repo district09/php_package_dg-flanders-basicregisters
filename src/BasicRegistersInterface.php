@@ -10,6 +10,8 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 
 /**
@@ -67,4 +69,13 @@ interface BasicRegistersInterface
      *   The matching addresses.
      */
     public function municipalityNames(PagerInterface $pager = null): MunicipalityNames;
+
+    /**
+     * Get the details of a single municipality name.
+     *
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId $municipalityNameId
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface
+     */
+    public function municipalityNameDetail(MunicipalityNameId $municipalityNameId): MunicipalityNameDetailInterface;
 }

@@ -11,12 +11,12 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * A municipality detail value.
  */
-final class MunicipalityNameDetail extends AbstractWithGeographicalNames
+final class MunicipalityNameDetail extends AbstractWithGeographicalNames implements MunicipalityNameDetailInterface
 {
     /**
      * The municipality name id.
      *
-     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetail
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId
      */
     private $municipalityNameId;
 
@@ -49,7 +49,7 @@ final class MunicipalityNameDetail extends AbstractWithGeographicalNames
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetail $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface $object */
         return parent::sameValueAs($object)
             && $this->municipalityNameId()->sameValueAs($object->municipalityNameId());
     }

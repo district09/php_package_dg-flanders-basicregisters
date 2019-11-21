@@ -10,6 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressMatchHandler;
+use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNameDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNamesHandler;
 use PHPUnit\Framework\TestCase;
 
@@ -40,6 +41,9 @@ class BasicRegistersFactoryTest extends TestCase
 
         $clientMock
             ->addHandler(new MunicipalityNamesHandler())
+            ->shouldBeCalled();
+        $clientMock
+            ->addHandler(new MunicipalityNameDetailHandler())
             ->shouldBeCalled();
 
         $factory = new BasicRegistersFactory();

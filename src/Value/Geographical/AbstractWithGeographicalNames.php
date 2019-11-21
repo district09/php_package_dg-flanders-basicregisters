@@ -8,9 +8,9 @@ use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
 /**
- * A municipality.
+ * Shared functionality for values containing a GeographicalNames collection.
  */
-abstract class AbstractWithGeographicalNames extends ValueAbstract
+abstract class AbstractWithGeographicalNames extends ValueAbstract implements WithGeographicalNamesInterface
 {
 
     /**

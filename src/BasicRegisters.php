@@ -8,11 +8,14 @@ use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressMatchRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 
 /**
@@ -70,5 +73,14 @@ final class BasicRegisters implements BasicRegistersInterface
     {
         $request = new MunicipalityNamesRequest($pager);
         return $this->client->send($request)->municipalityNames();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function municipalityNameDetail(MunicipalityNameId $municipalityNameId): MunicipalityNameDetailInterface
+    {
+        $request = new MunicipalityNameDetailRequest($municipalityNameId);
+        return $this->client->send($request)->municipalityNameDetail();
     }
 }

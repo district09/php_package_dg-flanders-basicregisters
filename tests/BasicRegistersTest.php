@@ -12,15 +12,19 @@ use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressMatchRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressMatchResponse;
+use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameDetailResponse;
 use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNamesResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
@@ -150,5 +154,28 @@ class BasicRegistersTest extends TestCase
         $pagerMock->query()->willReturn([]);
 
         return $pagerMock->reveal();
+    }
+
+    /**
+     * Get the municipality name details for a given municipality name ID.
+     *
+     * @test
+     */
+    public function getMunicipalityNameDetail(): void
+    {
+        $municipalityNameId = new MunicipalityNameId(9731);
+        $municipalityNameDetail = $this->prophesize(MunicipalityNameDetailInterface::class)->reveal();
+
+        $request = new MunicipalityNameDetailRequest($municipalityNameId);
+        $response = new MunicipalityNameDetailResponse($municipalityNameDetail);
+
+        $basicRegisters = new BasicRegisters(
+            $this->createClientMock($request, $response)
+        );
+
+        $this->assertEquals(
+            $municipalityNameDetail,
+            $basicRegisters->municipalityNameDetail($municipalityNameId)
+        );
     }
 }
