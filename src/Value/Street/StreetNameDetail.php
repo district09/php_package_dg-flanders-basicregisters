@@ -12,7 +12,7 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * A Street name.
  */
-final class StreetNameDetail extends AbstractWithGeographicalNames
+final class StreetNameDetail extends AbstractWithGeographicalNames implements StreetNameDetailInterface
 {
     /**
      * The street name id.
@@ -70,7 +70,7 @@ final class StreetNameDetail extends AbstractWithGeographicalNames
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetailInterface $object */
         return parent::sameValueAs($object)
             && $this->streetNameId()->sameValueAs($object->streetNameId())
             && $this->municipalityName()->sameValueAs($object->municipalityName());

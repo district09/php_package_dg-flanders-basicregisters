@@ -8,10 +8,11 @@ use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Geographical\Geogr
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\IdExtractor;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNameNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail;
+use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 
 /**
- * Normalizes JSON data into a StreetNameDetail value.
+ * Normalizes JSON data into a StreetNameDetailInterface value.
  */
 final class StreetNameDetailNormalizer
 {
@@ -20,9 +21,9 @@ final class StreetNameDetailNormalizer
      *
      * @param object $jsonData
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetailInterface
      */
-    public function normalize(object $jsonData): StreetNameDetail
+    public function normalize(object $jsonData): StreetNameDetailInterface
     {
         $idExtractor = new IdExtractor();
         $geoGraphicalNamesNormalizer = new GeographicalNamesNormalizer();

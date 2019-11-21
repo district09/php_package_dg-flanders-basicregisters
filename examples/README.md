@@ -34,6 +34,13 @@ composer install
 ### Municipalities
 
 * `201-MunicipalityNames.php` : List of the first 25 municipality names.
+* `211-MunicipalityNameDetail.php` : All details of a single
+  municipality name.
+  
+### Street names
+
+* `301-StreetNameList.php` : List of the first 25 street names.
+* `311-StreetNameDetail.php` : All details of a single street name.
 
 ## Usage
 

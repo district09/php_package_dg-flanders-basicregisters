@@ -14,7 +14,7 @@ final class MunicipalityNameServiceFactory
     /**
      * @param \DigipolisGent\API\Client\ClientInterface $client
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\MunicipalityNameInterface
+     * @return \DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceInterface
      */
     public static function create(ClientInterface $client): MunicipalityNameServiceInterface
     {
