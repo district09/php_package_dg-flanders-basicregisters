@@ -1,31 +1,28 @@
 <?php
 
-namespace DigipolisGent\Flanders\BasicRegisters;
+namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressMatchHandler;
-use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNamesHandler;
 
 /**
- * Factory to get the BasicRegisters.
+ * Factory to get the Address service methods.
  */
-final class BasicRegistersFactory
+final class AddressServiceFactory
 {
     /**
      * @param \DigipolisGent\API\Client\ClientInterface $client
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\BasicRegistersInterface
+     * @return \DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceInterface
      */
-    public static function create(ClientInterface $client): BasicRegistersInterface
+    public static function create(ClientInterface $client): AddressServiceInterface
     {
         $client->addHandler(new AddressListHandler());
         $client->addHandler(new AddressDetailHandler());
         $client->addHandler(new AddressMatchHandler());
 
-        $client->addHandler(new MunicipalityNamesHandler());
-
-        return new BasicRegisters($client);
+        return new AddressService($client);
     }
 }

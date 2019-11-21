@@ -4,9 +4,9 @@
  * Example how to get a filtered list of addresses.
  */
 
+use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
 use DigipolisGent\Flanders\BasicRegisters\Filter\HouseNumberFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
@@ -33,7 +33,7 @@ echo ' → Create the HTTP client.' . PHP_EOL;
 $client = new Client($guzzleClient, $configuration);
 
 echo ' → Create the Service wrapper.' . PHP_EOL;
-$service = BasicRegistersFactory::create($client);
+$service = new BasicRegister($client);
 
 echo ' → Create the filters.' . PHP_EOL;
 $filters = new Filters(
@@ -47,7 +47,7 @@ echo ' → Create the pager.' . PHP_EOL;
 $pager = new Pager(0, 50);
 
 echo ' → List of addresses.' . PHP_EOL;
-$addresses = $service->addressList($filters, $pager);
+$addresses = $service->address()->list($filters, $pager);
 
 foreach ($addresses as $address) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address */

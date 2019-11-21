@@ -14,5 +14,8 @@ $apiUserKey = null;
  * Data used in the examples.
  */
 
-// Address ID to load an Address Detail.
+// Address ID to load its Detail.
 $exampleAddressId = 2544648;
+
+// Municipality name ID to load its details.
+$exampleMunicipalityNameId = 44021;

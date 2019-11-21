@@ -4,9 +4,9 @@
  * Example how to get the details of a single address.
  */
 
+use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 
 require_once __DIR__ . '/bootstrap.php';
@@ -28,11 +28,11 @@ echo ' → Create the HTTP client.' . PHP_EOL;
 $client = new Client($guzzleClient, $configuration);
 
 echo ' → Create the Service wrapper.' . PHP_EOL;
-$service = BasicRegistersFactory::create($client);
+$service = new BasicRegister($client);
 
 echo ' → Get the address details.' . PHP_EOL;
 $addressId = new AddressId($exampleAddressId);
-$address = $service->addressDetail($addressId);
+$address = $service->address()->detail($addressId);
 
 echo sprintf('   • Full address         : %s', (string) $address), PHP_EOL;
 echo sprintf('   • Address ID           : %d', $address->addressId()->value()), PHP_EOL;

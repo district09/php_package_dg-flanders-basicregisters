@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Example how to get a list of municipality names.
+ * Example how to get the details of a single municipality name.
  */
 
+use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
+use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -28,15 +29,17 @@ echo ' → Create the HTTP client.' . PHP_EOL;
 $client = new Client($guzzleClient, $configuration);
 
 echo ' → Create the Service wrapper.' . PHP_EOL;
-$service = BasicRegistersFactory::create($client);
+$service = new BasicRegister($client);
 
-echo ' → List of municipality names.' . PHP_EOL;
-$municipalityNames = $service->municipalityNames(new Pager(0, 25));
+echo ' → Municipality name details.' . PHP_EOL;
+$municipalityNameId = new MunicipalityNameId($exampleMunicipalityNameId);
+$municipalityNameDetail = $service->municipalityName()->detail($municipalityNameId);
 
-foreach ($municipalityNames as $municipalityName) {
-    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName */
-    echo sprintf('   • %s : %s', $municipalityName->municipalityNameId(), $municipalityName);
-    echo PHP_EOL;
+echo sprintf('   • ID      : %d', $municipalityNameDetail->municipalityNameId()->value()), PHP_EOL;
+
+foreach ($municipalityNameDetail->geographicalNames() as $geographicalName) {
+    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
+    echo sprintf('   • Name %s : %s', $geographicalName->languageCode(), $geographicalName), PHP_EOL;
 }
 
 // End.

@@ -2,21 +2,20 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\API\Client\ClientInterface;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegisters;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
+use DigipolisGent\Flanders\BasicRegisters\Service\AddressService;
+use DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceFactory;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressMatchHandler;
-use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNamesHandler;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceFactory
  */
-class BasicRegistersFactoryTest extends TestCase
+class AddressServiceFactoryTest extends TestCase
 {
     /**
      * The factored client contains all handlers.
@@ -26,25 +25,20 @@ class BasicRegistersFactoryTest extends TestCase
     public function factoredClientContainsAllHandlers(): void
     {
         $clientMock = $this->prophesize(ClientInterface::class);
-
         $clientMock
             ->addHandler(new AddressListHandler())
             ->shouldBeCalled();
         $clientMock
             ->addHandler(new AddressDetailHandler())
             ->shouldBeCalled();
-        $client = $clientMock->reveal();
         $clientMock
             ->addHandler(new AddressMatchHandler())
             ->shouldBeCalled();
+        $client = $clientMock->reveal();
 
-        $clientMock
-            ->addHandler(new MunicipalityNamesHandler())
-            ->shouldBeCalled();
+        $factory = new AddressServiceFactory();
 
-        $factory = new BasicRegistersFactory();
-
-        $expected = new BasicRegisters($client);
+        $expected = new AddressService($client);
         $this->assertEquals($expected, $factory->create($client));
     }
 }

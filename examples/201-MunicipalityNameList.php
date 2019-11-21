@@ -1,19 +1,20 @@
 <?php
 
 /**
- * Example how to get a list of addresses.
+ * Example how to get a list of municipality names.
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
+use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 
 require_once __DIR__ . '/bootstrap.php';
 
 // Start output.
 echo PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get a list of the first 20 addresses from the service.' . PHP_EOL;
+echo 'Get a list of the first 25 municipality names from the service.' . PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
 echo PHP_EOL;
 
@@ -29,12 +30,12 @@ $client = new Client($guzzleClient, $configuration);
 echo ' → Create the Service wrapper.' . PHP_EOL;
 $service = new BasicRegister($client);
 
-echo ' → List of addresses.' . PHP_EOL;
-$addresses = $service->address()->list();
+echo ' → List of municipality names.' . PHP_EOL;
+$municipalityNames = $service->municipalityName()->list(new Pager(0, 25));
 
-foreach ($addresses as $address) {
-    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address */
-    echo sprintf('   • %d : %s', $address->addressId()->value(), (string) $address);
+foreach ($municipalityNames as $municipalityName) {
+    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName */
+    echo sprintf('   • %s : %s', $municipalityName->municipalityNameId(), $municipalityName);
     echo PHP_EOL;
 }
 

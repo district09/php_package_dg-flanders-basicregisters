@@ -38,5 +38,6 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added service method to get the details of a single address.
 * Added service method to get (partial) addresses that match filter(s).
 * Added service method to get a list of municipality names.
+* Added service method to get the details of a single municipality name.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop

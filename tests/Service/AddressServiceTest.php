@@ -2,40 +2,38 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Tests\Flanders\BasicRegisters;
+namespace DigipolisGent\Tests\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\API\Client\Response\ResponseInterface;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegisters;
+use DigipolisGent\Flanders\BasicRegisters\Service\AddressService;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressMatchRequest;
-use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressMatchResponse;
-use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNamesResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
-use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\BasicRegisters
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Service\AbstractService
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Service\AddressService
  */
-class BasicRegistersTest extends TestCase
+class AddressServiceTest extends TestCase
 {
     /**
      * Get the list of addresses.
      *
      * @test
      */
-    public function getAddressList(): void
+    public function listReturnsAddressesCollection(): void
     {
         $filters = $this->createFiltersMock();
         $pager = $this->createPagerMock();
@@ -44,11 +42,14 @@ class BasicRegistersTest extends TestCase
         $request = new AddressListRequest($filters, $pager);
         $response = new AddressListResponse($addresses);
 
-        $basicRegisters = new BasicRegisters(
+        $address = new AddressService(
             $this->createClientMock($request, $response)
         );
 
-        $this->assertEquals($addresses, $basicRegisters->addressList($filters, $pager));
+        $this->assertEquals(
+            $addresses,
+            $address->list($filters, $pager)
+        );
     }
 
     /**
@@ -56,18 +57,21 @@ class BasicRegistersTest extends TestCase
      *
      * @test
      */
-    public function getAddressDetail(): void
+    public function detailReturnsAddressDetailsValue(): void
     {
         $addressId = new AddressId(9731);
         $addressDetail = $this->prophesize(AddressDetailInterface::class)->reveal();
         $request = new AddressDetailRequest($addressId);
         $response = new AddressDetailResponse($addressDetail);
 
-        $basicRegisters = new BasicRegisters(
+        $address = new AddressService(
             $this->createClientMock($request, $response)
         );
 
-        $this->assertEquals($addressDetail, $basicRegisters->addressDetail($addressId));
+        $this->assertEquals(
+            $addressDetail,
+            $address->detail($addressId)
+        );
     }
 
     /**
@@ -75,7 +79,7 @@ class BasicRegistersTest extends TestCase
      *
      * @test
      */
-    public function getAddressMatch(): void
+    public function matchReturnsAddressMatchesCollection(): void
     {
         $filters = $this->createFiltersMock();
 
@@ -83,31 +87,14 @@ class BasicRegistersTest extends TestCase
         $request = new AddressMatchRequest($filters);
         $response = new AddressMatchResponse($addressMatches);
 
-        $basicRegisters = new BasicRegisters(
+        $address = new AddressService(
             $this->createClientMock($request, $response)
         );
 
-        $this->assertEquals($addressMatches, $basicRegisters->addressMatch($filters));
-    }
-
-    /**
-     * Get the list of municipality names.
-     *
-     * @test
-     */
-    public function getMunicipalityNames(): void
-    {
-        $pager = $this->createPagerMock();
-
-        $municipalityNames = new MunicipalityNames();
-        $request = new MunicipalityNamesRequest($pager);
-        $response = new MunicipalityNamesResponse($municipalityNames);
-
-        $basicRegisters = new BasicRegisters(
-            $this->createClientMock($request, $response)
+        $this->assertEquals(
+            $addressMatches,
+            $address->match($filters)
         );
-
-        $this->assertEquals($municipalityNames, $basicRegisters->municipalityNames($pager));
     }
 
     /**
