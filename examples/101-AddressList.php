@@ -4,9 +4,9 @@
  * Example how to get a list of addresses.
  */
 
+use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -27,10 +27,10 @@ echo ' → Create the HTTP client.' . PHP_EOL;
 $client = new Client($guzzleClient, $configuration);
 
 echo ' → Create the Service wrapper.' . PHP_EOL;
-$service = BasicRegistersFactory::create($client);
+$service = new BasicRegister($client);
 
 echo ' → List of addresses.' . PHP_EOL;
-$addresses = $service->addressList();
+$addresses = $service->address()->list();
 
 foreach ($addresses as $address) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address */

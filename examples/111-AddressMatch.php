@@ -4,9 +4,9 @@
  * Example how to use the AddressMatch service method.
  */
 
+use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
 use DigipolisGent\Flanders\BasicRegisters\Filter\HouseNumberFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
@@ -32,7 +32,7 @@ echo ' → Create the HTTP client.' . PHP_EOL;
 $client = new Client($guzzleClient, $configuration);
 
 echo ' → Create the Service wrapper.' . PHP_EOL;
-$service = BasicRegistersFactory::create($client);
+$service = new BasicRegister($client);
 
 echo ' → Create the filters.' . PHP_EOL;
 $filters = new Filters(
@@ -43,7 +43,7 @@ $filters = new Filters(
 );
 
 echo ' → List of address that match the search.' . PHP_EOL;
-$addressMatches = $service->addressMatch($filters);
+$addressMatches = $service->address()->match($filters);
 
 foreach ($addressMatches as $addressMatch) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $addressMatch */

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigipolisGent\Flanders\BasicRegisters;
+namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
@@ -10,14 +10,11 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
-use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
-use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
-use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 
 /**
- * Service to access the Flanders Basic register service.
+ * Service to access the Flanders Basic register service address methods.
  */
-interface BasicRegistersInterface
+interface AddressServiceInterface extends ServiceInterface
 {
     /**
      * Get a list of addresses
@@ -30,7 +27,7 @@ interface BasicRegistersInterface
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses
      *   Collection of found addresses.
      */
-    public function addressList(?FiltersInterface $filters = null, ?PagerInterface $pager = null): Addresses;
+    public function list(?FiltersInterface $filters = null, ?PagerInterface $pager = null): Addresses;
 
     /**
      * Get the address details by a given AddressId value.
@@ -41,7 +38,7 @@ interface BasicRegistersInterface
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface
      *   The address detail value.
      */
-    public function addressDetail(AddressId $addressId): AddressDetailInterface;
+    public function detail(AddressId $addressId): AddressDetailInterface;
 
     /**
      * Look up addresses that match (partial) filter values.
@@ -57,25 +54,5 @@ interface BasicRegistersInterface
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches
      *   The matching addresses.
      */
-    public function addressMatch(FiltersInterface $filters = null): AddressMatches;
-
-    /**
-     * Look up addresses that match (partial) filter values.
-     *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface|null $pager
-     *   Optional pager.
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches
-     *   The matching addresses.
-     */
-    public function municipalityNames(PagerInterface $pager = null): MunicipalityNames;
-
-    /**
-     * Get the details of a single municipality name.
-     *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId $municipalityNameId
-     *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface
-     */
-    public function municipalityNameDetail(MunicipalityNameId $municipalityNameId): MunicipalityNameDetailInterface;
+    public function match(FiltersInterface $filters = null): AddressMatches;
 }

@@ -4,9 +4,9 @@
  * Example how to get a list of municipality names.
  */
 
+use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\BasicRegistersFactory;
 use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 
 require_once __DIR__ . '/bootstrap.php';
@@ -28,10 +28,10 @@ echo ' → Create the HTTP client.' . PHP_EOL;
 $client = new Client($guzzleClient, $configuration);
 
 echo ' → Create the Service wrapper.' . PHP_EOL;
-$service = BasicRegistersFactory::create($client);
+$service = new BasicRegister($client);
 
 echo ' → List of municipality names.' . PHP_EOL;
-$municipalityNames = $service->municipalityNames(new Pager(0, 25));
+$municipalityNames = $service->municipalityName()->list(new Pager(0, 25));
 
 foreach ($municipalityNames as $municipalityName) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName */
