@@ -4,7 +4,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameDetailRequest;
-use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
@@ -19,7 +19,7 @@ final class MunicipalityNameService extends AbstractService implements Municipal
      */
     public function list(PagerInterface $pager = null): MunicipalityNames
     {
-        $request = new MunicipalityNamesRequest($pager);
+        $request = new MunicipalityNameListRequest($pager);
         return $this->client()->send($request)->municipalityNames();
     }
 

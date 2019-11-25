@@ -6,12 +6,12 @@ namespace DigipolisGent\Flanders\BasicRegisters\Request;
 
 use DigipolisGent\API\Client\Request\AbstractRequest;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
-use DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNamesUri;
+use DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNameListUri;
 
 /**
  * Request to get a list of municipality names.
  */
-final class MunicipalityNamesRequest extends AbstractRequest
+final class MunicipalityNameListRequest extends AbstractRequest
 {
     /**
      * Create a new municipality names request.
@@ -21,7 +21,7 @@ final class MunicipalityNamesRequest extends AbstractRequest
      */
     public function __construct(?PagerInterface $pager = null)
     {
-        $uri = MunicipalityNamesUri::fromPager($pager);
+        $uri = MunicipalityNameListUri::fromPager($pager);
 
         parent::__construct($uri);
     }

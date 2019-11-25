@@ -6,14 +6,14 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Uri;
 
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
-use DigipolisGent\Flanders\BasicRegisters\Uri\AddressesUri;
+use DigipolisGent\Flanders\BasicRegisters\Uri\AddressListUri;
 use PHPStan\Testing\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\AbstractUriWithQuery
- * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\AddressesUri
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\AddressListUri
  */
-class AddressesUriTest extends TestCase
+class AddressListUriTest extends TestCase
 {
     /**
      * URI without filters.
@@ -22,7 +22,7 @@ class AddressesUriTest extends TestCase
      */
     public function uriWithoutFilters(): void
     {
-        $uri = new AddressesUri();
+        $uri = new AddressListUri();
         $this->assertEquals('adressen', $uri->getUri());
     }
 
@@ -33,7 +33,7 @@ class AddressesUriTest extends TestCase
      */
     public function uriWithFilters(): void
     {
-        $uri = AddressesUri::fromFilters(
+        $uri = AddressListUri::fromFilters(
             $this->createFiltersMock()
         );
 
@@ -50,7 +50,7 @@ class AddressesUriTest extends TestCase
      */
     public function uriWithPager(): void
     {
-        $uri = AddressesUri::fromPager(
+        $uri = AddressListUri::fromPager(
             $this->createPagerMock()
         );
 
@@ -67,7 +67,7 @@ class AddressesUriTest extends TestCase
      */
     public function uriWithFiltersAndPager(): void
     {
-        $uri = AddressesUri::fromFiltersAndPager(
+        $uri = AddressListUri::fromFiltersAndPager(
             $this->createFiltersMock(),
             $this->createPagerMock()
         );

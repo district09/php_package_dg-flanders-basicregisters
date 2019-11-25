@@ -7,7 +7,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Service;
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService;
 use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNameDetailHandler;
-use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNamesHandler;
+use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNameListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +25,7 @@ class MunicipalityNameServiceFactoryTest extends TestCase
     {
         $clientMock = $this->prophesize(ClientInterface::class);
         $clientMock
-            ->addHandler(new MunicipalityNamesHandler())
+            ->addHandler(new MunicipalityNameListHandler())
             ->shouldBeCalled();
         $clientMock
             ->addHandler(new MunicipalityNameDetailHandler())

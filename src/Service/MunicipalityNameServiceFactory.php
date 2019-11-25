@@ -4,7 +4,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNameDetailHandler;
-use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNamesHandler;
+use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNameListHandler;
 
 /**
  * Factory to get the MunicipalityName service methods.
@@ -18,7 +18,7 @@ final class MunicipalityNameServiceFactory
      */
     public static function create(ClientInterface $client): MunicipalityNameServiceInterface
     {
-        $client->addHandler(new MunicipalityNamesHandler());
+        $client->addHandler(new MunicipalityNameListHandler());
         $client->addHandler(new MunicipalityNameDetailHandler());
 
         return new MunicipalityNameService($client);

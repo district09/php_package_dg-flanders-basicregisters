@@ -7,7 +7,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Request;
 use DigipolisGent\API\Client\Request\AbstractRequest;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
-use DigipolisGent\Flanders\BasicRegisters\Uri\AddressesUri;
+use DigipolisGent\Flanders\BasicRegisters\Uri\AddressListUri;
 
 /**
  * Request to get a list of addresses.
@@ -24,7 +24,7 @@ final class AddressListRequest extends AbstractRequest
      */
     public function __construct(?FiltersInterface $filters = null, ?PagerInterface $pager = null)
     {
-        $uri = AddressesUri::fromFiltersAndPager($filters, $pager);
+        $uri = AddressListUri::fromFiltersAndPager($filters, $pager);
 
         parent::__construct($uri);
     }

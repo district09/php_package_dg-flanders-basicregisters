@@ -7,21 +7,21 @@ namespace DigipolisGent\Flanders\BasicRegisters\Handler;
 use DigipolisGent\API\Client\Handler\HandlerInterface;
 use DigipolisGent\API\Client\Response\ResponseInterface;
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Municipality\MunicipalityNamesNormalizer;
-use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
-use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNamesResponse;
+use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest;
+use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameListResponse;
 use Psr\Http\Message as Psr;
 
 /**
- * Handles the MunicipalityNames request.
+ * Handles the MunicipalityNameList request.
  */
-final class MunicipalityNamesHandler implements HandlerInterface
+final class MunicipalityNameListHandler implements HandlerInterface
 {
     /**
      * @inheritDoc
      */
     public function handles(): array
     {
-        return [MunicipalityNamesRequest::class];
+        return [MunicipalityNameListRequest::class];
     }
 
     /**
@@ -32,7 +32,7 @@ final class MunicipalityNamesHandler implements HandlerInterface
         $data = json_decode($response->getBody()->getContents());
         $normalizer = new MunicipalityNamesNormalizer();
 
-        return new MunicipalityNamesResponse(
+        return new MunicipalityNameListResponse(
             $normalizer->normalize($data)
         );
     }

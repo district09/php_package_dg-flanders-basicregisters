@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNameDetailUri
  */
-class MunicipalityNameUriTest extends TestCase
+class MunicipalityNameDetailUriTest extends TestCase
 {
 
     /**

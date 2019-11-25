@@ -9,9 +9,9 @@ use DigipolisGent\API\Client\Response\ResponseInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameDetailRequest;
-use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameDetailResponse;
-use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNamesResponse;
+use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
@@ -33,8 +33,8 @@ class MunicipalityNameServiceTest extends TestCase
         $pager = $this->createPagerMock();
 
         $municipalityNames = new MunicipalityNames();
-        $request = new MunicipalityNamesRequest($pager);
-        $response = new MunicipalityNamesResponse($municipalityNames);
+        $request = new MunicipalityNameListRequest($pager);
+        $response = new MunicipalityNameListResponse($municipalityNames);
 
         $basicRegisters = new MunicipalityNameService(
             $this->createClientMock($request, $response)

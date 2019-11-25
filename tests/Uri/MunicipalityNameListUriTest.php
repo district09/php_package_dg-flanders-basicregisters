@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Uri;
 
-use DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNamesUri;
+use DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNameListUri;
 use PHPStan\Testing\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNamesUri
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNameListUri
  */
-class MunicipalityNamesUriTest extends TestCase
+class MunicipalityNameListUriTest extends TestCase
 {
     /**
      * Basic path.
@@ -19,7 +19,7 @@ class MunicipalityNamesUriTest extends TestCase
      */
     public function uriWithoutFilters(): void
     {
-        $uri = new MunicipalityNamesUri();
+        $uri = new MunicipalityNameListUri();
         $this->assertEquals('gemeenten', $uri->getUri());
     }
 }

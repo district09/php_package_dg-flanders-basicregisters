@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Response;
 
-use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNamesResponse;
+use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNamesResponse
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameListResponse
  */
-class MunicipalityNamesResponseTest extends TestCase
+class MunicipalityNameListResponseTest extends TestCase
 {
     /**
      * Response is created with municipality names collection.
@@ -21,7 +21,7 @@ class MunicipalityNamesResponseTest extends TestCase
     public function responseHasAddressesCollection(): void
     {
         $municipalityNames = new MunicipalityNames();
-        $response = new MunicipalityNamesResponse($municipalityNames);
+        $response = new MunicipalityNameListResponse($municipalityNames);
 
         $this->assertSame($municipalityNames, $response->municipalityNames());
     }
