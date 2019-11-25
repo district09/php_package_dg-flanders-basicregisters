@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Request;
 
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
-use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNamesRequest
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest
  */
-class MunicipalityNamesRequestTest extends TestCase
+class MunicipalityNameListRequestTest extends TestCase
 {
     /**
      * The URI is set.
@@ -20,7 +20,7 @@ class MunicipalityNamesRequestTest extends TestCase
      */
     public function defaultUriWithoutFilters(): void
     {
-        $request = new MunicipalityNamesRequest();
+        $request = new MunicipalityNameListRequest();
         $this->assertEquals('gemeenten', $request->getRequestTarget());
     }
 
@@ -31,7 +31,7 @@ class MunicipalityNamesRequestTest extends TestCase
      */
     public function uriWithFiltersAndPager(): void
     {
-        $request = new MunicipalityNamesRequest(
+        $request = new MunicipalityNameListRequest(
             $this->createPagerMock()
         );
 

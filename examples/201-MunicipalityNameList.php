@@ -8,6 +8,7 @@ use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
 use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
+use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -28,9 +29,17 @@ $service = new BasicRegister($client);
 printStep('List of municipality names:');
 $municipalityNames = $service->municipalityName()->list(new Pager(0, 25));
 
+$table = new Table($output);
+$table->setHeaders(['ID', 'Municipality name']);
 foreach ($municipalityNames as $municipalityName) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName */
-    printBullet('%s : %s', $municipalityName->municipalityNameId(), $municipalityName);
+    $table->addRow(
+        [
+            (string) $municipalityName->municipalityNameId(),
+            (string) $municipalityName,
+        ]
+    );
 }
+$table->render();
 
 printFooter();

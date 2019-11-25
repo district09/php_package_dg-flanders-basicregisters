@@ -14,7 +14,7 @@ use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
-printTitle('Get the first 25 post info items from the service.');
+printTitle('Get a list of the post info items filtered by a municipality name.');
 
 printStep('Create the API client configuration.');
 $configuration = new Configuration($apiEndpoint, $apiUserKey);
@@ -29,7 +29,8 @@ printStep('Create the Service wrapper.');
 $service = new BasicRegister($client);
 
 printStep('List of (sub)municipalities of %s:', $examplePostInfoName);
-$postInfos = $service->postInfo()->list(null, new Pager(0, 25));
+$filters = new Filters(new MunicipalityNameFilter($examplePostInfoName));
+$postInfos = $service->postInfo()->list($filters, new Pager(0, 25));
 
 $table = new Table($output);
 $table->setHeaders(['ID', 'Name', 'Sublocality']);

@@ -39,8 +39,17 @@ composer install
   
 ### Street names
 
-* `301-StreetNameList.php` : List of the first 25 street names.
+* `301-StreetNameList.php` : List of the first 20 street names.
+* `302-StreetNameListFiltered.php` : List of the street names filtered
+  by their municipality name.
 * `311-StreetNameDetail.php` : All details of a single street name.
+
+### Post info
+
+* `401-PostInfoList.php` : List of the first 25 post info items.
+* `402-PostInfoListFiltered.php` : List of all post info items filtered by
+  municipality name.
+* `411-PostInfoDetail.php` : All details of a single post info. 
 
 ## Usage
 

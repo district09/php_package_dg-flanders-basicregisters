@@ -13,6 +13,7 @@ use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\PostalCodeFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\StreetNameFilter;
 use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
+use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -44,9 +45,17 @@ $pager = new Pager(0, 50);
 printStep('List of addresses:');
 $addresses = $service->address()->list($filters, $pager);
 
+$table = new Table($output);
+$table->setHeaders(['ID', 'Address']);
 foreach ($addresses as $address) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address */
-    printBullet('%d : %s', $address->addressId()->value(), (string) $address);
+    $table->addRow(
+        [
+            (string) $address->addressId(),
+            (string) $address,
+        ]
+    );
 }
+$table->render();
 
 printFooter();

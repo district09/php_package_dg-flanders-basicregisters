@@ -8,6 +8,7 @@ use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
+use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -29,16 +30,15 @@ printStep('Street name details:');
 $streetNameId = new StreetNameId($exampleStreetNameId);
 $streetNameDetail = $service->streetName()->detail($streetNameId);
 
-printBullet('ID           : %d', $streetNameDetail->streetNameId()->value());
-printBullet(
-    'Municipality : %s %s',
-    $streetNameDetail->municipalityName()->municipalityNameId(),
-    $streetNameDetail->municipalityName()
+$table = new Table($output);
+$table->addRows(
+    [
+        ['Street name ID', (string) $streetNameDetail->streetNameId()],
+        ['Street name', (string) $streetNameDetail],
+        ['Municipality name ID', (string) $streetNameDetail->municipalityName()->municipalityNameId()],
+        ['Municipality name', (string) $streetNameDetail->municipalityName()],
+    ]
 );
-
-foreach ($streetNameDetail->geographicalNames() as $geographicalName) {
-    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
-    echo printBullet('Name %s      : %s', $geographicalName->languageCode(), $geographicalName);
-}
+$table->render();
 
 printFooter();

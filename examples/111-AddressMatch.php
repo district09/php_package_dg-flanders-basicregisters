@@ -12,6 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Filter\HouseNumberFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\PostalCodeFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\StreetNameFilter;
+use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -40,15 +41,36 @@ $filters = new Filters(
 printStep('List of address that match the search.');
 $addressMatches = $service->address()->match($filters);
 
+$table = new Table($output);
+$table->setHeaders(
+    [
+        'Match',
+        'Address ID',
+        'Municipality (ID)',
+        'Street name (ID)',
+        'Score',
+    ]
+);
 foreach ($addressMatches as $addressMatch) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $addressMatch */
-    printBullet('%s', (string) $addressMatch);
-    printText('    Municipality name ID : %s', $addressMatch->municipalityName()->municipalityNameId());
-    printText('    Municipality name    : %s', $addressMatch->municipalityName());
-    printText('    Street name ID       : %s', $addressMatch->streetName()->streetNameId());
-    printText('    Street name          : %s', $addressMatch->streetName());
-    printText('    Address ID           : %s', $addressMatch->addressDetail() ?? 'NA');
-    printText('    Match Score          : %s', $addressMatch->score());
+    $table->addRow(
+        [
+            (string) $addressMatch,
+            $addressMatch->addressDetail() ? (string) $addressMatch->addressDetail()->addressId() : 'NA',
+            sprintf(
+                '%s (%s)',
+                $addressMatch->municipalityName(),
+                $addressMatch->municipalityName()->municipalityNameId()
+            ),
+            sprintf(
+                '%s (%s)',
+                $addressMatch->streetName(),
+                $addressMatch->streetName()->streetNameId()
+            ),
+            $addressMatch->score(),
+        ]
+    );
 }
+$table->render();
 
 printFooter();

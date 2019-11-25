@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 /**
  * Response containing the list of municipality name values.
  */
-final class MunicipalityNamesResponse implements ResponseInterface
+final class MunicipalityNameListResponse implements ResponseInterface
 {
     /**
      * Municpality names.

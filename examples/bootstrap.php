@@ -25,6 +25,8 @@ require_once __DIR__ . '/config.php';
 // AutoLoader to get all required libraries.
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$output = new Symfony\Component\Console\Output\ConsoleOutput();
+
 /**
  * Helper function to print a line to the output.
  *

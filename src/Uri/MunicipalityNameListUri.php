@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace DigipolisGent\Flanders\BasicRegisters\Uri;
 
 /**
- * Uri where the addresses (adressen) methods are located.
+ * Uri where the municipality names (gemeenten) method is located.
  */
-class AddressesUri extends AbstractUriWithQuery
+class MunicipalityNameListUri extends AbstractUriWithQuery
 {
     /**
      * @inheritDoc
      */
     protected function getPath(): string
     {
-        return 'adressen';
+        return 'gemeenten';
     }
 }
