@@ -19,3 +19,6 @@ $exampleAddressId = 2544648;
 
 // Municipality name ID to load its details.
 $exampleMunicipalityNameId = 44021;
+
+// Street name ID to load its details.
+$exampleStreetNameId = 69683;

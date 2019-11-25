@@ -8,7 +8,7 @@ use DigipolisGent\API\Client\Response\ResponseInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 
 /**
- * Response containing the list of address objects.
+ * Response containing the addresses collection.
  */
 final class AddressListResponse implements ResponseInterface
 {

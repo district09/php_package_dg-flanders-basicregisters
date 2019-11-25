@@ -15,13 +15,13 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 interface MunicipalityNameServiceInterface extends ServiceInterface
 {
     /**
-     * Look up addresses that match (partial) filter values.
+     * Get a (paged) list of municipalities.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface|null $pager
      *   Optional pager.
      *
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames
-     *   The matching addresses.
+     *   The municipality names collection.
      */
     public function list(PagerInterface $pager = null): MunicipalityNames;
 
@@ -29,8 +29,10 @@ interface MunicipalityNameServiceInterface extends ServiceInterface
      * Get the details of a single municipality name.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId $municipalityNameId
+     *   The municipality id to get the details for.
      *
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface
+     *   The municipality detail value.
      */
     public function detail(MunicipalityNameId $municipalityNameId): MunicipalityNameDetailInterface;
 }

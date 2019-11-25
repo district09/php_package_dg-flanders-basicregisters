@@ -1,20 +1,22 @@
 <?php
 
 /**
- * Example how to get the details of a single municipality name.
+ * Example how to get a list of street names.
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
+use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
+use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
+use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 
 require_once __DIR__ . '/bootstrap.php';
 
 // Start output.
 echo PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get the details of a single municipality name from the service.' . PHP_EOL;
+echo 'Get a list of the first 25 street names in Gent from the service.' . PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
 echo PHP_EOL;
 
@@ -30,15 +32,14 @@ $client = new Client($guzzleClient, $configuration);
 echo ' → Create the Service wrapper.' . PHP_EOL;
 $service = new BasicRegister($client);
 
-echo ' → Municipality name details.' . PHP_EOL;
-$municipalityNameId = new MunicipalityNameId($exampleMunicipalityNameId);
-$municipalityNameDetail = $service->municipalityName()->detail($municipalityNameId);
+echo ' → List of street names.' . PHP_EOL;
+$filters = new Filters(new MunicipalityNameFilter('gent'));
+$streetNames = $service->streetName()->list($filters, new Pager(0, 25));
 
-echo sprintf('   • ID      : %d', $municipalityNameDetail->municipalityNameId()->value()), PHP_EOL;
-
-foreach ($municipalityNameDetail->geographicalNames() as $geographicalName) {
-    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
-    echo sprintf('   • Name %s : %s', $geographicalName->languageCode(), $geographicalName), PHP_EOL;
+foreach ($streetNames as $streetName) {
+    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName $municipalityName */
+    echo sprintf('   • %s : %s', $streetName->streetNameId(), $streetName);
+    echo PHP_EOL;
 }
 
 // End.
