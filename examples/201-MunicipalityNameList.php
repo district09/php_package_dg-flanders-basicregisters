@@ -11,35 +11,26 @@ use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 
 require_once __DIR__ . '/bootstrap.php';
 
-// Start output.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get a list of the first 25 municipality names from the service.' . PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printTitle('Get a list of the first 25 municipality names from the service.');
 
-echo ' → Create the API client configuration.' . PHP_EOL;
+printStep('Create the API client configuration.');
 $configuration = new Configuration($apiEndpoint, $apiUserKey);
 
-echo ' → Create the Guzzle client.' . PHP_EOL;
+printStep('Create the Guzzle client.');
 $guzzleClient = new GuzzleHttp\Client(['base_uri' => $configuration->getUri()]);
 
-echo ' → Create the HTTP client.' . PHP_EOL;
+printStep('Create the HTTP client.');
 $client = new Client($guzzleClient, $configuration);
 
-echo ' → Create the Service wrapper.' . PHP_EOL;
+printStep('Create the Service wrapper.');
 $service = new BasicRegister($client);
 
-echo ' → List of municipality names.' . PHP_EOL;
+printStep('List of municipality names:');
 $municipalityNames = $service->municipalityName()->list(new Pager(0, 25));
 
 foreach ($municipalityNames as $municipalityName) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName $municipalityName */
-    echo sprintf('   • %s : %s', $municipalityName->municipalityNameId(), $municipalityName);
-    echo PHP_EOL;
+    printBullet('%s : %s', $municipalityName->municipalityNameId(), $municipalityName);
 }
 
-// End.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printFooter();
