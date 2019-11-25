@@ -7,6 +7,7 @@
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
+use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -27,9 +28,17 @@ $service = new BasicRegister($client);
 printStep('List of addresses.');
 $addresses = $service->address()->list();
 
+$table = new Table($output);
+$table->setHeaders(['ID', 'Address']);
 foreach ($addresses as $address) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address */
-    printBullet('%s : %s', $address->addressId(), (string) $address);
+    $table->addRow(
+        [
+            (string) $address->addressId(),
+            (string) $address,
+        ]
+    );
 }
+$table->render();
 
 printFooter();

@@ -8,6 +8,7 @@ use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
+use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -29,14 +30,29 @@ printStep('Post info details of post info id %d:', $examplePostInfoId);
 $postInfoId = new PostInfoId($examplePostInfoId);
 $postInfo = $service->postInfo()->detail($postInfoId);
 
-/** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $postInfo */
-printBullet('%s', $postInfo);
+$table = new Table($output);
+$table->addRows(
+    [
+        ['Post info ID', (string) $postInfo->postInfoId()],
+        ['Municipality name', (string) $postInfo->name()],
+    ]
+);
 
 if ($postInfo->postInfoNames()->hasSubMunicipalities()) {
+    $title  = 'Sub municipalities';
     foreach ($postInfo->postInfoNames() as $geographicalName) {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
-        printText('    - %s', $geographicalName);
+        $table->addRow(
+            [
+                $title,
+                (string) $geographicalName
+            ]
+        );
+
+        $title = '';
     }
 }
+
+$table->render();
 
 printFooter();

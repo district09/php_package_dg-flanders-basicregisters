@@ -10,6 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
 use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
 use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
 use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
+use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -31,16 +32,20 @@ printStep('List of (sub)municipalities of %s:', $examplePostInfoName);
 $filters = new Filters(new MunicipalityNameFilter($examplePostInfoName));
 $postInfos = $service->postInfo()->list($filters, new Pager(0, 25));
 
+$table = new Table($output);
+$table->setHeaders(['ID', 'Name', 'Sublocality']);
 foreach ($postInfos as $postInfo) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $postInfo */
-    printBullet('%s', $postInfo);
-
-    if ($postInfo->postInfoNames()->hasSubMunicipalities()) {
-        foreach ($postInfo->postInfoNames() as $geographicalName) {
-            /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
-            printText('    - %s', $geographicalName);
-        }
+    foreach ($postInfo->postInfoNames() as $sublocalityName) {
+        $table->addRow(
+            [
+                (string) $postInfo->postInfoId(),
+                $postInfo->name(),
+                $postInfo->postInfoNames()->hasSubMunicipalities() ? (string) $sublocalityName : '',
+            ]
+        );
     }
 }
+$table->render();
 
 printFooter();
