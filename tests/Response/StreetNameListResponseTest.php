@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 class StreetNameListResponseTest extends TestCase
 {
     /**
-     * Response is created with Addresses collection.
+     * Response is created with StreetNames collection.
      *
      * @test
      */

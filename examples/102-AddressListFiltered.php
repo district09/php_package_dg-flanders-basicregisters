@@ -16,26 +16,21 @@ use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 
 require_once __DIR__ . '/bootstrap.php';
 
-// Start output.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get a list of the addresses from the service by filter and pager.' . PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printTitle('Get a list of the addresses from the service by filter and pager.');
 
-echo ' → Create the API client configuration.' . PHP_EOL;
+printStep('Create the API client configuration.');
 $configuration = new Configuration($apiEndpoint, $apiUserKey);
 
-echo ' → Create the Guzzle client.' . PHP_EOL;
+printStep('Create the Guzzle client.');
 $guzzleClient = new GuzzleHttp\Client(['base_uri' => $configuration->getUri()]);
 
-echo ' → Create the HTTP client.' . PHP_EOL;
+printStep('Create the HTTP client.');
 $client = new Client($guzzleClient, $configuration);
 
-echo ' → Create the Service wrapper.' . PHP_EOL;
+printStep('Create the Service wrapper.');
 $service = new BasicRegister($client);
 
-echo ' → Create the filters.' . PHP_EOL;
+printStep('Create the filters.');
 $filters = new Filters(
     new MunicipalityNameFilter('Gent'),
     new PostalCodeFilter(9050),
@@ -43,19 +38,15 @@ $filters = new Filters(
     new HouseNumberFilter(5)
 );
 
-echo ' → Create the pager.' . PHP_EOL;
+printStep('Create the pager.');
 $pager = new Pager(0, 50);
 
-echo ' → List of addresses.' . PHP_EOL;
+printStep('List of addresses:');
 $addresses = $service->address()->list($filters, $pager);
 
 foreach ($addresses as $address) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\Address $address */
-    echo sprintf('   • %d : %s', $address->addressId()->value(), (string) $address);
-    echo PHP_EOL;
+    printBullet('%d : %s', $address->addressId()->value(), (string) $address);
 }
 
-// End.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printFooter();

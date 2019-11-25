@@ -9,6 +9,8 @@ use DigipolisGent\Flanders\BasicRegisters\Service\AddressService;
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceInterface;
+use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService;
+use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\ServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceInterface;
@@ -34,6 +36,7 @@ class BasicRegister implements BasicRegisterInterface
         AddressService::class => null,
         MunicipalityNameService::class => null,
         StreetNameService::class => null,
+        PostInfoService::class => null,
     ];
 
     /**
@@ -68,6 +71,14 @@ class BasicRegister implements BasicRegisterInterface
     public function streetName(): StreetNameServiceInterface
     {
         return $this->getService(StreetNameService::class);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function postInfo(): PostInfoServiceInterface
+    {
+        return $this->getService(PostInfoService::class);
     }
 
     /**

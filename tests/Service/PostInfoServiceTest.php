@@ -6,67 +6,67 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\API\Client\Response\ResponseInterface;
-use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameDetailRequest;
-use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameListRequest;
-use DigipolisGent\Flanders\BasicRegisters\Response\StreetNameDetailResponse;
-use DigipolisGent\Flanders\BasicRegisters\Response\StreetNameListResponse;
+use DigipolisGent\Flanders\BasicRegisters\Request\PostInfoDetailRequest;
+use DigipolisGent\Flanders\BasicRegisters\Request\PostInfoListRequest;
+use DigipolisGent\Flanders\BasicRegisters\Response\PostInfoDetailResponse;
+use DigipolisGent\Flanders\BasicRegisters\Response\PostInfoListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
-use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService;
-use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetailInterface;
-use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
-use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
+use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService
+ * @covers \DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService
  */
-class StreetNameServiceTest extends TestCase
+class PostInfoServiceTest extends TestCase
 {
     /**
-     * Get the list of street names.
+     * Get the post info list.
      *
      * @test
      */
-    public function listReturnsStreetNamesCollection(): void
+    public function listReturnsPostInfoCollection(): void
     {
         $filters = $this->createFiltersMock();
         $pager = $this->createPagerMock();
 
-        $streetNames = new StreetNames();
-        $request = new StreetNameListRequest($filters, $pager);
-        $response = new StreetNameListResponse($streetNames);
+        $postInfos = new PostInfos();
+        $request = new PostInfoListRequest($filters, $pager);
+        $response = new PostInfoListResponse($postInfos);
 
-        $streetNameService = new StreetNameService(
+        $postInfoService = new PostInfoService(
             $this->createClientMock($request, $response)
         );
 
         $this->assertEquals(
-            $streetNames,
-            $streetNameService->list($filters, $pager)
+            $postInfos,
+            $postInfoService->list($filters, $pager)
         );
     }
 
     /**
-     * Get the street name details for a given StreetNameId.
+     * Get the post info details for a given PostInfoId.
      *
      * @test
      */
-    public function detailReturnsStreetNameDetailValue(): void
+    public function detailReturnsPostInfoDetailValue(): void
     {
-        $streetNameId = new StreetNameId(9731);
-        $streetNameDetail = $this->prophesize(StreetNameDetailInterface::class)->reveal();
-        $request = new StreetNameDetailRequest($streetNameId);
-        $response = new StreetNameDetailResponse($streetNameDetail);
+        $postInfoId = new PostInfoId(973156);
+        $postInfo = $this->prophesize(PostInfoInterface::class)->reveal();
+        $request = new PostInfoDetailRequest($postInfoId);
+        $response = new PostInfoDetailResponse($postInfo);
 
-        $streetNameService = new StreetNameService(
+        $postInfoService = new PostInfoService(
             $this->createClientMock($request, $response)
         );
 
         $this->assertEquals(
-            $streetNameDetail,
-            $streetNameService->detail($streetNameId)
+            $postInfo,
+            $postInfoService->detail($postInfoId)
         );
     }
 

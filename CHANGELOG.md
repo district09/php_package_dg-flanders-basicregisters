@@ -41,5 +41,7 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added service method to get the details of a single municipality name.
 * Added service method to get a list of street names.
 * Added service method to get the details of a single street name.
+* Added service method to get the list of post info values.
+* Added service method to get the details of a single post info value.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop

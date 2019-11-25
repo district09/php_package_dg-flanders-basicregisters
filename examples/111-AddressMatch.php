@@ -15,26 +15,21 @@ use DigipolisGent\Flanders\BasicRegisters\Filter\StreetNameFilter;
 
 require_once __DIR__ . '/bootstrap.php';
 
-// Start output.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get a list of all addresses in Gent with belle in the street name.' . PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printTitle('Get a list of all addresses in Gent with belle in the street name.');
 
-echo ' → Create the API client configuration.' . PHP_EOL;
+printStep('Create the API client configuration.');
 $configuration = new Configuration($apiEndpoint, $apiUserKey);
 
-echo ' → Create the Guzzle client.' . PHP_EOL;
+printStep('Create the Guzzle client.');
 $guzzleClient = new GuzzleHttp\Client(['base_uri' => $configuration->getUri()]);
 
-echo ' → Create the HTTP client.' . PHP_EOL;
+printStep('Create the HTTP client.');
 $client = new Client($guzzleClient, $configuration);
 
-echo ' → Create the Service wrapper.' . PHP_EOL;
+printStep('Create the Service wrapper.');
 $service = new BasicRegister($client);
 
-echo ' → Create the filters.' . PHP_EOL;
+printStep('Create the filters.');
 $filters = new Filters(
     new MunicipalityNameFilter('gent'),
     new PostalCodeFilter(9000),
@@ -42,21 +37,18 @@ $filters = new Filters(
     new HouseNumberFilter(5)
 );
 
-echo ' → List of address that match the search.' . PHP_EOL;
+printStep('List of address that match the search.');
 $addressMatches = $service->address()->match($filters);
 
 foreach ($addressMatches as $addressMatch) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $addressMatch */
-    echo sprintf('   • %s', (string) $addressMatch), PHP_EOL;
-    echo sprintf('     Municipality name ID : %s', $addressMatch->municipalityName()->municipalityNameId()), PHP_EOL;
-    echo sprintf('     Municipality name    : %s', $addressMatch->municipalityName()), PHP_EOL;
-    echo sprintf('     Street name ID       : %s', $addressMatch->streetName()->streetNameId()), PHP_EOL;
-    echo sprintf('     Street name          : %s', $addressMatch->streetName()), PHP_EOL;
-    echo sprintf('     Address ID           : %s', $addressMatch->addressDetail() ?? 'NA'), PHP_EOL;
-    echo sprintf('     Match Score          : %s', $addressMatch->score()), PHP_EOL;
+    printBullet('%s', (string) $addressMatch);
+    printText('    Municipality name ID : %s', $addressMatch->municipalityName()->municipalityNameId());
+    printText('    Municipality name    : %s', $addressMatch->municipalityName());
+    printText('    Street name ID       : %s', $addressMatch->streetName()->streetNameId());
+    printText('    Street name          : %s', $addressMatch->streetName());
+    printText('    Address ID           : %s', $addressMatch->addressDetail() ?? 'NA');
+    printText('    Match Score          : %s', $addressMatch->score());
 }
 
-// End.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printFooter();

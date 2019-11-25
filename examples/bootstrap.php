@@ -24,3 +24,76 @@ require_once __DIR__ . '/config.php';
 
 // AutoLoader to get all required libraries.
 require_once __DIR__ . '/../vendor/autoload.php';
+
+/**
+ * Helper function to print a line to the output.
+ *
+ * @param string $text
+ * @param mixed ...$arguments
+ *   Text replacements (see sprintf()).
+ */
+function printText(string $text, ...$arguments): void
+{
+    echo $arguments
+        ? sprintf($text, ...$arguments)
+        : $text;
+    echo PHP_EOL;
+}
+
+/**
+ * Helper to print a separator.
+ */
+function printLine(): void
+{
+    printText(str_repeat('-', 80));
+}
+
+/**
+ * Helper to print a page title.
+ *
+ * @param string $title
+ * @param mixed ...$arguments
+ *   Text replacements (see sprintf()).
+ */
+function printTitle(string $title, ...$arguments): void
+{
+    printText('');
+    printLine();
+    printText($title, ...$arguments);
+    printLine();
+    printText('');
+}
+
+/**
+ * Helper to print a footer.
+ */
+function printFooter(): void
+{
+    printText('');
+    printLine();
+    printText('');
+}
+
+/**
+ * Helper to print a step.
+ *
+ * @param string $step
+ * @param mixed ...$arguments
+ *   Text replacements (see sprintf()).
+ */
+function printStep(string $step, ...$argumments): void
+{
+    printText('→ ' . $step, ...$argumments);
+}
+
+/**
+ * Helper to print a bullet.
+ *
+ * @param string $text
+ * @param mixed ...$arguments
+ *   Text replacements (see sprintf()).
+ */
+function printBullet(string $text, ...$argumments): void
+{
+    printText('  • ' . $text, ...$argumments);
+}

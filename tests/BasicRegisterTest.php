@@ -8,6 +8,7 @@ use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressService;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService;
+use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService;
 use PHPUnit\Framework\TestCase;
 
@@ -53,5 +54,18 @@ class BasicRegisterTest extends TestCase
         $basicRegister = new BasicRegister($client);
 
         $this->assertInstanceOf(StreetNameService::class, $basicRegister->streetName());
+    }
+
+    /**
+     * PostInfo service is within the container.
+     *
+     * @test
+     */
+    public function postInfoServiceIsInContainer(): void
+    {
+        $client = $this->prophesize(ClientInterface::class)->reveal();
+        $basicRegister = new BasicRegister($client);
+
+        $this->assertInstanceOf(PostInfoService::class, $basicRegister->postInfo());
     }
 }

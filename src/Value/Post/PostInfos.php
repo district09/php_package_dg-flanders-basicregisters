@@ -14,10 +14,10 @@ final class PostInfos extends CollectionAbstract
     /**
      * Create a new collection.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo ...$postInfos
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface ...$postInfos
      *   One or more post info.
      */
-    public function __construct(PostInfo ...$postInfos)
+    public function __construct(PostInfoInterface ...$postInfos)
     {
         $this->values = $postInfos;
     }
@@ -29,7 +29,7 @@ final class PostInfos extends CollectionAbstract
     {
         $postInfos = [];
 
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo $postInfo */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $postInfo */
         foreach ($this->values as $postInfo) {
             $postInfos[] = (string) $postInfo;
         }

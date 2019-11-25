@@ -11,41 +11,33 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 
 require_once __DIR__ . '/bootstrap.php';
 
-// Start output.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get the details of one address.' . PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printTitle('Get the details of one address.');
 
-echo ' → Create the API client configuration.' . PHP_EOL;
+printStep('Create the API client configuration.');
 $configuration = new Configuration($apiEndpoint, $apiUserKey);
 
-echo ' → Create the Guzzle client.' . PHP_EOL;
+printStep('Create the Guzzle client.');
 $guzzleClient = new GuzzleHttp\Client(['base_uri' => $configuration->getUri()]);
 
-echo ' → Create the HTTP client.' . PHP_EOL;
+printStep('Create the HTTP client.');
 $client = new Client($guzzleClient, $configuration);
 
-echo ' → Create the Service wrapper.' . PHP_EOL;
+printStep('Create the Service wrapper.');
 $service = new BasicRegister($client);
 
-echo ' → Get the address details.' . PHP_EOL;
+printStep('Get the address details:');
 $addressId = new AddressId($exampleAddressId);
 $address = $service->address()->detail($addressId);
 
-echo sprintf('   • Full address         : %s', (string) $address), PHP_EOL;
-echo sprintf('   • Address ID           : %d', $address->addressId()->value()), PHP_EOL;
-echo sprintf('   • Street name ID       : %s', $address->streetName()->streetNameId()->value()), PHP_EOL;
-echo sprintf('   • Street name          : %s', $address->streetName()->name()), PHP_EOL;
-echo sprintf('   • House number         : %s', $address->houseNumber()), PHP_EOL;
-echo sprintf('   • Bus number           : %s', $address->busNumber()), PHP_EOL;
-echo sprintf('   • Post info ID         : %d', $address->municipality()->postInfoId()->value()), PHP_EOL;
-echo sprintf('   • Postal code          : %d', $address->municipality()->postalCode()), PHP_EOL;
-echo sprintf('   • Municipality name ID : %s', $address->municipality()->municipalityName()->name()), PHP_EOL;
-echo sprintf('   • Municipality name    : %d', $address->municipality()->municipalityName()->municipalityNameId()->value()), PHP_EOL;
+printBullet('Full address         : %s', (string) $address);
+printBullet('Address ID           : %d', $address->addressId()->value());
+printBullet('Street name ID       : %s', $address->streetName()->streetNameId()->value());
+printBullet('Street name          : %s', $address->streetName()->name());
+printBullet('House number         : %s', $address->houseNumber());
+printBullet('Bus number           : %s', $address->busNumber());
+printBullet('Post info ID         : %d', $address->municipality()->postInfoId()->value());
+printBullet('Postal code          : %d', $address->municipality()->postalCode());
+printBullet('Municipality name ID : %s', $address->municipality()->municipalityName()->name());
+printBullet('Municipality name    : %d', $address->municipality()->municipalityName()->municipalityNameId()->value());
 
-// End.
-echo PHP_EOL;
-echo str_repeat('-', 80) . PHP_EOL;
-echo PHP_EOL;
+printFooter();
