@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Value\Post;
 
-use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalNames;
-use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
+use DigipolisGent\Value\ValueAbstract;
 use DigipolisGent\Value\ValueInterface;
 
 /**
  * Post info value.
  */
-final class PostInfo extends AbstractWithGeographicalNames implements PostInfoInterface
+final class PostInfo extends ValueAbstract implements PostInfoInterface
 {
     /**
      * The post info id.
@@ -21,16 +20,22 @@ final class PostInfo extends AbstractWithGeographicalNames implements PostInfoIn
     private $postInfoId;
 
     /**
+     * The post info names.
+     *
+     * @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoNames
+     */
+    private $postInfoNames;
+
+    /**
      * Create a new post info value.
      *
      * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId $postInfoId
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames $geoGraphicalNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoNames $postInfoNames
      */
-    public function __construct(PostInfoId $postInfoId, GeographicalNames $geoGraphicalNames)
+    public function __construct(PostInfoId $postInfoId, PostInfoNames $postInfoNames)
     {
-        parent::__construct($geoGraphicalNames);
-
         $this->postInfoId = $postInfoId;
+        $this->postInfoNames = $postInfoNames;
     }
 
     /**
@@ -56,11 +61,27 @@ final class PostInfo extends AbstractWithGeographicalNames implements PostInfoIn
     /**
      * @inheritDoc
      */
+    public function postInfoNames(): PostInfoNames
+    {
+        return $this->postInfoNames;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function name(): string
+    {
+        return $this->postInfoNames()->name();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function sameValueAs(ValueInterface $object): bool
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $object */
-        return parent::sameValueAs($object)
-            && $this->postInfoId()->sameValueAs($object->postInfoId());
+        return $this->postInfoId()->sameValueAs($object->postInfoId())
+            && $this->postInfoNames()->sameValueAs($object->postInfoNames());
     }
 
     /**

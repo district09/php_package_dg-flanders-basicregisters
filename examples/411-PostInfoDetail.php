@@ -32,12 +32,17 @@ $service = new BasicRegister($client);
 
 echo ' → Post info details.' . PHP_EOL;
 $postInfoId = new PostInfoId($examplePostInfoId);
-$postInfoDetail = $service->postInfo()->detail($postInfoId);
+$postInfo = $service->postInfo()->detail($postInfoId);
 
-echo sprintf('   • ID : %d', $postInfoDetail->postInfoId()->value()), PHP_EOL;
-foreach ($postInfoDetail->geographicalNames() as $geographicalName) {
-    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
-    echo sprintf('   • %s : %s', $geographicalName->languageCode(), $geographicalName), PHP_EOL;
+/** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $postInfo */
+echo sprintf('   • %s', $postInfo);
+echo PHP_EOL;
+
+if ($postInfo->postInfoNames()->hasSubMunicipalities()) {
+    foreach ($postInfo->postInfoNames() as $geographicalName) {
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
+        echo sprintf('     - %s', $geographicalName), PHP_EOL;
+    }
 }
 
 // End.

@@ -8,11 +8,11 @@ use DigipolisGent\Flanders\BasicRegisters\Handler\PostInfoDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Request\PostInfoDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\PostInfoDetailResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoNames;
 use GuzzleHttp\Psr7\Stream;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -89,7 +89,7 @@ EOT;
     {
         return new PostInfo(
             new PostInfoId(9000),
-            new GeographicalNames(
+            new PostInfoNames(
                 new GeographicalName(
                     new LanguageCode('NL'),
                     'GENT'

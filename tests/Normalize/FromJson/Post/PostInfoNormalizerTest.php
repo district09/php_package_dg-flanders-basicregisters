@@ -6,10 +6,10 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Municip
 
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Post\PostInfoNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
-use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoNames;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,7 +34,13 @@ class PostInfoNormalizerTest extends TestCase
     "postnamen": [
         {
             "geografischeNaam": {
-                "spelling": "GENT",
+                "spelling": "Ename",
+                "taal": "NL"
+            }
+        },
+        {
+            "geografischeNaam": {
+                "spelling": "OUDENAARDE",
                 "taal": "NL"
             }
         }
@@ -51,10 +57,14 @@ EOT;
     {
         $expected = new PostInfo(
             new PostInfoId(9000),
-            new GeographicalNames(
+            new PostInfoNames(
                 new GeographicalName(
                     new LanguageCode('NL'),
-                    'GENT'
+                    'Ename'
+                ),
+                new GeographicalName(
+                    new LanguageCode('NL'),
+                    'OUDENAARDE'
                 )
             )
         );
