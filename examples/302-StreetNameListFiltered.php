@@ -1,17 +1,20 @@
 <?php
 
 /**
- * Example how to get a list of street names.
+ * Example how to get a filtered list of street names.
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
+use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
+use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
+use DigipolisGent\Flanders\BasicRegisters\Pager\Pager;
 use Symfony\Component\Console\Helper\Table;
 
 require_once __DIR__ . '/bootstrap.php';
 
-printTitle('Get a list of the first 20 street names from the service.');
+printTitle('Get a list of the first 25 street names filtered by their municipality name.');
 
 printStep('Create the API client configuration.');
 $configuration = new Configuration($apiEndpoint, $apiUserKey);
@@ -26,7 +29,8 @@ printStep('Create the Service wrapper.');
 $service = new BasicRegister($client);
 
 printStep('List of street names:');
-$postInfos = $service->streetName()->list();
+$filters = new Filters(new MunicipalityNameFilter('gent'));
+$postInfos = $service->streetName()->list($filters, new Pager(0, 25));
 
 $table = new Table($output);
 $table->setHeaders(['ID', 'Street name']);

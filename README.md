@@ -26,6 +26,10 @@ composer require digipolisgent/flanders-basicregister
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed
 recently.
 
+## Examples
+
+See the [examples](examples) directory how to use the service wrappers.
+
 ## Testing
 
 Run the test suite:
@@ -33,10 +37,6 @@ Run the test suite:
 ``` bash
 vendor/bin/phpunit
 ```
-
-## Examples
-
-See the [examples](examples) directory how to use the service wrappers.
 
 ## License
 
