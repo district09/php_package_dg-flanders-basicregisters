@@ -6,6 +6,7 @@ namespace DigipolisGent\Flanders\BasicRegisters;
 
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceInterface;
+use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceInterface;
 
 /**
@@ -33,4 +34,11 @@ interface BasicRegisterInterface
      * @return \DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceInterface
      */
     public function streetName(): StreetNameServiceInterface;
+
+    /**
+     * Get the post info related service.
+     *
+     * @return \DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceInterface
+     */
+    public function postInfo(): PostInfoServiceInterface;
 }

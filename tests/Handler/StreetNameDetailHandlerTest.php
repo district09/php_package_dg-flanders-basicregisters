@@ -58,7 +58,7 @@ class StreetNameDetailHandlerTest extends TestCase
 EOT;
 
     /**
-     * Handler handles AddressDetailRequest.
+     * Handler handles StreetNameDetail request.
      *
      * @test
      */
@@ -91,7 +91,7 @@ EOT;
     }
 
     /**
-     * The expected AddressDetail.
+     * The expected StreetNameDetail.
      *
      * @return \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail
      */

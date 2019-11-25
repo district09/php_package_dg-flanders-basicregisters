@@ -11,7 +11,7 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * Post info value.
  */
-final class PostInfo extends AbstractWithGeographicalNames
+final class PostInfo extends AbstractWithGeographicalNames implements PostInfoInterface
 {
     /**
      * The post info id.
@@ -58,7 +58,7 @@ final class PostInfo extends AbstractWithGeographicalNames
      */
     public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $object */
         return parent::sameValueAs($object)
             && $this->postInfoId()->sameValueAs($object->postInfoId());
     }

@@ -7,14 +7,14 @@
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
-use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 
 require_once __DIR__ . '/bootstrap.php';
 
 // Start output.
 echo PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
-echo 'Get the details of a single municipality name from the service.' . PHP_EOL;
+echo 'Get the details of a single post info from the service.' . PHP_EOL;
 echo str_repeat('-', 80) . PHP_EOL;
 echo PHP_EOL;
 
@@ -30,20 +30,14 @@ $client = new Client($guzzleClient, $configuration);
 echo ' → Create the Service wrapper.' . PHP_EOL;
 $service = new BasicRegister($client);
 
-echo ' → Street name details.' . PHP_EOL;
-$streetNameId = new StreetNameId($exampleStreetNameId);
-$streetNameDetail = $service->streetName()->detail($streetNameId);
+echo ' → Post info details.' . PHP_EOL;
+$postInfoId = new PostInfoId($examplePostInfoId);
+$postInfoDetail = $service->postInfo()->detail($postInfoId);
 
-echo sprintf('   • ID           : %d', $streetNameDetail->streetNameId()->value()), PHP_EOL;
-echo sprintf(
-    '   • Municipality : %s %s',
-    $streetNameDetail->municipalityName()->municipalityNameId(),
-    $streetNameDetail->municipalityName()
-), PHP_EOL;
-
-foreach ($streetNameDetail->geographicalNames() as $geographicalName) {
+echo sprintf('   • ID : %d', $postInfoDetail->postInfoId()->value()), PHP_EOL;
+foreach ($postInfoDetail->geographicalNames() as $geographicalName) {
     /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
-    echo sprintf('   • Name %s      : %s', $geographicalName->languageCode(), $geographicalName), PHP_EOL;
+    echo sprintf('   • %s : %s', $geographicalName->languageCode(), $geographicalName), PHP_EOL;
 }
 
 // End.

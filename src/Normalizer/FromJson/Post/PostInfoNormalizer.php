@@ -9,6 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\IdExtractor;
 use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalNames;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
+use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface;
 
 /**
  * Normalizes JSON data into a PostInfo value.
@@ -20,9 +21,9 @@ final class PostInfoNormalizer
      *
      * @param object $jsonData
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface
      */
-    public function normalize(object $jsonData): PostInfo
+    public function normalize(object $jsonData): PostInfoInterface
     {
         $idExtractor = new IdExtractor();
 

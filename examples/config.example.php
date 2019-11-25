@@ -22,3 +22,6 @@ $exampleMunicipalityNameId = 44021;
 
 // Street name ID to load its details.
 $exampleStreetNameId = 69683;
+
+// Post info ID to load its details.
+$examplePostInfoId = 9000;

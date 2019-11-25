@@ -22,7 +22,7 @@ class StreetNameDetailUri implements UriInterface
     /**
      * Create a new URI by passing the StreetNameId value.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId $streetNameId
      */
     public function __construct(StreetNameId $streetNameId)
     {
