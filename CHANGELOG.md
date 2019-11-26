@@ -2,7 +2,18 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
-## [Unreleased]
+## [0.1.0]
+
+Initial release of the Flanders Basic Registers client package.
+
+Not all methods are covered (yet).
+
+Covered:
+
+* Addresses : list, detail, and match.
+* MunicipalityName : list and detail.
+* StreetName : list and detail.
+* PostPoint : list and detail.
 
 ### Added
 
@@ -45,3 +56,4 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Added service method to get the details of a single post info value.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
+[1.0.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/releases/tag/0.1.0
