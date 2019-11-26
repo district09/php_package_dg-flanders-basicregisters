@@ -32,7 +32,7 @@ class MunicipalityNameDetailUri implements UriInterface
     /**
      * @inheritDoc
      */
-    public function getUri()
+    public function getUri(): string
     {
         return sprintf('gemeenten/%d', $this->municipalityNameId->value());
     }

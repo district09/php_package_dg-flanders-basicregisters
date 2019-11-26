@@ -32,7 +32,7 @@ class PostInfoDetailUri implements UriInterface
     /**
      * @inheritDoc
      */
-    public function getUri()
+    public function getUri(): string
     {
         return sprintf('postinfo/%d', $this->postInfoId->value());
     }
