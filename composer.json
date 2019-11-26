@@ -23,7 +23,7 @@
     "require": {
         "php": ">=7.2",
         "digipolisgent/api-client": "^1.1",
-        "digipolisgent/value": "^1.1",
+        "digipolisgent/value": "^2.0.0",
         "ext-json": "*"
     },
     "require-dev": {
