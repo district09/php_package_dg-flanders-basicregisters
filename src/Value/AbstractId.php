@@ -9,9 +9,9 @@ use DigipolisGent\Value\ValueInterface;
 use Webmozart\Assert\Assert;
 
 /**
- * An id object.
+ * Abstract implementation of an id object.
  */
-class ObjectId extends ValueAbstract
+abstract class AbstractId extends ValueAbstract
 {
 
     /**
@@ -46,9 +46,9 @@ class ObjectId extends ValueAbstract
     /**
      * @inheritDoc
      */
-    public function sameValueAs(ValueInterface $object)
+    public function sameValueAs(ValueInterface $object): bool
     {
-        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\ObjectId $object */
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\AbstractId $object */
         return $this->sameValueTypeAs($object)
             && $this->value() === $object->value();
     }
@@ -56,7 +56,7 @@ class ObjectId extends ValueAbstract
     /**
      * @inheritDoc
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->value();
     }
