@@ -117,7 +117,7 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     /**
      * @inheritDoc
      */
-    public function sameValueAs(ValueInterface $object)
+    public function sameValueAs(ValueInterface $object): bool
     {
         /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatch $object */
         return $this->sameValueTypeAs($object)
@@ -146,7 +146,7 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     /**
      * @inheritDoc
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->hasAddressDetail()
             ? (string) $this->addressDetail()

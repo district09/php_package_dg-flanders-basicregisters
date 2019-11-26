@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Request;
 
-use DigipolisGent\API\Client\Request\AbstractRequest;
+use DigipolisGent\API\Client\Request\AbstractJsonRequest;
 use DigipolisGent\Flanders\BasicRegisters\Uri\StreetNameDetailUri;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 
 /**
  * Request to get the details of a single street name.
  */
-final class StreetNameDetailRequest extends AbstractRequest
+final class StreetNameDetailRequest extends AbstractJsonRequest
 {
     /**
      * Create a new street name detail request.

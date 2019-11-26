@@ -32,7 +32,7 @@ class StreetNameDetailUri implements UriInterface
     /**
      * @inheritDoc
      */
-    public function getUri()
+    public function getUri(): string
     {
         return sprintf('straatnamen/%d', $this->streetNameId->value());
     }

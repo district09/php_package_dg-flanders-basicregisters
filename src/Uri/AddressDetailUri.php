@@ -32,7 +32,7 @@ class AddressDetailUri implements UriInterface
     /**
      * @inheritDoc
      */
-    public function getUri()
+    public function getUri(): string
     {
         return sprintf('adressen/%d', $this->addressId->value());
     }

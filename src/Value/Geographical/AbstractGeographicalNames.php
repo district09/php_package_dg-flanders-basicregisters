@@ -79,7 +79,7 @@ abstract class AbstractGeographicalNames extends CollectionAbstract
     /**
      * @inheritDoc
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->name();
     }

@@ -80,7 +80,7 @@ abstract class AbstractUriWithQuery implements UriInterface
     /**
      * @inheritDoc
      */
-    public function getUri()
+    public function getUri(): string
     {
         return $this->addQueryString($this->getPath());
     }
