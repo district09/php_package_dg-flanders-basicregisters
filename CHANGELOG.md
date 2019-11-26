@@ -2,6 +2,13 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [Unreleased]
+
+### Added
+
+* Added backwards compatibility for older Value & Api-Client packages.
+  This to avoid dependency issues when combined with other packages.
+
 ## [0.1.0]
 
 Initial release of the Flanders Basic Registers client package.
