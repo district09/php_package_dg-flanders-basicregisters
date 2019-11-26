@@ -19,9 +19,9 @@ before_script:
 
 install:
   - composer config github-oauth.github.com ${GITHUB_TOKEN}
-  - composer install -n --dev
   - composer require "digipolisgent/api-client:${API_CLIENT_VERSION}" --no-update
   - composer require "digipolisgent/value:${VALUE_VERSION}" --no-update
+  - composer install -n --dev
 
 script:
   - vendor/bin/grumphp run
