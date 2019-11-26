@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Request;
 
-use DigipolisGent\API\Client\Request\AbstractJsonRequest;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Uri\PostInfoListUri;

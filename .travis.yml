@@ -1,7 +1,14 @@
 language: php
+
 php:
   - 7.2
   - 7.3
+
+env:
+  - API_CLIENT_VERSION=^1.1
+    VALUE_VERSION=^1.1
+  - API_CLIENT_VERSION=^2.0
+    VALUE_VERSION=^2.0
 
 sudo: false
 
@@ -13,6 +20,8 @@ before_script:
 install:
   - composer config github-oauth.github.com ${GITHUB_TOKEN}
   - composer install -n --dev
+  - composer require "digipolisgent/api-client:${API_CLIENT_VERSION}" --no-update
+  - composer require "digipolisgent/value:${VALUE_VERSION}" --no-update
 
 script:
   - vendor/bin/grumphp run
