@@ -53,7 +53,7 @@ information.
 [travis-develop-badge]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters.svg?token=anXPs46DEwgxP8RmJPAJ&branch=develop "Travis build develop"
 [travis-develop-link]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters/branches
 
-[codeclimate-maint-badge]: https://api.codeclimate.com/v1/badges/25b0ccb2739cd23839bb/maintainability
-[codeclimate-maint-link]: https://codeclimate.com/repos/5dcd2b0dceb05b014e00fbc3/maintainability
-[codeclimate-cover-badge]: https://api.codeclimate.com/v1/badges/25b0ccb2739cd23839bb/test_coverage
-[codeclimate-cover-link]: https://codeclimate.com/repos/5dcd2b0dceb05b014e00fbc3/test_coverage
+[codeclimate-maint-badge]: https://api.codeclimate.com/v1/badges/96ded1172a84e3665f0f/maintainability
+[codeclimate-maint-link]: https://codeclimate.com/github/digipolisgent/php_package_dg-flanders-basicregisters/maintainability
+[codeclimate-cover-badge]: https://api.codeclimate.com/v1/badges/96ded1172a84e3665f0f/test_coverage
+[codeclimate-cover-link]: https://codeclimate.com/github/digipolisgent/php_package_dg-flanders-basicregisters/test_coverage

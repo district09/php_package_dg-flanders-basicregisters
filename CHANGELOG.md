@@ -2,6 +2,13 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [0.1.1]
+
+### Added
+
+* Added backwards compatibility for older Value & Api-Client packages.
+  This to avoid dependency issues when combined with other packages.
+
 ## [0.1.0]
 
 Initial release of the Flanders Basic Registers client package.
@@ -56,4 +63,5 @@ Covered:
 * Added service method to get the details of a single post info value.
 
 [Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
-[1.0.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/releases/tag/0.1.0
+[0.1.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/releases/tag/0.1.0
+[0.1.1]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.1.0...0.1.1
