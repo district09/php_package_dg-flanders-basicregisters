@@ -4,7 +4,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
 use DigipolisGent\API\Service\ServiceAbstract;
 use DigipolisGent\Flanders\BasicRegisters\Cache\CacheKey;
-    use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
+use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameListRequest;
