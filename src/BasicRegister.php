@@ -4,22 +4,29 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters;
 
+use DigipolisGent\API\Cache\CacheableInterface;
+use DigipolisGent\API\Cache\CacheableTrait;
 use DigipolisGent\API\Client\ClientInterface;
+use DigipolisGent\API\Logger\LoggableInterface;
+use DigipolisGent\API\Logger\LoggableTrait;
+use DigipolisGent\API\Service\ServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressService;
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService;
 use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceInterface;
-use DigipolisGent\Flanders\BasicRegisters\Service\ServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceInterface;
 
 /**
  * Container of all BasicRegister services.
  */
-class BasicRegister implements BasicRegisterInterface
+class BasicRegister implements BasicRegisterInterface, CacheableInterface, LoggableInterface
 {
+    use CacheableTrait;
+    use LoggableTrait;
+
     /**
      * The client.
      *
@@ -86,7 +93,7 @@ class BasicRegister implements BasicRegisterInterface
      *
      * @param string $serviceClassName
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Service\ServiceInterface
+     * @return \DigipolisGent\API\Service\ServiceInterface
      */
     private function getService(string $serviceClassName): ServiceInterface
     {
@@ -108,6 +115,16 @@ class BasicRegister implements BasicRegisterInterface
         $factory = new $factoryClass();
         $client = clone($this->client);
 
-        $this->services[$serviceClassName] = $factory->create($client);
+        /** @var \DigipolisGent\API\Service\ServiceAbstract $service */
+        $service = $factory->create($client);
+
+        if ($this->cache) {
+            $service->setCacheService($this->cache);
+        }
+        foreach ($this->loggers as $logger) {
+            $service->addLogger($logger);
+        }
+
+        $this->services[$serviceClassName] = $service;
     }
 }

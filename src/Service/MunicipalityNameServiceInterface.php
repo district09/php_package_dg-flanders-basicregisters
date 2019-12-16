@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;

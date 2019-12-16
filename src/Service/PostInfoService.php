@@ -2,6 +2,8 @@
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceAbstract;
+use DigipolisGent\Flanders\BasicRegisters\Cache\CacheKey;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\PostInfoDetailRequest;
@@ -13,7 +15,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
 /**
  * Service to access the Flanders Basic register post info methods.
  */
-final class PostInfoService extends AbstractService implements PostInfoServiceInterface
+final class PostInfoService extends ServiceAbstract implements PostInfoServiceInterface
 {
     /**
      * @inheritDoc
@@ -29,7 +31,16 @@ final class PostInfoService extends AbstractService implements PostInfoServiceIn
      */
     public function detail(PostInfoId $postInfoId): PostInfoInterface
     {
-        $request = new PostInfoDetailRequest($postInfoId);
-        return $this->client()->send($request)->postInfo();
+        $cacheKey = CacheKey::fromId($postInfoId)->value();
+
+        $detail = $this->cacheGet($cacheKey);
+        if (!$detail) {
+            $request = new PostInfoDetailRequest($postInfoId);
+            $detail = $this->client()->send($request)->postInfo();
+
+            $this->cacheSet($cacheKey, $detail);
+        }
+
+        return $detail;
     }
 }

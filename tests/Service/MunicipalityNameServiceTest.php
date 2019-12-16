@@ -17,6 +17,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService
@@ -59,6 +60,68 @@ class MunicipalityNameServiceTest extends TestCase
         $basicRegisters = new MunicipalityNameService(
             $this->createClientMock($request, $response)
         );
+
+        $this->assertEquals(
+            $municipalityNameDetail,
+            $basicRegisters->detail($municipalityNameId)
+        );
+    }
+
+    /**
+     * Detail gets stored into the cache.
+     *
+     * @test
+     */
+    public function detailIsStoredIntoCache(): void
+    {
+        $municipalityNameId = new MunicipalityNameId(9731);
+        $municipalityNameDetail = $this->prophesize(MunicipalityNameDetailInterface::class)->reveal();
+
+        $request = new MunicipalityNameDetailRequest($municipalityNameId);
+        $response = new MunicipalityNameDetailResponse($municipalityNameDetail);
+        $client = $this->createClientMock($request, $response);
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:MunicipalityNameId:9731', null)
+            ->willReturn(null)
+            ->shouldBeCalled();
+        $cache
+            ->set('FlandersBasicRegister:MunicipalityNameId:9731', $municipalityNameDetail, null)
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $basicRegisters = new MunicipalityNameService($client);
+        $basicRegisters->setCacheService($cache->reveal());
+
+        $this->assertEquals(
+            $municipalityNameDetail,
+            $basicRegisters->detail($municipalityNameId)
+        );
+    }
+
+    /**
+     * Details are retrieved from cache when available.
+     *
+     * @test
+     */
+    public function detailIsLoadedFromCacheWhenAvailable(): void
+    {
+        $municipalityNameId = new MunicipalityNameId(9731);
+        $municipalityNameDetail = $this->prophesize(MunicipalityNameDetailInterface::class)->reveal();
+
+        $client = $this->prophesize(ClientInterface::class);
+        $client->send()->shouldNotBeCalled();
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:MunicipalityNameId:9731', null)
+            ->willReturn($municipalityNameDetail)
+            ->shouldBeCalled();
+        $cache->set()->shouldNotBeCalled();
+
+        $basicRegisters = new MunicipalityNameService($client->reveal());
+        $basicRegisters->setCacheService($cache->reveal());
 
         $this->assertEquals(
             $municipalityNameDetail,
