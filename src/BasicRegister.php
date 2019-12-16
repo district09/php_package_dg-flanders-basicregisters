@@ -4,21 +4,23 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters;
 
+use DigipolisGent\API\Cache\CacheableTrait;
 use DigipolisGent\API\Client\ClientInterface;
+use DigipolisGent\API\Service\ServiceAbstract;
+use DigipolisGent\API\Service\ServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressService;
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService;
 use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceInterface;
-use DigipolisGent\Flanders\BasicRegisters\Service\ServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceInterface;
 
 /**
  * Container of all BasicRegister services.
  */
-class BasicRegister implements BasicRegisterInterface
+class BasicRegister extends ServiceAbstract implements BasicRegisterInterface
 {
     /**
      * The client.
@@ -86,7 +88,7 @@ class BasicRegister implements BasicRegisterInterface
      *
      * @param string $serviceClassName
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Service\ServiceInterface
+     * @return \DigipolisGent\API\Service\ServiceInterface
      */
     private function getService(string $serviceClassName): ServiceInterface
     {

@@ -2,6 +2,7 @@
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceAbstract;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameDetailRequest;
@@ -13,7 +14,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
 /**
  * Service to access the Flanders Basic register service street name methods.
  */
-final class StreetNameService extends AbstractService implements StreetNameServiceInterface
+final class StreetNameService extends ServiceAbstract implements StreetNameServiceInterface
 {
     /**
      * @inheritDoc

@@ -2,6 +2,7 @@
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceAbstract;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\PostInfoDetailRequest;
@@ -13,7 +14,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
 /**
  * Service to access the Flanders Basic register post info methods.
  */
-final class PostInfoService extends AbstractService implements PostInfoServiceInterface
+final class PostInfoService extends ServiceAbstract implements PostInfoServiceInterface
 {
     /**
      * @inheritDoc

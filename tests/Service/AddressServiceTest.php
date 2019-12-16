@@ -23,7 +23,6 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
 /**
- * @covers \DigipolisGent\Flanders\BasicRegisters\Service\AbstractService
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\AddressService
  */
 class AddressServiceTest extends TestCase

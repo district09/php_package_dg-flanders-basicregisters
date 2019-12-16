@@ -2,6 +2,7 @@
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceAbstract;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest;
@@ -12,7 +13,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 /**
  * Service to access the Flanders Basic register service municipality methods.
  */
-final class MunicipalityNameService extends AbstractService implements MunicipalityNameServiceInterface
+final class MunicipalityNameService extends ServiceAbstract implements MunicipalityNameServiceInterface
 {
     /**
      * @inheritDoc
