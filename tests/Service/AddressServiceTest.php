@@ -21,6 +21,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\AddressService
@@ -66,6 +67,68 @@ class AddressServiceTest extends TestCase
         $address = new AddressService(
             $this->createClientMock($request, $response)
         );
+
+        $this->assertEquals(
+            $addressDetail,
+            $address->detail($addressId)
+        );
+    }
+
+    /**
+     * The address details are cached.
+     *
+     * @test
+     */
+    public function detailIsStoredIntoCache(): void
+    {
+        $addressId = new AddressId(9731);
+        $addressDetail = $this->prophesize(AddressDetailInterface::class)->reveal();
+
+        $request = new AddressDetailRequest($addressId);
+        $response = new AddressDetailResponse($addressDetail);
+        $client = $this->createClientMock($request, $response);
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:AddressId:9731', null)
+            ->willReturn(null)
+            ->shouldBeCalled();
+        $cache
+            ->set('FlandersBasicRegister:AddressId:9731', $addressDetail, null)
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $address = new AddressService($client);
+        $address->setCacheService($cache->reveal());
+
+        $this->assertEquals(
+            $addressDetail,
+            $address->detail($addressId)
+        );
+    }
+
+    /**
+     * Details are retrieved from cache when available.
+     *
+     * @test
+     */
+    public function detailIsLoadedFromCacheWhenAvailable(): void
+    {
+        $addressId = new AddressId(9731);
+        $addressDetail = $this->prophesize(AddressDetailInterface::class)->reveal();
+
+        $client = $this->prophesize(ClientInterface::class);
+        $client->send()->shouldNotBeCalled();
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:AddressId:9731', null)
+            ->willReturn($addressDetail)
+            ->shouldBeCalled();
+        $cache->set()->shouldNotBeCalled();
+
+        $address = new AddressService($client->reveal());
+        $address->setCacheService($cache->reveal());
 
         $this->assertEquals(
             $addressDetail,

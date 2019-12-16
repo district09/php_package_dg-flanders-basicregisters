@@ -18,6 +18,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService
@@ -63,6 +64,68 @@ class PostInfoServiceTest extends TestCase
         $postInfoService = new PostInfoService(
             $this->createClientMock($request, $response)
         );
+
+        $this->assertEquals(
+            $postInfo,
+            $postInfoService->detail($postInfoId)
+        );
+    }
+
+    /**
+     * The address details are cached.
+     *
+     * @test
+     */
+    public function detailIsStoredIntoCache(): void
+    {
+        $postInfoId = new PostInfoId(973156);
+        $postInfo = $this->prophesize(PostInfoInterface::class)->reveal();
+
+        $request = new PostInfoDetailRequest($postInfoId);
+        $response = new PostInfoDetailResponse($postInfo);
+        $client = $this->createClientMock($request, $response);
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:PostInfoId:973156', null)
+            ->willReturn(null)
+            ->shouldBeCalled();
+        $cache
+            ->set('FlandersBasicRegister:PostInfoId:973156', $postInfo, null)
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $postInfoService = new PostInfoService($client);
+        $postInfoService->setCacheService($cache->reveal());
+
+        $this->assertEquals(
+            $postInfo,
+            $postInfoService->detail($postInfoId)
+        );
+    }
+
+    /**
+     * Details are retrieved from cache when available.
+     *
+     * @test
+     */
+    public function detailIsLoadedFromCacheWhenAvailable(): void
+    {
+        $postInfoId = new PostInfoId(973156);
+        $postInfo = $this->prophesize(PostInfoInterface::class)->reveal();
+
+        $client = $this->prophesize(ClientInterface::class);
+        $client->send()->shouldNotBeCalled();
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:PostInfoId:973156', null)
+            ->willReturn($postInfo)
+            ->shouldBeCalled();
+        $cache->set()->shouldNotBeCalled();
+
+        $postInfoService = new PostInfoService($client->reveal());
+        $postInfoService->setCacheService($cache->reveal());
 
         $this->assertEquals(
             $postInfo,

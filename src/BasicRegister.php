@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters;
 
-use DigipolisGent\API\Cache\CacheableTrait;
 use DigipolisGent\API\Client\ClientInterface;
 use DigipolisGent\API\Service\ServiceAbstract;
 use DigipolisGent\API\Service\ServiceInterface;
@@ -110,6 +109,16 @@ class BasicRegister extends ServiceAbstract implements BasicRegisterInterface
         $factory = new $factoryClass();
         $client = clone($this->client);
 
-        $this->services[$serviceClassName] = $factory->create($client);
+        /** @var \DigipolisGent\API\Service\ServiceAbstract $service */
+        $service = $factory->create($client);
+
+        if ($this->cache) {
+            $service->setCacheService($this->cache);
+        }
+        foreach ($this->loggers as $logger) {
+            $service->addLogger($logger);
+        }
+
+        $this->services[$serviceClassName] = $service;
     }
 }

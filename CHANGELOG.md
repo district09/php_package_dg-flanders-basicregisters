@@ -2,6 +2,17 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [Unreleased]
+
+### Added
+
+* Added injectable caching and logging to the services.
+* Added caching of the services detail method results.
+
+### Fixed
+
+* Allowed Client exceptions to bubble up.
+
 ## [0.1.1]
 
 ### Added

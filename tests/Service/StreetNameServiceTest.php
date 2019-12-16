@@ -18,6 +18,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService
@@ -63,6 +64,68 @@ class StreetNameServiceTest extends TestCase
         $streetNameService = new StreetNameService(
             $this->createClientMock($request, $response)
         );
+
+        $this->assertEquals(
+            $streetNameDetail,
+            $streetNameService->detail($streetNameId)
+        );
+    }
+
+    /**
+     * The address details are cached.
+     *
+     * @test
+     */
+    public function detailIsStoredIntoCache(): void
+    {
+        $streetNameId = new StreetNameId(9731);
+        $streetNameDetail = $this->prophesize(StreetNameDetailInterface::class)->reveal();
+
+        $request = new StreetNameDetailRequest($streetNameId);
+        $response = new StreetNameDetailResponse($streetNameDetail);
+        $client = $this->createClientMock($request, $response);
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:StreetNameId:9731', null)
+            ->willReturn(null)
+            ->shouldBeCalled();
+        $cache
+            ->set('FlandersBasicRegister:StreetNameId:9731', $streetNameDetail, null)
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $streetNameService = new StreetNameService($client);
+        $streetNameService->setCacheService($cache->reveal());
+
+        $this->assertEquals(
+            $streetNameDetail,
+            $streetNameService->detail($streetNameId)
+        );
+    }
+
+    /**
+     * Details are retrieved from cache when available.
+     *
+     * @test
+     */
+    public function detailIsLoadedFromCacheWhenAvailable(): void
+    {
+        $streetNameId = new StreetNameId(9731);
+        $streetNameDetail = $this->prophesize(StreetNameDetailInterface::class)->reveal();
+
+        $client = $this->prophesize(ClientInterface::class);
+        $client->send()->shouldNotBeCalled();
+
+        $cache = $this->prophesize(CacheInterface::class);
+        $cache
+            ->get('FlandersBasicRegister:StreetNameId:9731', null)
+            ->willReturn($streetNameDetail)
+            ->shouldBeCalled();
+        $cache->set()->shouldNotBeCalled();
+
+        $streetNameService = new StreetNameService($client->reveal());
+        $streetNameService->setCacheService($cache->reveal());
 
         $this->assertEquals(
             $streetNameDetail,
