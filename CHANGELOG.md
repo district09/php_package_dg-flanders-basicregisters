@@ -2,6 +2,13 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [Unreleased]
+
+### Changed
+
+* Changed extending the interface by the BasicRegisterInterface instead of the
+  BasicRegister class.
+
 ## [0.2.0]
 
 ### Added

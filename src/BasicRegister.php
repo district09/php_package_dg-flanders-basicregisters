@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Flanders\BasicRegisters;
 
-use DigipolisGent\API\Cache\CacheableInterface;
 use DigipolisGent\API\Cache\CacheableTrait;
 use DigipolisGent\API\Client\ClientInterface;
-use DigipolisGent\API\Logger\LoggableInterface;
 use DigipolisGent\API\Logger\LoggableTrait;
 use DigipolisGent\API\Service\ServiceInterface;
 use DigipolisGent\Flanders\BasicRegisters\Service\AddressService;
@@ -22,7 +20,7 @@ use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceInterface;
 /**
  * Container of all BasicRegister services.
  */
-class BasicRegister implements BasicRegisterInterface, CacheableInterface, LoggableInterface
+class BasicRegister implements BasicRegisterInterface
 {
     use CacheableTrait;
     use LoggableTrait;
