@@ -2,7 +2,7 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
-## [Unreleased]
+## [0.2.1]
 
 ### Changed
 
@@ -80,6 +80,7 @@ Covered:
 * Added service method to get the list of post info values.
 * Added service method to get the details of a single post info value.
 
+[0.2.1]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/releases/tag/0.1.0
