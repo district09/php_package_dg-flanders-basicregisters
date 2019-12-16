@@ -2,6 +2,8 @@
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceAbstract;
+use DigipolisGent\Flanders\BasicRegisters\Cache\CacheKey;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest;
@@ -12,7 +14,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 /**
  * Service to access the Flanders Basic register service municipality methods.
  */
-final class MunicipalityNameService extends AbstractService implements MunicipalityNameServiceInterface
+final class MunicipalityNameService extends ServiceAbstract implements MunicipalityNameServiceInterface
 {
     /**
      * @inheritDoc
@@ -28,7 +30,16 @@ final class MunicipalityNameService extends AbstractService implements Municipal
      */
     public function detail(MunicipalityNameId $municipalityNameId): MunicipalityNameDetailInterface
     {
-        $request = new MunicipalityNameDetailRequest($municipalityNameId);
-        return $this->client()->send($request)->municipalityNameDetail();
+        $cacheKey = CacheKey::fromId($municipalityNameId)->value();
+
+        $detail = $this->cacheGet($cacheKey);
+        if (!$detail) {
+            $request = new MunicipalityNameDetailRequest($municipalityNameId);
+            $detail = $this->client()->send($request)->municipalityNameDetail();
+
+            $this->cacheSet($cacheKey, $detail);
+        }
+
+        return $detail;
     }
 }

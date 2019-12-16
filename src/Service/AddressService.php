@@ -2,6 +2,8 @@
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceAbstract;
+use DigipolisGent\Flanders\BasicRegisters\Cache\CacheKey;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\AddressDetailRequest;
@@ -15,7 +17,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
 /**
  * Service to access the Flanders Basic register service address methods.
  */
-final class AddressService extends AbstractService implements AddressServiceInterface
+final class AddressService extends ServiceAbstract implements AddressServiceInterface
 {
     /**
      * @inheritDoc
@@ -31,8 +33,16 @@ final class AddressService extends AbstractService implements AddressServiceInte
      */
     public function detail(AddressId $addressId): AddressDetailInterface
     {
-        $request = new AddressDetailRequest($addressId);
-        return $this->client()->send($request)->addressDetail();
+        $cacheKey = CacheKey::fromId($addressId)->value();
+
+        $detail = $this->cacheGet($cacheKey);
+        if (!$detail) {
+            $request = new AddressDetailRequest($addressId);
+            $detail = $this->client()->send($request)->addressDetail();
+            $this->cacheSet($cacheKey, $detail);
+        }
+
+        return $detail;
     }
 
     /**

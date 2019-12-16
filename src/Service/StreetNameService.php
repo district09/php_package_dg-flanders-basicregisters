@@ -2,6 +2,8 @@
 
 namespace DigipolisGent\Flanders\BasicRegisters\Service;
 
+use DigipolisGent\API\Service\ServiceAbstract;
+use DigipolisGent\Flanders\BasicRegisters\Cache\CacheKey;
 use DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface;
 use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameDetailRequest;
@@ -13,7 +15,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
 /**
  * Service to access the Flanders Basic register service street name methods.
  */
-final class StreetNameService extends AbstractService implements StreetNameServiceInterface
+final class StreetNameService extends ServiceAbstract implements StreetNameServiceInterface
 {
     /**
      * @inheritDoc
@@ -29,7 +31,16 @@ final class StreetNameService extends AbstractService implements StreetNameServi
      */
     public function detail(StreetNameId $streetNameId): StreetNameDetailInterface
     {
-        $request = new StreetNameDetailRequest($streetNameId);
-        return $this->client()->send($request)->streetNameDetail();
+        $cacheKey = CacheKey::fromId($streetNameId)->value();
+
+        $detail = $this->cacheGet($cacheKey);
+        if (!$detail) {
+            $request = new StreetNameDetailRequest($streetNameId);
+            $detail = $this->client()->send($request)->streetNameDetail();
+
+            $this->cacheSet($cacheKey, $detail);
+        }
+
+        return $detail;
     }
 }

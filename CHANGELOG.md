@@ -2,6 +2,17 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [0.2.0]
+
+### Added
+
+* Added injectable caching and logging to the services.
+* Added caching of the services detail method results.
+
+### Fixed
+
+* Allowed Client exceptions to bubble up.
+
 ## [0.1.1]
 
 ### Added
@@ -62,6 +73,7 @@ Covered:
 * Added service method to get the list of post info values.
 * Added service method to get the details of a single post info value.
 
-[Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
-[0.1.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/releases/tag/0.1.0
+[0.2.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.1.0...0.1.1
+[0.1.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/releases/tag/0.1.0
+[Unreleased]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/master...develop
