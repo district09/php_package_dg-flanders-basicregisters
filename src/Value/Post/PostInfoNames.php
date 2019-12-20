@@ -58,7 +58,7 @@ class PostInfoNames extends CollectionAbstract
     }
 
     /**
-     * Get all the names as array of string.
+     * Get all the names as array of strings.
      *
      * The main name will be the first in the list.
      *
