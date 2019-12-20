@@ -58,6 +58,27 @@ class PostInfoNames extends CollectionAbstract
     }
 
     /**
+     * Get all the names as array of string.
+     *
+     * The main name will be the first in the list.
+     *
+     * @return string[]
+     */
+    public function names(): array
+    {
+        $names = [$this->name()];
+        foreach ($this->values as $value) {
+            if ($value->sameValueAs($this->geographicalName())) {
+                continue;
+            }
+
+            $names[] = $value->spelling();
+        }
+
+        return $names;
+    }
+
+    /**
      * Has the names collection submunicipality names.
      *
      * This will be true if there are more then 1 name in the collection.
@@ -83,16 +104,25 @@ class PostInfoNames extends CollectionAbstract
      * The main name is:
      * - The name written in all caps.
      * - If no all caps name, the first one from the collection.
+     *
+     * If the main name is found:
+     * - The value is replaced by a Capitalized version of the name.
      */
     private function detectMainName(): void
     {
-        foreach ($this->values as $geographicalName) {
+        foreach ($this->values as $key => $geographicalName) {
             /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $geographicalName */
             if (preg_match('/[a-z]/', $geographicalName->spelling())) {
                 continue;
             }
 
-            $this->mainName = $geographicalName;
+            $name = new GeographicalName(
+                $geographicalName->languageCode(),
+                ucwords(strtolower($geographicalName->spelling()), '-')
+            );
+
+            $this->mainName = $name;
+            $this->values[$key] = $name;
             return;
         }
 
