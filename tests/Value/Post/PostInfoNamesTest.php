@@ -41,6 +41,8 @@ class PostInfoNamesTest extends TestCase
     /**
      * Main name is the first one written in all caps.
      *
+     * The name will be transformed to Capitalized Words.
+     *
      * @test
      */
     public function mainNameIsFirstItemInAllCaps(): void
@@ -53,12 +55,32 @@ class PostInfoNamesTest extends TestCase
         );
 
         $this->assertEquals(
-            $this->createGeographicalName('BAR-TEST'),
+            $this->createGeographicalName('Bar-Test'),
             $postInfoNames->geographicalName()
         );
         $this->assertEquals(
-            'BAR-TEST',
+            'Bar-Test',
             $postInfoNames->name()
+        );
+    }
+
+    /**
+     * Names array contains all names with main name first.
+     *
+     * @test
+     */
+    public function namesArrayHasMainNameFirst(): void
+    {
+        $postInfoNames = new PostInfoNames(
+            $this->createGeographicalName('Foo'),
+            $this->createGeographicalName('BAR-TEST'),
+            $this->createGeographicalName('Biz'),
+            $this->createGeographicalName('Baz')
+        );
+
+        $this->assertEquals(
+            ['Bar-Test', 'Foo', 'Biz', 'Baz'],
+            $postInfoNames->names()
         );
     }
 
@@ -81,7 +103,7 @@ class PostInfoNamesTest extends TestCase
      *
      * @test
      */
-    public function hasSubMunicipalitiesIfThereIsMoteThanOneName(): void
+    public function hasSubMunicipalitiesIfThereIsMoreThanOneName(): void
     {
         $postInfoNames = new PostInfoNames(
             $this->createGeographicalName('Foo'),
@@ -106,7 +128,7 @@ class PostInfoNamesTest extends TestCase
         );
 
         $this->assertEquals(
-            'BAR-TEST',
+            'Bar-Test',
             (string) $postInfoNames
         );
     }
