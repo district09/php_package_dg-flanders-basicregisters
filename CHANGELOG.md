@@ -2,6 +2,20 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## Unreleased
+
+### Added
+
+* Added method to PostInfoNames to get all names at once.
+  The post info names object contains all PostInfoName objects at once
+  including the main name and sub-municipality names. There are use cases
+  where an array of all names, starting with the main name, are required.
+
+### Changed
+
+* The main name is written in all caps. That name is now transformed into
+  Capitalized Words.
+
 ## [0.2.1]
 
 ### Changed
