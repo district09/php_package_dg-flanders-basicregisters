@@ -33,7 +33,7 @@ final class Filters implements FiltersInterface
     {
         $filters = [];
         foreach ($this->filters as $filter) {
-            $filters[$filter->name()] = $filter->value();
+            $filters[$filter->name()] = (string) $filter->value();
         }
 
         return $filters;

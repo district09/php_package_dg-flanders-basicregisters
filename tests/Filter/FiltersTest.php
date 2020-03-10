@@ -33,6 +33,25 @@ class FiltersTest extends TestCase
     }
 
     /**
+     * NULL values are casted to empty strings.
+     *
+     * @test
+     */
+    public function filterValuesAreCastedToString(): void
+    {
+        $filters = new Filters(
+            $this->createFilterMock('Biz', ''),
+            $this->createFilterMock('Baz', null)
+        );
+
+        $expected = [
+            'Biz' => '',
+            'Baz' => '',
+        ];
+        $this->assertSame($expected, $filters->filters());
+    }
+
+    /**
      * Create filter mock.
      *
      * @param string $name

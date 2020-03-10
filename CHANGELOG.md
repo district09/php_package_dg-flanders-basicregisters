@@ -2,6 +2,14 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [Unreleased]
+
+### Fixed
+
+* Fixed including empty filters in the query string.
+  When a filter was added with a NULL value, then the filter key was not added
+  to the query string.
+
 ## [0.2.2]
 
 ### Added
