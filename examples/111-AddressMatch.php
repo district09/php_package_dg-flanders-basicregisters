@@ -7,6 +7,7 @@
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\Configuration;
+use DigipolisGent\Flanders\BasicRegisters\Filter\BusNumberFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\Filters;
 use DigipolisGent\Flanders\BasicRegisters\Filter\HouseNumberFilter;
 use DigipolisGent\Flanders\BasicRegisters\Filter\MunicipalityNameFilter;
@@ -34,8 +35,9 @@ printStep('Create the filters.');
 $filters = new Filters(
     new MunicipalityNameFilter('gent'),
     new PostalCodeFilter(9000),
-    new StreetNameFilter('bellevue'),
-    new HouseNumberFilter(5)
+    new StreetNameFilter('Ter Platen'),
+    new HouseNumberFilter(64),
+    new BusNumberFilter('')
 );
 
 printStep('List of address that match the search.');

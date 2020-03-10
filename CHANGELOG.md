@@ -2,6 +2,14 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [0.2.3]
+
+### Fixed
+
+* Fixed including empty filters in the query string.
+  When a filter was added with a NULL value, then the filter key was not added
+  to the query string.
+
 ## [0.2.2]
 
 ### Added
@@ -94,6 +102,7 @@ Covered:
 * Added service method to get the list of post info values.
 * Added service method to get the details of a single post info value.
 
+[0.2.3]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.2.2...0.2.3
 [0.2.2]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.2.1...0.2.2
 [0.2.1]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/compare/0.1.1...0.2.0
