@@ -41,6 +41,7 @@ final class CacheKey
      */
     public static function fromId(AbstractId $identifier): CacheKey
     {
+        $matches = [];
         $className = get_class($identifier);
         preg_match('#\\\\(\w+)$#', $className, $matches);
 
