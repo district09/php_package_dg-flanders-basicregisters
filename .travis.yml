@@ -3,6 +3,7 @@ language: php
 php:
   - 7.2
   - 7.3
+  - 7.4
 
 env:
   - API_CLIENT_VERSION=^1.1
