@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceFactory;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\AddressMatchHandler;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceFactory

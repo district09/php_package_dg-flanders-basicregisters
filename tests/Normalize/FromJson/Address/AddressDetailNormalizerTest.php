@@ -18,7 +18,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\AddressDetailNormalizer

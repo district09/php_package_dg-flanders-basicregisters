@@ -12,7 +12,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street\StreetNameDetailNormalizer

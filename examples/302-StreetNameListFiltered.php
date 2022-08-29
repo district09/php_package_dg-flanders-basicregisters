@@ -2,6 +2,10 @@
 
 /**
  * Example how to get a filtered list of street names.
+ *
+ * @var string $apiEndpoint
+ * @var string $apiUserKey
+ * @var \Symfony\Component\Console\Output\ConsoleOutput $output
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;

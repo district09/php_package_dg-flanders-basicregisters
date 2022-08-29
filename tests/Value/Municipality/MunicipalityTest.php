@@ -10,14 +10,13 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\Municipality
  */
 class MunicipalityTest extends TestCase
 {
-
     /**
      * Municipality is created from its details.
      *

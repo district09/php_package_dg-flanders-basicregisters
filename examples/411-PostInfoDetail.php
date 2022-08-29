@@ -2,6 +2,12 @@
 
 /**
  * Example how to get the details of a single street name.
+ *
+ * @var string $apiEndpoint
+ * @var string $apiUserKey
+ * @var string $examplePostInfoId
+ * @var string $examplePostInfoId
+ * @var \Symfony\Component\Console\Output\ConsoleOutput $output
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;

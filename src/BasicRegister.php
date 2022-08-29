@@ -59,7 +59,9 @@ class BasicRegister implements BasicRegisterInterface
      */
     public function address(): AddressServiceInterface
     {
-        return $this->getService(AddressService::class);
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Service\AddressServiceInterface $service */
+        $service = $this->getService(AddressService::class);
+        return $service;
     }
 
     /**
@@ -67,7 +69,9 @@ class BasicRegister implements BasicRegisterInterface
      */
     public function municipalityName(): MunicipalityNameServiceInterface
     {
-        return $this->getService(MunicipalityNameService::class);
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceInterface $service */
+        $service = $this->getService(MunicipalityNameService::class);
+        return $service;
     }
 
     /**
@@ -75,7 +79,9 @@ class BasicRegister implements BasicRegisterInterface
      */
     public function streetName(): StreetNameServiceInterface
     {
-        return $this->getService(StreetNameService::class);
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceInterface $service */
+        $service = $this->getService(StreetNameService::class);
+        return $service;
     }
 
     /**
@@ -83,7 +89,9 @@ class BasicRegister implements BasicRegisterInterface
      */
     public function postInfo(): PostInfoServiceInterface
     {
-        return $this->getService(PostInfoService::class);
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceInterface $service */
+        $service = $this->getService(PostInfoService::class);
+        return $service;
     }
 
     /**
@@ -116,8 +124,10 @@ class BasicRegister implements BasicRegisterInterface
         /** @var \DigipolisGent\API\Service\ServiceAbstract $service */
         $service = $factory->create($client);
 
-        if ($this->cache) {
-            $service->setCacheService($this->cache);
+        /** @var \Psr\SimpleCache\CacheInterface|null $cache */
+        $cache = $this->cache;
+        if ($cache) {
+            $service->setCacheService($cache);
         }
         foreach ($this->loggers as $logger) {
             $service->addLogger($logger);

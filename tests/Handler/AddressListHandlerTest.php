@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Request\AddressListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use GuzzleHttp\Psr7\Stream;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**

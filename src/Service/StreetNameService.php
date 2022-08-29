@@ -23,7 +23,9 @@ final class StreetNameService extends ServiceAbstract implements StreetNameServi
     public function list(?FiltersInterface $filters = null, ?PagerInterface $pager = null): StreetNames
     {
         $request = new StreetNameListRequest($filters, $pager);
-        return $this->client()->send($request)->streetNames();
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Response\StreetNameListResponse $response */
+        $response = $this->client()->send($request);
+        return $response->streetNames();
     }
 
     /**
@@ -36,7 +38,9 @@ final class StreetNameService extends ServiceAbstract implements StreetNameServi
         $detail = $this->cacheGet($cacheKey);
         if (!$detail) {
             $request = new StreetNameDetailRequest($streetNameId);
-            $detail = $this->client()->send($request)->streetNameDetail();
+            /** @var \DigipolisGent\Flanders\BasicRegisters\Response\StreetNameDetailResponse $response */
+            $response = $this->client()->send($request);
+            $detail = $response->streetNameDetail();
 
             $this->cacheSet($cacheKey, $detail);
         }

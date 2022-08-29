@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\StreetNameListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
 use GuzzleHttp\Psr7\Stream;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**

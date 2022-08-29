@@ -14,7 +14,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoNames;
 use GuzzleHttp\Psr7\Stream;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**

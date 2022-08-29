@@ -52,7 +52,7 @@ interface AddressDetailInterface extends ValueInterface
     /**
      * Get the position.
      *
-     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface|ValueInterface
+     * @return \DigipolisGent\Flanders\BasicRegisters\Value\Position\PointInterface
      */
     public function position(): PointInterface;
 }

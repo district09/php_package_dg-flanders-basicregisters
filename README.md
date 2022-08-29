@@ -46,14 +46,14 @@ information.
 [flanders-basicregister.api]: https://overheid.vlaanderen.be/producten-diensten/gebouwen-adressenregister
 
 [github-badge]: https://img.shields.io/badge/github-DigipolisGent_Flanders_BasicRegisters-blue.svg?logo=github
-[github-link]: https://github.com/digipolisgent/php_package_dg-flanders-basicregisters
+[github-link]: https://github.com/district09/php_package_dg-flanders-basicregisters
 
-[travis-master-badge]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters.svg?token=anXPs46DEwgxP8RmJPAJ&branch=master "Travis build master"
-[travis-master-link]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters/branches
-[travis-develop-badge]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters.svg?token=anXPs46DEwgxP8RmJPAJ&branch=develop "Travis build develop"
-[travis-develop-link]: https://travis-ci.com/digipolisgent/php_package_dg-flanders-basicregisters/branches
+[travis-master-badge]: https://app.travis-ci.com/district09/php_package_dg-flanders-basicregisters.svg?token=anXPs46DEwgxP8RmJPAJ&branch=main "Travis build master"
+[travis-master-link]: https://app.travis-ci.com/district09/php_package_dg-flanders-basicregisters/branches
+[travis-develop-badge]: https://app.travis-ci.com/district09/php_package_dg-flanders-basicregisters.svg?token=anXPs46DEwgxP8RmJPAJ&branch=develop "Travis build develop"
+[travis-develop-link]: https://app.travis-ci.com/district09/php_package_dg-flanders-basicregisters/branches
 
-[codeclimate-maint-badge]: https://api.codeclimate.com/v1/badges/96ded1172a84e3665f0f/maintainability
-[codeclimate-maint-link]: https://codeclimate.com/github/digipolisgent/php_package_dg-flanders-basicregisters/maintainability
-[codeclimate-cover-badge]: https://api.codeclimate.com/v1/badges/96ded1172a84e3665f0f/test_coverage
-[codeclimate-cover-link]: https://codeclimate.com/github/digipolisgent/php_package_dg-flanders-basicregisters/test_coverage
+[codeclimate-maint-badge]: https://api.codeclimate.com/v1/badges/8bfb24263542eebef97a/maintainability
+[codeclimate-maint-link]: https://codeclimate.com/github/district09/php_package_dg-flanders-basicregisters/maintainability
+[codeclimate-cover-badge]: https://api.codeclimate.com/v1/badges/8bfb24263542eebef97a/test_coverage
+[codeclimate-cover-link]: https://codeclimate.com/github/district09/php_package_dg-flanders-basicregisters/test_coverage

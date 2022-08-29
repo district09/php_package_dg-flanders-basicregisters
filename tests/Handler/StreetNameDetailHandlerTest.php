@@ -15,7 +15,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetail;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use GuzzleHttp\Psr7\Stream;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**

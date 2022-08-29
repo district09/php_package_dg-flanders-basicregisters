@@ -6,7 +6,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Positio
 
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Position\Lambert72PointNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Position\Lambert72Point;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Position\Lambert72PointNormalizer

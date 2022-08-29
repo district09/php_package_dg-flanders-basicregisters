@@ -11,5 +11,4 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractGeographica
  */
 final class FullAddress extends AbstractGeographicalName
 {
-
 }

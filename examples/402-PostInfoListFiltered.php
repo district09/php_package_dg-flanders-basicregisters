@@ -2,6 +2,12 @@
 
 /**
  * Example how to get a list of post info values.
+ *
+ * @var string $apiEndpoint
+ * @var string $apiUserKey
+ * @var string $examplePostInfoName
+ * @var string $examplePostInfoName
+ * @var \Symfony\Component\Console\Output\ConsoleOutput $output
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;
@@ -34,8 +40,9 @@ $postInfos = $service->postInfo()->list($filters, new Pager(0, 25));
 
 $table = new Table($output);
 $table->setHeaders(['ID', 'Name', 'Sublocality']);
+
+/** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $postInfo */
 foreach ($postInfos as $postInfo) {
-    /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface $postInfo */
     foreach ($postInfo->postInfoNames() as $sublocalityName) {
         $table->addRow(
             [

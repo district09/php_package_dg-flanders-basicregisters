@@ -11,5 +11,4 @@ use DigipolisGent\Flanders\BasicRegisters\Value\AbstractId;
  */
 final class AddressId extends AbstractId
 {
-
 }

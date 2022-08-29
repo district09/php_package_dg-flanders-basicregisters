@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Street\StreetNamesNormalizer

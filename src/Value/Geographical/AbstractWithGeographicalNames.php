@@ -12,7 +12,6 @@ use DigipolisGent\Value\ValueInterface;
  */
 abstract class AbstractWithGeographicalNames extends ValueAbstract implements WithGeographicalNamesInterface
 {
-
     /**
      * The geographical names.
      *

@@ -1,14 +1,27 @@
 version: "2"
 
+prepare:
+  fetch:
+    - url: "https://raw.githubusercontent.com/digipolisgent/ci_config-files-and-scripts/master/php/drupal8/.csslintrc"
+      path: ".csslintrc"
+    - url: "https://raw.githubusercontent.com/digipolisgent/ci_config-files-and-scripts/master/php/drupal8/.eslintrc.json"
+      path: ".eslintrc.json"
+    - url: "https://raw.githubusercontent.com/digipolisgent/ci_config-files-and-scripts/master/php/drupal8/.eslintignore"
+      path: ".eslintignore"
+    - url: "https://raw.githubusercontent.com/digipolisgent/php_package_qa-php/1.x/configs/phpcs.xml"
+      path: ".phpcs.xml"
+    - url: "https://raw.githubusercontent.com/digipolisgent/php_package_qa-php/1.x/configs/phpmd.xml"
+      path: ".phpmd.xml"
+
 plugins:
   phpcodesniffer:
     enabled: true
     config:
-      standard: "PSR1,PSR2"
+      standard: ".phpcs.xml"
   phpmd:
     enabled: true
     config:
-      rulesets: "phpmd.xml"
+      rulesets: ".phpmd.xml"
   duplication:
     enabled: true
     config:
@@ -27,7 +40,7 @@ plugins:
       severity: minor
 
 exclude_patterns:
-- ".github"
-- "**/vendor/**/*"
-- "examples/"
-- "tests/"
+  - ".github"
+  - "**/vendor/**/*"
+  - "examples/"
+  - "tests/"

@@ -22,7 +22,7 @@ final class AddressMatchResponse implements ResponseInterface
     /**
      * Constructor.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches $addressMatches
      */
     public function __construct(AddressMatches $addressMatches)
     {

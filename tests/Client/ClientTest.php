@@ -9,7 +9,7 @@ use DigipolisGent\API\Client\Response\ResponseInterface;
 use DigipolisGent\Flanders\BasicRegisters\Client\Client;
 use DigipolisGent\Flanders\BasicRegisters\Configuration\ConfigurationInterface;
 use GuzzleHttp\Client as GuzzleClient;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Prophecy\Argument;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface as PsrResponse;

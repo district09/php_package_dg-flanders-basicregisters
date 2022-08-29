@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\AddressesNormalizer

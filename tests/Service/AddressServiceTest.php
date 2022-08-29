@@ -19,7 +19,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatches;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\SimpleCache\CacheInterface;
 

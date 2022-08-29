@@ -23,13 +23,13 @@ final class AddressNormalizer
     public function normalize(object $jsonData): Address
     {
         $idExtractor = new IdExtractor();
-        $fullAddressNormalizer = new FullAddressNormalizer();
+        $fullNormalizer = new FullAddressNormalizer();
 
         return new Address(
             new AddressId($idExtractor->extractObjectId($jsonData)),
             $jsonData->huisnummer ?? '',
             $jsonData->busnummer ?? '',
-            $fullAddressNormalizer->normalize($jsonData->volledigAdres)
+            $fullNormalizer->normalize($jsonData->volledigAdres)
         );
     }
 }

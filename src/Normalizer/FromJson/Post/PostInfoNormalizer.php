@@ -24,11 +24,10 @@ final class PostInfoNormalizer
     public function normalize(object $jsonData): PostInfoInterface
     {
         $idExtractor = new IdExtractor();
-        $postInfoNamesNormalizer = new PostInfoNamesNormalizer();
 
         return new PostInfo(
             new PostInfoId($idExtractor->extractObjectId($jsonData)),
-            $postInfoNamesNormalizer->normalize($jsonData->postnamen)
+            (new PostInfoNamesNormalizer())->normalize($jsonData->postnamen)
         );
     }
 }

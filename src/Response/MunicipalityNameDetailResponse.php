@@ -17,16 +17,16 @@ final class MunicipalityNameDetailResponse implements ResponseInterface
      *
      * @var \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface
      */
-    private $municipalityNameDetail;
+    private $nameDetail;
 
     /**
      * Constructor.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface $municipalityNameDetail
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameDetailInterface $nameDetail
      */
-    public function __construct(MunicipalityNameDetailInterface $municipalityNameDetail)
+    public function __construct(MunicipalityNameDetailInterface $nameDetail)
     {
-        $this->municipalityNameDetail = $municipalityNameDetail;
+        $this->nameDetail = $nameDetail;
     }
 
     /**
@@ -36,6 +36,6 @@ final class MunicipalityNameDetailResponse implements ResponseInterface
      */
     public function municipalityNameDetail(): MunicipalityNameDetailInterface
     {
-        return $this->municipalityNameDetail;
+        return $this->nameDetail;
     }
 }

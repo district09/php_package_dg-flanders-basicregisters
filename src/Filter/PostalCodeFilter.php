@@ -9,7 +9,6 @@ namespace DigipolisGent\Flanders\BasicRegisters\Filter;
  */
 final class PostalCodeFilter extends AbstractFilter
 {
-
     /**
      * @inheritDoc
      */
