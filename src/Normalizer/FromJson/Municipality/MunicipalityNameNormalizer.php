@@ -24,11 +24,10 @@ final class MunicipalityNameNormalizer
     public function normalize(object $jsonData): MunicipalityName
     {
         $idExtractor = new IdExtractor();
-        $geoGraphicalNameNormalizer = new GeographicalNameNormalizer();
 
         return new MunicipalityName(
             new MunicipalityNameId($idExtractor->extractObjectId($jsonData)),
-            $geoGraphicalNameNormalizer->normalize($jsonData->gemeentenaam->geografischeNaam)
+            (new GeographicalNameNormalizer())->normalize($jsonData->gemeentenaam->geografischeNaam)
         );
     }
 }

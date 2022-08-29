@@ -21,11 +21,11 @@ class PostInfoNamesNormalizer
      */
     public function normalize(array $jsonData): PostInfoNames
     {
-        $geographicalNameNormalizer = new GeographicalNameNormalizer();
+        $nameNormalizer = new GeographicalNameNormalizer();
 
         $geographicalNames = [];
         foreach ($jsonData as $item) {
-            $geographicalNames[] = $geographicalNameNormalizer->normalize($item->geografischeNaam);
+            $geographicalNames[] = $nameNormalizer->normalize($item->geografischeNaam);
         }
 
         return new PostInfoNames(...$geographicalNames);

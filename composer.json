@@ -1,6 +1,8 @@
 {
     "name": "digipolisgent/flanders-basicregisters",
     "description": "Package to access the Flanders Basic Registers (Vlaanderen Basisregisters).",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "digipolisgent",
         "services",
@@ -9,33 +11,24 @@
         "vlaanderen",
         "basisregisters"
     ],
-    "homepage": "https://github.com/digipolisgent/php_package_dg-flanders-basicregisters",
-    "type": "library",
-    "license": "MIT",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "authors": [
         {
             "name": "Peter Decuyper",
             "email": "peter.decuyper@digipolis.gent"
         }
     ],
+    "homepage": "https://github.com/digipolisgent/php_package_dg-flanders-basicregisters",
     "require": {
-        "php": ">=7.2",
-        "digipolisgent/api-client": "^1.1|^2.0",
-        "digipolisgent/value": "^1.1|^2.0",
-        "ext-json": "*"
+        "php": "^7.3",
+        "ext-json": "*",
+        "digipolisgent/api-client": "^1.1 || ^2.0",
+        "digipolisgent/value": "^1.1 || ^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8",
-        "squizlabs/php_codesniffer": "^2.3",
-        "phpro/grumphp": "^0.15.2",
-        "sebastian/phpcpd": "^4.1",
-        "phpmd/phpmd": "^2.7",
-        "phpstan/phpstan": "^0.11.15",
-        "sensiolabs/security-checker": "^6.0",
-        "symfony/console": "^4"
+        "district09/qa-php": "^1.0.1"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "DigipolisGent\\Flanders\\BasicRegisters\\": "src/"
@@ -46,17 +39,25 @@
             "DigipolisGent\\Tests\\Flanders\\BasicRegisters\\": "tests/"
         }
     },
-    "scripts": {
-        "grumphp": "vendor/bin/grumphp run --ansi",
-        "phpcs": "vendor/bin/phpcs",
-        "test": "vendor/bin/phpunit",
-        "coverage": "vendor/bin/phpunit --coverage-html ./build/coverage",
-        "phpstan": "vendor/bin/phpstan analyse --level=7 ./src",
-        "post-install-cmd": "vendor/bin/grumphp git:init"
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "phpro/grumphp-shim": true
+        }
     },
     "extra": {
-        "branch-alias": {
-            "dev-develop": "0.1-dev"
+        "grumphp": {
+            "config-default-path": "vendor/district09/qa-php/configs/grumphp.yml"
         }
+    },
+    "scripts": {
+        "post-install-cmd": "vendor/bin/grumphp git:init",
+        "coverage": "vendor/bin/phpunit --configuration=phpunit.qa-php.xml --coverage-html build/coverage",
+        "grumphp": "vendor/bin/grumphp run",
+        "phpcpd": "vendor/bin/grumphp run --tasks=phpcpd",
+        "phpcs": "vendor/bin/grumphp run --tasks=phpcs",
+        "phpmd": "vendor/bin/grumphp run --tasks=phpmd",
+        "phpstan": "vendor/bin/grumphp run --tasks=phpstan",
+        "phpunit": "vendor/bin/phpunit --configuration=phpunit.qa-php.xml"
     }
 }

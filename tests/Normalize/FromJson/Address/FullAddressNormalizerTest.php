@@ -7,7 +7,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Normalize\FromJson\Address
 use DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\FullAddressNormalizer;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\FullAddress;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Address\FullAddressNormalizer

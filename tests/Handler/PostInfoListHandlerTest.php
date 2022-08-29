@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Request\PostInfoListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\PostInfoListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
 use GuzzleHttp\Psr7\Stream;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**

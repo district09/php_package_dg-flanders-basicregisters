@@ -16,7 +16,7 @@ use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfos;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\SimpleCache\CacheInterface;
 

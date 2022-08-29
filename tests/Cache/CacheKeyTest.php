@@ -6,7 +6,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Cache;
 
 use DigipolisGent\Flanders\BasicRegisters\Cache\CacheKey;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Cache\CacheKey

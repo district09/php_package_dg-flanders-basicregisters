@@ -22,7 +22,7 @@ final class MunicipalityNameListResponse implements ResponseInterface
     /**
      * Constructor.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames $municipalityNames
      */
     public function __construct(MunicipalityNames $municipalityNames)
     {

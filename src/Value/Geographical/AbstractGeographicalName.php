@@ -13,7 +13,6 @@ use DigipolisGent\Value\ValueInterface;
  */
 abstract class AbstractGeographicalName extends ValueAbstract
 {
-
     /**
      * The language code.
      *

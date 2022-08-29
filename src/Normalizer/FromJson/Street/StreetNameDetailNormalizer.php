@@ -26,13 +26,11 @@ final class StreetNameDetailNormalizer
     public function normalize(object $jsonData): StreetNameDetailInterface
     {
         $idExtractor = new IdExtractor();
-        $geoGraphicalNamesNormalizer = new GeographicalNamesNormalizer();
-        $municipalityNameNormalizer = new MunicipalityNameNormalizer();
 
         return new StreetNameDetail(
             new StreetNameId($idExtractor->extractObjectId($jsonData)),
-            $geoGraphicalNamesNormalizer->normalize($jsonData->straatnamen),
-            $municipalityNameNormalizer->normalize($jsonData->gemeente)
+            (new GeographicalNamesNormalizer())->normalize($jsonData->straatnamen),
+            (new MunicipalityNameNormalizer())->normalize($jsonData->gemeente)
         );
     }
 }

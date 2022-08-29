@@ -20,11 +20,11 @@ class AddressMatchesNormalizer
      */
     public function normalize(object $jsonData): AddressMatches
     {
-        $addressMatchNormalizer = new AddressMatchNormalizer();
+        $addressNormalizer = new AddressMatchNormalizer();
 
         $addressMatches = [];
         foreach ($jsonData->adresMatches as $addressMatchData) {
-            $addressMatches[] = $addressMatchNormalizer->normalize($addressMatchData);
+            $addressMatches[] = $addressNormalizer->normalize($addressMatchData);
         }
 
         return new AddressMatches(...$addressMatches);

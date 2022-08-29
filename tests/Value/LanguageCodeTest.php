@@ -6,14 +6,13 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode
  */
 class LanguageCodeTest extends TestCase
 {
-
     /**
      * Exception is thrown when code length ≠ 2.
      *

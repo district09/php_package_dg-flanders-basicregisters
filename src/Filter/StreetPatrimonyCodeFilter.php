@@ -9,7 +9,6 @@ namespace DigipolisGent\Flanders\BasicRegisters\Filter;
  */
 class StreetPatrimonyCodeFilter extends AbstractFilter
 {
-
     /**
      * @inheritDoc
      */

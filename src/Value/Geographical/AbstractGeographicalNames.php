@@ -13,7 +13,6 @@ use Webmozart\Assert\Assert;
  */
 abstract class AbstractGeographicalNames extends CollectionAbstract
 {
-
     /**
      * Create the collection from one or more geographical names.
      *
@@ -38,7 +37,9 @@ abstract class AbstractGeographicalNames extends CollectionAbstract
      */
     public function translation(LanguageCode $languageCode): ?GeographicalName
     {
-        return $this->values[$languageCode->code()] ?? null;
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName|null $translation */
+        $translation = $this->values[$languageCode->code()] ?? null;
+        return $translation;
     }
 
     /**
@@ -62,7 +63,9 @@ abstract class AbstractGeographicalNames extends CollectionAbstract
         ];
         $itemsFiltered = array_filter($items);
 
-        return reset($itemsFiltered)->spelling();
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $name */
+        $name = reset($itemsFiltered);
+        return $name->spelling();
     }
 
     /**

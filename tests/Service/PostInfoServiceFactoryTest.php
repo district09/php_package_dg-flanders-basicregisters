@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Handler\PostInfoDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\PostInfoListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoService;
 use DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceFactory;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\PostInfoServiceFactory

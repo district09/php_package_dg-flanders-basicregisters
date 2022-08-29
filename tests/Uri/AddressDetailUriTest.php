@@ -6,14 +6,13 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Uri;
 
 use DigipolisGent\Flanders\BasicRegisters\Uri\AddressDetailUri;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\AddressDetailUri
  */
 class AddressDetailUriTest extends TestCase
 {
-
     /**
      * URI contains the ID of the address.
      *

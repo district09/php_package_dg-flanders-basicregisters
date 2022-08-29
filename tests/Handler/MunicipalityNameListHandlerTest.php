@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Request\MunicipalityNameListRequest;
 use DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameListResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNames;
 use GuzzleHttp\Psr7\Stream;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**

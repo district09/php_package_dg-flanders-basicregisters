@@ -13,7 +13,6 @@ use Webmozart\Assert\Assert;
  */
 abstract class AbstractId extends ValueAbstract
 {
-
     /**
      * The object id value.
      *

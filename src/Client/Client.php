@@ -40,8 +40,9 @@ final class Client extends AbstractClient
     protected function injectHeaders(RequestInterface $request): RequestInterface
     {
         $request = parent::injectHeaders($request);
-
-        $userKey = $this->configuration->userKey();
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Configuration\ConfigurationInterface $configuration */
+        $configuration = $this->configuration;
+        $userKey = $configuration->userKey();
         if (!empty($userKey)) {
             $request = $request->withHeader('user-key', $userKey);
         }

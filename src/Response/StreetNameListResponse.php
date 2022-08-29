@@ -22,7 +22,7 @@ final class StreetNameListResponse implements ResponseInterface
     /**
      * Constructor.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames $streetNames
      */
     public function __construct(StreetNames $streetNames)
     {

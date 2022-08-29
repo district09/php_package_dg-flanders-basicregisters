@@ -20,11 +20,11 @@ final class GeographicalNamesNormalizer
      */
     public function normalize(array $jsonData): GeographicalNames
     {
-        $geographicalNameNormalizer = new GeographicalNameNormalizer();
+        $nameNormalizer = new GeographicalNameNormalizer();
 
         $geographicalNames = [];
         foreach ($jsonData as $geographicalNameData) {
-            $geographicalNames[] = $geographicalNameNormalizer
+            $geographicalNames[] = $nameNormalizer
                 ->normalize($geographicalNameData);
         }
 

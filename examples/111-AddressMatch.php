@@ -2,6 +2,10 @@
 
 /**
  * Example how to use the AddressMatch service method.
+ *
+ * @var string $apiEndpoint
+ * @var string $apiUserKey
+ * @var \Symfony\Component\Console\Output\ConsoleOutput $output
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;

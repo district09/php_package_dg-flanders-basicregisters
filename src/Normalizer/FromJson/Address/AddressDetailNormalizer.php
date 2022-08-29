@@ -23,16 +23,11 @@ final class AddressDetailNormalizer
      */
     public function normalize(object $jsonData): AddressDetail
     {
-        $addressNormalizer = new AddressNormalizer();
-        $municipalityNormalizer = new MunicipalityNormalizer();
-        $streetNameNormalizer = new StreetNameNormalizer();
-        $positionNormalizer = new Lambert72PointNormalizer();
-
         return new AddressDetail(
-            $addressNormalizer->normalize($jsonData),
-            $municipalityNormalizer->normalize($jsonData),
-            $streetNameNormalizer->normalize($jsonData->straatnaam),
-            $positionNormalizer->normalize($jsonData->adresPositie->point)
+            (new AddressNormalizer())->normalize($jsonData),
+            (new MunicipalityNormalizer())->normalize($jsonData),
+            (new StreetNameNormalizer())->normalize($jsonData->straatnaam),
+            (new Lambert72PointNormalizer())->normalize($jsonData->adresPositie->point)
         );
     }
 }

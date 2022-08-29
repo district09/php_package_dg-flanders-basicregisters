@@ -6,7 +6,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Response;
 
 use DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse;
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressDetailInterface;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse

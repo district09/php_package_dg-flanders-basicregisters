@@ -6,7 +6,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Uri;
 
 use DigipolisGent\Flanders\BasicRegisters\Uri\PostInfoDetailUri;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\PostInfoDetailUri
