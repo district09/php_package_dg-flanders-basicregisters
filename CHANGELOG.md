@@ -2,6 +2,21 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [Unreleased]
+
+### Added
+
+* Add support for PHP 8.x.
+
+### Updated
+
+* Update digipolisgent/api-client to 3.x.
+* Update digipolisgent/value to 3.x.
+
+### Changed
+
+* Change minimal PHP version to PHP 7.4.
+
 ## [1.0.0]
 
 ### Added
