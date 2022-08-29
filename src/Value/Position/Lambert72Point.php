@@ -9,5 +9,4 @@ namespace DigipolisGent\Flanders\BasicRegisters\Value\Position;
  */
 final class Lambert72Point extends AbstractPoint
 {
-
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DigipolisGent\Tests\Flanders\BasicRegisters\Filter;
 
 use DigipolisGent\Flanders\BasicRegisters\Filter\StreetPatrimonyCodeFilter;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Filter\StreetPatrimonyCodeFilter

@@ -13,7 +13,6 @@ use Webmozart\Assert\Assert;
  */
 final class LanguageCode extends ValueAbstract
 {
-
     /**
      * The language code.
      *

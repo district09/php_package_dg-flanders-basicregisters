@@ -22,18 +22,15 @@ class AddressMatchNormalizer
      */
     public function normalize(object $jsonData): AddressMatch
     {
-        $municipalityNameNormalizer = new MunicipalityNameNormalizer();
-        $streetNameNormalizer = new StreetNameNormalizer();
-
         $addressDetail = null;
         if (!empty($jsonData->identificator)) {
-            $addressDetailNormalizer = new AddressDetailNormalizer();
-            $addressDetail = $addressDetailNormalizer->normalize($jsonData);
+            $detailNormalizer = new AddressDetailNormalizer();
+            $addressDetail = $detailNormalizer->normalize($jsonData);
         }
 
         return new AddressMatch(
-            $municipalityNameNormalizer->normalize($jsonData->gemeente),
-            $streetNameNormalizer->normalize($jsonData->straatnaam),
+            (new MunicipalityNameNormalizer())->normalize($jsonData->gemeente),
+            (new StreetNameNormalizer())->normalize($jsonData->straatnaam),
             $addressDetail,
             (float) $jsonData->score
         );

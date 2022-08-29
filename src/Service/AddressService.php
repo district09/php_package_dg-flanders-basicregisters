@@ -25,7 +25,10 @@ final class AddressService extends ServiceAbstract implements AddressServiceInte
     public function list(?FiltersInterface $filters = null, ?PagerInterface $pager = null): Addresses
     {
         $request = new AddressListRequest($filters, $pager);
-        return $this->client()->send($request)->addresses();
+
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Response\AddressListResponse $response */
+        $response = $this->client()->send($request);
+        return $response->addresses();
     }
 
     /**
@@ -38,7 +41,9 @@ final class AddressService extends ServiceAbstract implements AddressServiceInte
         $detail = $this->cacheGet($cacheKey);
         if (!$detail) {
             $request = new AddressDetailRequest($addressId);
-            $detail = $this->client()->send($request)->addressDetail();
+            /** @var \DigipolisGent\Flanders\BasicRegisters\Response\AddressDetailResponse $response */
+            $response = $this->client()->send($request);
+            $detail = $response->addressDetail();
             $this->cacheSet($cacheKey, $detail);
         }
 
@@ -51,6 +56,9 @@ final class AddressService extends ServiceAbstract implements AddressServiceInte
     public function match(FiltersInterface $filters = null): AddressMatches
     {
         $request = new AddressMatchRequest($filters);
-        return $this->client()->send($request)->addressMatches();
+
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Response\AddressMatchResponse $response */
+        $response = $this->client()->send($request);
+        return $response->addressMatches();
     }
 }

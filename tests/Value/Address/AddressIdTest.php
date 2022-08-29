@@ -6,7 +6,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Value\Address;
 
 use DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressId;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\AbstractId
@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
  */
 class AddressIdTest extends TestCase
 {
-
     /**
      * Exception is thrown when value is not greater than 0.
      *

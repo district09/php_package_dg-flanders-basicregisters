@@ -8,14 +8,13 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName
  */
 class MunicipalityNameTest extends TestCase
 {
-
     /**
      * Municipality name is created from its object id and geographical name.
      *

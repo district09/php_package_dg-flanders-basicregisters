@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameService;
 use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNameDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\MunicipalityNameListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceFactory;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\MunicipalityNameServiceFactory

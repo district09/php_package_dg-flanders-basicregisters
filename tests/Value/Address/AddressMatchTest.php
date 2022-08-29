@@ -13,7 +13,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Prophecy\Argument;
 
 /**

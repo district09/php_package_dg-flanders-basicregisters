@@ -21,7 +21,6 @@ use DigipolisGent\Value\ValueInterface;
  */
 final class AddressMatch extends ValueAbstract implements AddressMatchInterface
 {
-
     /**
      * The municipality name value.
      *
@@ -129,7 +128,7 @@ final class AddressMatch extends ValueAbstract implements AddressMatchInterface
     /**
      * Compare of other object has same addressDetails as this object.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatchInterface
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\AddressMatchInterface $addressMatch
      *
      * @return bool
      */

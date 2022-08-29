@@ -22,7 +22,9 @@ final class MunicipalityNameService extends ServiceAbstract implements Municipal
     public function list(PagerInterface $pager = null): MunicipalityNames
     {
         $request = new MunicipalityNameListRequest($pager);
-        return $this->client()->send($request)->municipalityNames();
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameListResponse $response */
+        $response = $this->client()->send($request);
+        return $response->municipalityNames();
     }
 
     /**
@@ -35,7 +37,10 @@ final class MunicipalityNameService extends ServiceAbstract implements Municipal
         $detail = $this->cacheGet($cacheKey);
         if (!$detail) {
             $request = new MunicipalityNameDetailRequest($municipalityNameId);
-            $detail = $this->client()->send($request)->municipalityNameDetail();
+
+            /** @var \DigipolisGent\Flanders\BasicRegisters\Response\MunicipalityNameDetailResponse $response */
+            $response = $this->client()->send($request);
+            $detail = $response->municipalityNameDetail();
 
             $this->cacheSet($cacheKey, $detail);
         }

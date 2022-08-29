@@ -6,7 +6,7 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Request;
 
 use DigipolisGent\Flanders\BasicRegisters\Request\StreetNameDetailRequest;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Request\StreetNameDetailRequest

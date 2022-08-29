@@ -6,14 +6,13 @@ namespace DigipolisGent\Tests\Flanders\BasicRegisters\Uri;
 
 use DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNameDetailUri;
 use DigipolisGent\Flanders\BasicRegisters\Value\Municipality\MunicipalityNameId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Uri\MunicipalityNameDetailUri
  */
 class MunicipalityNameDetailUriTest extends TestCase
 {
-
     /**
      * URI contains the ID of the municipality name.
      *

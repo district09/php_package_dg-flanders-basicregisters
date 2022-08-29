@@ -9,5 +9,4 @@ namespace DigipolisGent\Flanders\BasicRegisters\Value\Geographical;
  */
 final class GeographicalName extends AbstractGeographicalName
 {
-
 }

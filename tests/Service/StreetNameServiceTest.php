@@ -16,7 +16,7 @@ use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameDetailInterface;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNames;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\SimpleCache\CacheInterface;
 

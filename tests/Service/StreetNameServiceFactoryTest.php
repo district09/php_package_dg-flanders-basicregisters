@@ -9,7 +9,7 @@ use DigipolisGent\Flanders\BasicRegisters\Handler\StreetNameDetailHandler;
 use DigipolisGent\Flanders\BasicRegisters\Handler\StreetNameListHandler;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameService;
 use DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceFactory;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Service\StreetNameServiceFactory

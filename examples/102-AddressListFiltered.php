@@ -2,6 +2,10 @@
 
 /**
  * Example how to get a filtered list of addresses.
+ *
+ * @var string $apiEndpoint
+ * @var string $apiUserKey
+ * @var \Symfony\Component\Console\Output\ConsoleOutput $output
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;

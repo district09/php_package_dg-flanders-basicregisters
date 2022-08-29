@@ -22,7 +22,7 @@ final class AddressListResponse implements ResponseInterface
     /**
      * Constructor.
      *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses
+     * @param \DigipolisGent\Flanders\BasicRegisters\Value\Address\Addresses $addresses
      */
     public function __construct(Addresses $addresses)
     {

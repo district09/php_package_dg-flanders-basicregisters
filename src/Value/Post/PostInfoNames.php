@@ -67,6 +67,7 @@ class PostInfoNames extends CollectionAbstract
     public function names(): array
     {
         $names = [$this->name()];
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $value */
         foreach ($this->values as $value) {
             if ($value->sameValueAs($this->geographicalName())) {
                 continue;
@@ -126,6 +127,8 @@ class PostInfoNames extends CollectionAbstract
             return;
         }
 
-        $this->mainName = reset($this->values);
+        /** @var \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName $mainName */
+        $mainName = reset($this->values);
+        $this->mainName = $mainName;
     }
 }

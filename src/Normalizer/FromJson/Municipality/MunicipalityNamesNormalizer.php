@@ -20,10 +20,10 @@ final class MunicipalityNamesNormalizer
      */
     public function normalize(object $jsonData): MunicipalityNames
     {
-        $municipalityNameNormalizer = new MunicipalityNameNormalizer();
+        $nameNormalizer = new MunicipalityNameNormalizer();
         $municipalityNames = [];
         foreach ($jsonData->gemeenten as $municipalityData) {
-            $municipalityNames[] = $municipalityNameNormalizer->normalize($municipalityData);
+            $municipalityNames[] = $nameNormalizer->normalize($municipalityData);
         }
 
         return new MunicipalityNames(...$municipalityNames);

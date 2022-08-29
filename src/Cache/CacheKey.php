@@ -23,7 +23,7 @@ final class CacheKey
      *
      * The "FlandersBasicRegister" prefix will be added automatically.
      *
-     * @param string
+     * @param string $value
      *   The cache key string without the "FlandersBasicRegister" prefix.
      */
     public function __construct(string $value)

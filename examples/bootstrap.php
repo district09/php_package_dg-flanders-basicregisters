@@ -83,9 +83,9 @@ function printFooter(): void
  * @param mixed ...$arguments
  *   Text replacements (see sprintf()).
  */
-function printStep(string $step, ...$argumments): void
+function printStep(string $step, ...$arguments): void
 {
-    printText('→ ' . $step, ...$argumments);
+    printText('→ ' . $step, ...$arguments);
 }
 
 /**
@@ -95,7 +95,7 @@ function printStep(string $step, ...$argumments): void
  * @param mixed ...$arguments
  *   Text replacements (see sprintf()).
  */
-function printBullet(string $text, ...$argumments): void
+function printBullet(string $text, ...$arguments): void
 {
-    printText('  • ' . $text, ...$argumments);
+    printText('  • ' . $text, ...$arguments);
 }

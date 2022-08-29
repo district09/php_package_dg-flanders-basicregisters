@@ -2,6 +2,11 @@
 
 /**
  * Example how to get the details of a single municipality name.
+ *
+ * @var string $apiEndpoint
+ * @var string $apiUserKey
+ * @var string $exampleMunicipalityNameId
+ * @var \Symfony\Component\Console\Output\ConsoleOutput $output
  */
 
 use DigipolisGent\Flanders\BasicRegisters\BasicRegister;

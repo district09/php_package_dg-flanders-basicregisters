@@ -10,7 +10,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfo;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoId;
 use DigipolisGent\Flanders\BasicRegisters\Value\Post\PostInfoNames;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Normalizer\FromJson\Post\PostInfoNormalizer

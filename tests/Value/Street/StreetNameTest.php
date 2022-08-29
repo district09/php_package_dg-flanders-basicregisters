@@ -8,7 +8,7 @@ use DigipolisGent\Flanders\BasicRegisters\Value\Geographical\GeographicalName;
 use DigipolisGent\Flanders\BasicRegisters\Value\LanguageCode;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetName;
 use DigipolisGent\Flanders\BasicRegisters\Value\Street\StreetNameId;
-use PHPUnit\Framework\TestCase;
+use DigipolisGent\Tests\Flanders\BasicRegisters\TestCase;
 
 /**
  * @covers \DigipolisGent\Flanders\BasicRegisters\Value\Geographical\AbstractWithGeographicalName
@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase;
  */
 class StreetNameTest extends TestCase
 {
-
     /**
      * Value is created from its details.
      *

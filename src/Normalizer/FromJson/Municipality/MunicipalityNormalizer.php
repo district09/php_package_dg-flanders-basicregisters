@@ -23,11 +23,10 @@ class MunicipalityNormalizer
     public function normalize(object $jsonData): Municipality
     {
         $idExtractor = new IdExtractor();
-        $municipalityNameNormalizer = new MunicipalityNameNormalizer();
 
         return new Municipality(
             new PostInfoId($idExtractor->extractObjectId($jsonData->postinfo)),
-            $municipalityNameNormalizer->normalize($jsonData->gemeente)
+            (new MunicipalityNameNormalizer())->normalize($jsonData->gemeente)
         );
     }
 }

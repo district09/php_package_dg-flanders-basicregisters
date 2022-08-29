@@ -11,7 +11,7 @@ use DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface;
 /**
  * Abstract URI with support for Filters & Pager.
  */
-abstract class AbstractUriWithQuery implements UriInterface
+abstract class AbstractUriWithQuery implements UriWithFiltersAndPagerInterface
 {
     /**
      * The request query parameters.
@@ -21,15 +21,11 @@ abstract class AbstractUriWithQuery implements UriInterface
     private $query;
 
     /**
-     * URI with only filters.
-     *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface|null $filters
-     *   Optional filters to limit the list by.
-     *
-     * @return \DigipolisGent\API\Client\Uri\UriInterface
+     * @inheritDoc
      */
-    public static function fromFilters(?FiltersInterface $filters = null): UriInterface
+    final public static function fromFilters(?FiltersInterface $filters = null): UriInterface
     {
+        // @phpstan-ignore-next-line
         $uri = new static();
         $uri->query = $filters ? $filters->filters() : [];
 
@@ -37,15 +33,11 @@ abstract class AbstractUriWithQuery implements UriInterface
     }
 
     /**
-     * URI with only pager.
-     *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface|null $pager
-     *   Optional pager to limit the list by.
-     *
-     * @return \DigipolisGent\API\Client\Uri\UriInterface
+     * @inheritDoc
      */
-    public static function fromPager(?PagerInterface $pager = null): UriInterface
+    final public static function fromPager(?PagerInterface $pager = null): UriInterface
     {
+        // @phpstan-ignore-next-line
         $uri = new static();
         $uri->query = $pager ? $pager->query() : [];
 
@@ -53,16 +45,9 @@ abstract class AbstractUriWithQuery implements UriInterface
     }
 
     /**
-     * From Filters & Pager.
-     *
-     * @param \DigipolisGent\Flanders\BasicRegisters\Filter\FiltersInterface|null $filters
-     *   Optional filters to limit the list by.
-     * @param \DigipolisGent\Flanders\BasicRegisters\Pager\PagerInterface|null $pager
-     *   Optional pager to limit the list by.
-     *
-     * @return \DigipolisGent\API\Client\Uri\UriInterface
+     * @inheritDoc
      */
-    public static function fromFiltersAndPager(
+    final public static function fromFiltersAndPager(
         ?FiltersInterface $filters = null,
         ?PagerInterface $pager = null
     ): UriInterface {
@@ -71,6 +56,7 @@ abstract class AbstractUriWithQuery implements UriInterface
             $pager ? $pager->query() : []
         );
 
+        // @phpstan-ignore-next-line
         $uri = new static();
         $uri->query = array_filter($query);
 

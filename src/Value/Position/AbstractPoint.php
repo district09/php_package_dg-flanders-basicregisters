@@ -12,7 +12,6 @@ use DigipolisGent\Value\ValueInterface;
  */
 class AbstractPoint extends ValueAbstract implements PointInterface
 {
-
     /**
      * The x-position.
      *
