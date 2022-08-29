@@ -19,10 +19,10 @@
     ],
     "homepage": "https://github.com/digipolisgent/php_package_dg-flanders-basicregisters",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
-        "digipolisgent/api-client": "^1.1 || ^2.0",
-        "digipolisgent/value": "^1.1 || ^2.0"
+        "digipolisgent/api-client": "^3.0",
+        "digipolisgent/value": "^3.0"
     },
     "require-dev": {
         "district09/qa-php": "^1.0.1"
