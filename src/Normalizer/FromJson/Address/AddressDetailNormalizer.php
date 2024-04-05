@@ -27,7 +27,7 @@ final class AddressDetailNormalizer
             (new AddressNormalizer())->normalize($jsonData),
             (new MunicipalityNormalizer())->normalize($jsonData),
             (new StreetNameNormalizer())->normalize($jsonData->straatnaam),
-            (new Lambert72PointNormalizer())->normalize($jsonData->adresPositie->point)
+            (new Lambert72PointNormalizer())->normalize($jsonData->adresPositie->geometrie)
         );
     }
 }
