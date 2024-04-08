@@ -35,58 +35,57 @@ class AddressDetailHandlerTest extends TestCase
      * @var string
      */
     private $json = <<<EOT
-{
-    "identificator": {
-        "id": "https://data.vlaanderen.be/id/adres/2550151",
-        "naamruimte": "https://data.vlaanderen.be/id/adres",
-        "objectId": "2550151",
-        "versieId": 25
-    },
-    "gemeente": {
-        "objectId": "44021",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/gemeenten/44021",
-        "gemeentenaam": {
+    {
+        "@context": "https://docs.basisregisters.vlaanderen.be/context/adres/2023-02-28/adres_detail.jsonld",
+        "@type": "Adres",
+        "identificator": {
+          "id": "https://data.vlaanderen.be/id/adres/2550151",
+          "naamruimte": "https://data.vlaanderen.be/id/adres",
+          "objectId": "2550151",
+          "versieId": "2023-11-01T14:50:05+01:00"
+        },
+        "gemeente": {
+          "objectId": "44021",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/gemeenten/44021",
+          "gemeentenaam": {
             "geografischeNaam": {
-                "spelling": "Gent",
-                "taal": "NL"
+              "spelling": "Gent",
+              "taal": "nl"
             }
-        }
-    },
-    "postinfo": {
-        "objectId": "9050",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/postinfo/9050"
-    },
-    "straatnaam": {
-        "objectId": "69683",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/straatnamen/69683",
+          }
+        },
+        "postinfo": {
+          "objectId": "9050",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/postinfo/9050"
+        },
         "straatnaam": {
+          "objectId": "69683",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/straatnamen/69683",
+          "straatnaam": {
             "geografischeNaam": {
-                "spelling": "Bellevue",
-                "taal": "NL"
+              "spelling": "Bellevue",
+              "taal": "nl"
             }
-        }
-    },
-    "huisnummer": "1",
-    "volledigAdres": {
-        "geografischeNaam": {
+          }
+        },
+        "huisnummer": "1",
+        "volledigAdres": {
+          "geografischeNaam": {
             "spelling": "Bellevue 1, 9050 Gent",
-            "taal": "NL"
-        }
-    },
-    "adresPositie": {
-        "point": {
-            "coordinates": [
-                105595.28,
-                192122.78
-            ],
-            "type": "Point"
-        }
-    },
-    "positieGeometrieMethode": "AangeduidDoorBeheerder",
-    "positieSpecificatie": "Perceel",
-    "adresStatus": "InGebruik",
-    "officieelToegekend": true
-}
+            "taal": "nl"
+          }
+        },
+        "adresPositie": {
+          "geometrie": {
+            "type": "Point",
+            "gml": "\u003Cgml:Point srsName=\"https://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\"\u003E\u003Cgml:pos\u003E105600.61 192113.19\u003C/gml:pos\u003E\u003C/gml:Point\u003E"
+          },
+          "positieGeometrieMethode": "aangeduidDoorBeheerder",
+          "positieSpecificatie": "gebouweenheid"
+        },
+        "adresStatus": "inGebruik",
+        "officieelToegekend": true
+      }
 EOT;
 
     /**
@@ -156,7 +155,7 @@ EOT;
                     'Bellevue'
                 )
             ),
-            new Lambert72Point(105595.28, 192122.78)
+            new Lambert72Point(105600.61, 192113.19)
         );
     }
 }
