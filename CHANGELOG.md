@@ -8,6 +8,9 @@ All Notable changes to `digipolisgent/flanders-basicregisters` package.
 * Since March 24 the V1 API has been deprecated and in the V2,
   the Lambert72 point value has been changed to a XML type string.
 
+### Updated
+* phpunit tests with the new API responses.
+
 ## [2.0.0]
 
 ### Added
