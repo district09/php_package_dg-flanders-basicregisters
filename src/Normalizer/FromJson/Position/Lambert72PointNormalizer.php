@@ -23,10 +23,11 @@ class Lambert72PointNormalizer
         $pattern = '/<gml:Point.*><gml:pos>(.*) (.*)<\/gml:pos><\/gml:Point>/';
         $matches = [];
         preg_match($pattern, $jsonData->gml, $matches);
+        $points = [(float)$matches[1], (float)$matches[2]];
 
         return new Lambert72Point(
-            $matches[0],
-            $matches[1]
+            (float)$points[0],
+            (float)$points[1]
         );
     }
 }
