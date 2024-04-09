@@ -32,35 +32,31 @@ class AddressMatchNormalizerTest extends TestCase
      * @var string
      */
     private $jsonDataWithoutAddressDetails = <<<EOT
-{
-    "gemeente": {
-        "objectId": "44021",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/gemeenten/44021",
-        "gemeentenaam": {
+    {
+        "@type": "Adres",
+        "gemeente": {
+          "objectId": "44021",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/gemeenten/44021",
+          "gemeentenaam": {
             "geografischeNaam": {
-                "spelling": "Gent",
-                "taal": "NL"
+              "spelling": "Gent",
+              "taal": "nl"
             }
-        }
-    },
-    "straatnaam": {
-        "objectId": "69683",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/straatnamen/69683",
+          }
+        },
         "straatnaam": {
+          "objectId": "69683",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/straatnamen/69683",
+          "straatnaam": {
             "geografischeNaam": {
-                "spelling": "Bellevue",
-                "taal": "NL"
+              "spelling": "Bellevue",
+              "taal": "nl"
             }
-        }
-    },
-    "homoniemToevoeging": {
-        "geografischeNaam": {
-            "spelling": "",
-            "taal": "NL"
-        }
-    },
-    "score": 77.58316245158349
-}
+          }
+        },
+        "score": 100,
+        "links": []
+      }
 EOT;
 
 
@@ -70,78 +66,70 @@ EOT;
      * @var string
      */
     private $jsonWithAddressDetails = <<<EOT
-{
-    "identificator": {
-        "id": "https://data.vlaanderen.be/id/adres/2550151",
-        "naamruimte": "https://data.vlaanderen.be/id/adres",
-        "objectId": "2550151",
-        "versieId": 25
-    },
-    "detail": "https://basisregisters.vlaanderen.be/api/v1/adressen/2550151",
-    "gemeente": {
-        "objectId": "44021",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/gemeenten/44021",
-        "gemeentenaam": {
-            "geografischeNaam": {
-                "spelling": "Gent",
-                "taal": "NL"
-            }
-        }
-    },
-    "postinfo": {
-        "objectId": "9050",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/postinfo/9050"
-    },
-    "straatnaam": {
-        "objectId": "69683",
-        "detail": "https://basisregisters.vlaanderen.be/api/v1/straatnamen/69683",
-        "straatnaam": {
-            "geografischeNaam": {
-                "spelling": "Bellevue",
-                "taal": "NL"
-            }
-        }
-    },
-    "homoniemToevoeging": {
-        "geografischeNaam": {
-            "spelling": "",
-            "taal": "NL"
-        }
-    },
-    "huisnummer": "1",
-    "volledigAdres": {
-        "geografischeNaam": {
-            "spelling": "Bellevue 1, 9050 Gent",
-            "taal": "NL"
-        }
-    },
-    "adresPositie": {
-        "point": {
-            "coordinates": [
-                105595.28,
-                192122.78
-            ],
-            "type": "Point"
-        }
-    },
-    "positieSpecificatie": "Perceel",
-    "positieGeometrieMethode": "AangeduidDoorBeheerder",
-    "adresStatus": "InGebruik",
-    "officieelToegekend": true,
-    "adresseerbareObjecten": [
-        {
-            "objectType": "Gebouweenheid",
-            "objectId": "5870815",
-            "detail": "https://basisregisters.vlaanderen.be/api/v1/gebouweenheden/5870815"
+    {
+        "@type": "Adres",
+        "identificator": {
+          "id": "https://data.vlaanderen.be/id/adres/2550151",
+          "naamruimte": "https://data.vlaanderen.be/id/adres",
+          "objectId": "2550151",
+          "versieId": "2023-11-01T14:50:05+01:00"
         },
-        {
-            "objectType": "Perceel",
-            "objectId": "44032A0472-00K003",
-            "detail": "https://basisregisters.vlaanderen.be/api/v1/percelen/44032A0472-00K003"
-        }
-    ],
-    "score": 85.070485070485063
-}
+        "detail": "https://api.basisregisters.vlaanderen.be/v2/adressen/2550151",
+        "gemeente": {
+          "objectId": "44021",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/gemeenten/44021",
+          "gemeentenaam": {
+            "geografischeNaam": {
+              "spelling": "Gent",
+              "taal": "nl"
+            }
+          }
+        },
+        "postinfo": {
+          "objectId": "9050",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/postinfo/9050"
+        },
+        "straatnaam": {
+          "objectId": "69683",
+          "detail": "https://api.basisregisters.vlaanderen.be/v2/straatnamen/69683",
+          "straatnaam": {
+            "geografischeNaam": {
+              "spelling": "Bellevue",
+              "taal": "nl"
+            }
+          }
+        },
+        "huisnummer": "1",
+        "volledigAdres": {
+          "geografischeNaam": {
+            "spelling": "Bellevue 1, 9050 Gent",
+            "taal": "nl"
+          }
+        },
+        "adresPositie": {
+          "geometrie": {
+            "type": "Point",
+            "gml": "\u003Cgml:Point srsName=\"https://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\"\u003E\u003Cgml:pos\u003E105600.61 192113.19\u003C/gml:pos\u003E\u003C/gml:Point\u003E"
+          },
+          "positieGeometrieMethode": "aangeduidDoorBeheerder",
+          "positieSpecificatie": "gebouweenheid"
+        },
+        "adresStatus": "inGebruik",
+        "officieelToegekend": true,
+        "score": 98.4848484848485,
+        "links": [
+          {
+            "href": "https://api.basisregisters.vlaanderen.be/v2/percelen?adresobjectid=2550151",
+            "rel": "percelen",
+            "type": "GET"
+          },
+          {
+            "href": "https://api.basisregisters.vlaanderen.be/v2/gebouweenheden?adresobjectid=2550151",
+            "rel": "gebouweenheden",
+            "type": "GET"
+          }
+        ]
+      }
 EOT;
 
     /**
@@ -167,7 +155,7 @@ EOT;
                 )
             ),
             null,
-            77.58316245158349
+            100
         );
 
         $normalizer = new AddressMatchNormalizer();
@@ -228,9 +216,9 @@ EOT;
                         'Bellevue'
                     )
                 ),
-                new Lambert72Point(105595.28, 192122.78)
+                new Lambert72Point(105600.61, 192113.19)
             ),
-            85.070485070485063
+            98.4848484848485
         );
 
         $normalizer = new AddressMatchNormalizer();

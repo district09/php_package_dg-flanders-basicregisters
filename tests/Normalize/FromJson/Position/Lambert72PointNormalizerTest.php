@@ -20,11 +20,14 @@ class Lambert72PointNormalizerTest extends TestCase
      */
     private $json = <<<EOT
 {
-    "coordinates": [
-        105595.28,
-        192122.78
-    ],
-    "type": "Point"
+    "adresPositie": {
+        "geometrie": {
+          "type": "Point",
+          "gml": "\u003Cgml:Point srsName=\"https://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\"\u003E\u003Cgml:pos\u003E105600.61 192113.19\u003C/gml:pos\u003E\u003C/gml:Point\u003E"
+        },
+        "positieGeometrieMethode": "aangeduidDoorBeheerder",
+        "positieSpecificatie": "gebouweenheid"
+      }
 }
 EOT;
 
@@ -35,14 +38,13 @@ EOT;
      */
     public function jsonDataIsNormalized(): void
     {
-        $expected = new Lambert72Point(105595.28, 192122.78);
+        $expected = new Lambert72Point(105600.61, 192113.19);
 
         $normalizer = new Lambert72PointNormalizer();
         $jsonData = json_decode($this->json);
-
         $this->assertEquals(
             $expected,
-            $normalizer->normalize($jsonData)
+            $normalizer->normalize($jsonData->adresPositie->geometrie)
         );
     }
 }

@@ -70,16 +70,13 @@ class AddressDetailNormalizerTest extends TestCase
         }
     },
     "adresPositie": {
-        "point": {
-            "coordinates": [
-                105595.28,
-                192122.78
-            ],
-            "type": "Point"
-        }
-    },
-    "positieGeometrieMethode": "AangeduidDoorBeheerder",
-    "positieSpecificatie": "Perceel",
+        "geometrie": {
+          "type": "Point",
+          "gml": "\u003Cgml:Point srsName=\"https://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\"\u003E\u003Cgml:pos\u003E105600.61 19113.19\u003C/gml:pos\u003E\u003C/gml:Point\u003E"
+        },
+        "positieGeometrieMethode": "aangeduidDoorBeheerder",
+        "positieSpecificatie": "gebouweenheid"
+      },
     "adresStatus": "InGebruik",
     "officieelToegekend": true
 }
@@ -119,7 +116,7 @@ EOT;
                     'Bellevue'
                 )
             ),
-            new Lambert72Point(105595.28, 192122.78)
+            new Lambert72Point(105600.61, 19113.19)
         );
 
         $normalizer = new AddressDetailNormalizer();
