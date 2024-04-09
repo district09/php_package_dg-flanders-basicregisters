@@ -20,9 +20,14 @@ class Lambert72PointNormalizer
      */
     public function normalize(object $jsonData): Lambert72Point
     {
+        $pattern = '/<gml:Point.*><gml:pos>(.*) (.*)<\/gml:pos><\/gml:Point>/';
+        $matches = [];
+        preg_match($pattern, $jsonData->gml, $matches);
+        $points = [(float)$matches[1], (float)$matches[2]];
+
         return new Lambert72Point(
-            (float) $jsonData->coordinates[0],
-            (float) $jsonData->coordinates[1]
+            (float)$points[0],
+            (float)$points[1]
         );
     }
 }
