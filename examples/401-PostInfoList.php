@@ -5,6 +5,7 @@
  *
  * @var string $apiEndpoint
  * @var string $apiUserKey
+ * @var string $apiKey
  * @var string $examplePostInfoName
  * @var \Symfony\Component\Console\Output\ConsoleOutput $output
  */
@@ -20,7 +21,7 @@ require_once __DIR__ . '/bootstrap.php';
 printTitle('Get the first 25 post info items from the service.');
 
 printStep('Create the API client configuration.');
-$configuration = new Configuration($apiEndpoint, $apiUserKey);
+$configuration = new Configuration($apiEndpoint, $apiUserKey, $apiKey);
 
 printStep('Create the Guzzle client.');
 $guzzleClient = new GuzzleHttp\Client(['base_uri' => $configuration->getUri()]);
