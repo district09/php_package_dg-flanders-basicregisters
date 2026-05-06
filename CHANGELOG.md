@@ -2,6 +2,13 @@
 
 All Notable changes to `digipolisgent/flanders-basicregisters` package.
 
+## [4.0.0]
+
+### Added
+
+* Added a configuration option for a basicregisters API key.
+* [BREAKING] Added the apiKey() method to the ConfigurationInterface.
+
 ## [3.0.0]
 
 ### Fixed
@@ -138,6 +145,8 @@ Covered:
 * Added service method to get the list of post info values.
 * Added service method to get the details of a single post info value.
 
+[4.0.0]: https://github.com/district09/php_package_dg-flanders-basicregisters/compare/3.0.0...4.0.0
+[3.0.0]: https://github.com/district09/php_package_dg-flanders-basicregisters/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/district09/php_package_dg-flanders-basicregisters/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/district09/php_package_dg-flanders-basicregisters/compare/0.2.3...1.0.0
 [0.2.3]: https://github.com/district09/php_package_dg-flanders-basicregisters/compare/0.2.2...0.2.3
