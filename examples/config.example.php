@@ -10,6 +10,9 @@ $apiEndpoint = 'https://basisregisters.vlaanderen.be/api/v1';
 // Optional api endpoint user key.
 $apiUserKey = null;
 
+// Optional basic registers api key.
+$apiKey = null;
+
 /**
  * Data used in the examples.
  */
