@@ -7,7 +7,7 @@ namespace DigipolisGent\Flanders\BasicRegisters\Client;
 use DigipolisGent\API\Client\AbstractClient;
 use DigipolisGent\API\Client\Response\ResponseInterface;
 use DigipolisGent\API\Logger\RequestLog;
-use GuzzleHttp\Exception\ClientException;
+use DigipolisGent\Flanders\BasicRegisters\Configuration\ConfigurationInterface;
 use Psr\Http\Message\RequestInterface;
 
 /**
@@ -16,7 +16,7 @@ use Psr\Http\Message\RequestInterface;
 final class Client extends AbstractClient
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
      * We do want the exceptions being throwed by Guzzle bubble up.
      */
@@ -33,9 +33,9 @@ final class Client extends AbstractClient
     }
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      *
-     * This will add the user key if a value is set.
+     * This will add the user key and/or api key if a value is set.
      */
     protected function injectHeaders(RequestInterface $request): RequestInterface
     {
@@ -45,6 +45,10 @@ final class Client extends AbstractClient
         $userKey = $configuration->userKey();
         if (!empty($userKey)) {
             $request = $request->withHeader('user-key', $userKey);
+        }
+        $apiKey = $configuration->apiKey();
+        if (!empty($apiKey)) {
+            $request = $request->withHeader('x-api-key', $apiKey);
         }
 
         return $request;

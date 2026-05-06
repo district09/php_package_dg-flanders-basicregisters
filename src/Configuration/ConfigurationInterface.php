@@ -12,9 +12,18 @@ use DigipolisGent\API\Client\Configuration\ConfigurationInterface as BaseConfigu
 interface ConfigurationInterface extends BaseConfigurationInterface
 {
     /**
-     * Get the API user key (if any).
+     * Get the API user key for the api gateway (if any).
      *
      * @return string|null
      */
     public function userKey(): ?string;
+
+    /**
+     * Get the API key for the basic registers Flanders.
+     *
+     * @see https://basisregisters.vlaanderen.be/apikey
+     *
+     * @return string|null
+     */
+    public function apiKey(): ?string;
 }

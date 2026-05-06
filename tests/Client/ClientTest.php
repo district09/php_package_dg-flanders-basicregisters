@@ -30,6 +30,7 @@ class ClientTest extends TestCase
 
         $configuration = $this->prophesize(ConfigurationInterface::class);
         $configuration->userKey()->willReturn($key);
+        $configuration->apiKey()->willReturn(null);
 
         $finalRequestMock = $this->prophesize(RequestInterface::class);
         $finalRequestMock
@@ -65,7 +66,7 @@ class ClientTest extends TestCase
     }
 
     /**
-     * API Key is send as header.
+     * API user Key is send as header.
      *
      * @test
      */
@@ -75,12 +76,108 @@ class ClientTest extends TestCase
 
         $configuration = $this->prophesize(ConfigurationInterface::class);
         $configuration->userKey()->willReturn($key);
+        $configuration->apiKey()->willReturn(null);
 
         $finalRequest = $this->prophesize(RequestInterface::class)->reveal();
 
         $requestWithContentLengthMock = $this->prophesize(RequestInterface::class);
         $requestWithContentLengthMock
             ->withHeader('user-key', $key)
+            ->willReturn($finalRequest)
+            ->shouldBeCalled();
+        $requestWithContentLength = $requestWithContentLengthMock->reveal();
+
+        $initialRequestMock = $this->prophesize(RequestInterface::class);
+        $initialRequestMock
+            ->getBody()
+            ->willReturn('123');
+        $initialRequestMock
+            ->withHeader(Argument::any(), Argument::any())
+            ->willReturn($requestWithContentLength);
+        $initialRequest = $initialRequestMock->reveal();
+
+        $guzzleResponse = $this->prophesize(PsrResponse::class)->reveal();
+
+        $response = $this->prophesize(ResponseInterface::class)->reveal();
+
+        $guzzleClient = $this->prophesize(GuzzleClient::class);
+        $guzzleClient
+            ->send($finalRequest)
+            ->willReturn($guzzleResponse);
+
+        $handler = $this->prophesize(HandlerInterface::class);
+        $handler->handles()->willReturn([get_class($initialRequest)]);
+        $handler->toResponse($guzzleResponse)->willReturn($response);
+
+        $client = new Client($guzzleClient->reveal(), $configuration->reveal());
+        $client->addHandler($handler->reveal());
+        $client->send($initialRequest);
+    }
+
+    /**
+     * No API key is added to the header if no value within configuration.
+     *
+     * @test
+     */
+    public function noApiKeyAddedIfNoValueInConfiguration(): void
+    {
+        $key = '';
+
+        $configuration = $this->prophesize(ConfigurationInterface::class);
+        $configuration->userKey()->willReturn(null);
+        $configuration->apiKey()->willReturn($key);
+
+        $finalRequestMock = $this->prophesize(RequestInterface::class);
+        $finalRequestMock
+            ->withHeader('x-api-key', $key)
+            ->shouldNotBeCalled();
+        $finalRequest = $finalRequestMock->reveal();
+
+        $initialRequestMock = $this->prophesize(RequestInterface::class);
+        $initialRequestMock
+            ->getBody()
+            ->willReturn('123');
+        $initialRequestMock
+            ->withHeader(Argument::any(), Argument::any())
+            ->willReturn($finalRequest);
+        $initialRequest = $initialRequestMock->reveal();
+
+        $guzzleResponse = $this->prophesize(PsrResponse::class)->reveal();
+
+        $response = $this->prophesize(ResponseInterface::class)->reveal();
+
+        $guzzleClient = $this->prophesize(GuzzleClient::class);
+        $guzzleClient
+            ->send($finalRequest)
+            ->willReturn($guzzleResponse);
+
+        $handler = $this->prophesize(HandlerInterface::class);
+        $handler->handles()->willReturn([get_class($initialRequest)]);
+        $handler->toResponse($guzzleResponse)->willReturn($response);
+
+        $client = new Client($guzzleClient->reveal(), $configuration->reveal());
+        $client->addHandler($handler->reveal());
+        $client->send($initialRequest);
+    }
+
+    /**
+     * API Key is send as header.
+     *
+     * @test
+     */
+    public function apiKeyIsSendAsHeader()
+    {
+        $key = 'fiz-baz-key';
+
+        $configuration = $this->prophesize(ConfigurationInterface::class);
+        $configuration->userKey()->willReturn(null);
+        $configuration->apiKey()->willReturn($key);
+
+        $finalRequest = $this->prophesize(RequestInterface::class)->reveal();
+
+        $requestWithContentLengthMock = $this->prophesize(RequestInterface::class);
+        $requestWithContentLengthMock
+            ->withHeader('x-api-key', $key)
             ->willReturn($finalRequest)
             ->shouldBeCalled();
         $requestWithContentLength = $requestWithContentLengthMock->reveal();
