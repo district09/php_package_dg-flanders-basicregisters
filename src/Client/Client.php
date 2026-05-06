@@ -7,7 +7,6 @@ namespace DigipolisGent\Flanders\BasicRegisters\Client;
 use DigipolisGent\API\Client\AbstractClient;
 use DigipolisGent\API\Client\Response\ResponseInterface;
 use DigipolisGent\API\Logger\RequestLog;
-use DigipolisGent\Flanders\BasicRegisters\Configuration\ConfigurationInterface;
 use Psr\Http\Message\RequestInterface;
 
 /**
